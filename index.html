@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><title>Xmlhttp Tst</title>
+<style type="text/css" media="screen">@import 'css.css';</style>
+<script src="xmlhttp.js"></script> 
+</head>
+<body><center><div id="boxx"><div id="aform"><div id="boxx2">
+	<fieldset>Map:
+		 
+    <div id="map">
+				  
+
+    </div>
+	
+					
+            </fieldset>
+			
+</div></div></div></center>
+
+<script>
+var XMLHttp = getXMLHttp();
+XMLHttp.open("GET", "varia.txt");
+XMLHttp.onreadystatechange = loadmap;
+XMLHttp.send(null);
+
+function loadmap() {
+  if (XMLHttp.readyState == 4) {
+     document.getElementById("map").innerHTML =
+      this.responseText;
+  }
+}
+</script>
+
+</body>
+</html>
+
