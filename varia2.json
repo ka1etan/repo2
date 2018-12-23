@@ -1,0 +1,14 @@
+{
+    "id": 123,
+    "text": "Some text",
+    "list": [
+        {
+            "text": "El1",
+            "description": "El1 description"
+        },
+        {
+            "text": "El2",
+            "description": "El2 description"
+        }
+    ]
+}
