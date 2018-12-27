@@ -4,13 +4,17 @@
 <style type="text/css" media="screen">@import 'css.css'</style>
 
 </head>
-<body onload="loadmap()"><center> <div id="boxx"><div id="aform"><div id="boxx2">
+<body onload="loadmap2()"><center> <div id="boxx"><div id="aform"><div id="boxx2">
 	<fieldset>Map:
 		 
     <div id="map">
 			  
 
     </div>
+        <div id="list1">
+
+        </div>
+        <div id="desc1">(...)</div>
 	
 					
             </fieldset>
@@ -22,13 +26,61 @@ function loadmap() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("map").innerHTML =
-      this.responseText;
+      document.getElementById("map").innerHTML = this.responseText;
     }
   };
   xhttp.open("GET", "varia.txt", true);
   xhttp.send();
 }
+
+
+function loadmap2() {
+  var data = {};
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+        var o = JSON.parse(this.responseText);
+        data = o;
+        document.getElementById("map").innerHTML = o.text;
+        
+        var descDiv = document.getElementById("desc1");
+        
+        var listDiv = document.getElementById("list1");
+        var listUl = document.createElement("ul");
+        listDiv.appendChild(listUl);
+
+        var clickHandler = function()
+        {
+
+            var i = parseInt(event.target.dataset.filipIndex)
+            //alert();
+            var elDesc = data.list[i].description;
+            descDiv.textContent = elDesc;
+        }
+        
+        for (i=0; i<o.list.length; i++)
+            {
+                var elText = o.list[i].text;
+                var elDesc = o.list[i].description;
+                
+                var listLi = document.createElement("li");
+                listLi.textContent = elText;
+                listLi.dataset.filipIndex = i;
+                
+                
+                listLi.addEventListener("click", clickHandler, false);
+
+                listUl.appendChild(listLi);
+            }
+        
+        
+    }
+  };
+  xhttp.open("GET", "varia2.json", true);
+  xhttp.send();
+}
+
 </script>
 
 </body>
