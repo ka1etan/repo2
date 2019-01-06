@@ -1,0 +1,78 @@
+{
+   "description": "static text from json file",
+
+   "maps": [
+        {
+            "text": "qbnano3",
+            "description": "map qbnano3;"
+        },
+        {
+            "text": "qbwsedit2",
+            "description": "map qbwsedit2;"
+        },
+         {
+            "text": "44qbnl",
+            "description": "map 44qbnl;"
+        },
+        {
+            "text": "4qbn",
+            "description": "map 4qbn;"
+        },
+         {
+            "text": "q3dm14",
+            "description": "map q3dm14;"
+        },
+         {
+            "text": "q3ctf2",
+            "description": "map q3ctf2;"
+        }
+    ],
+
+
+    "bots": [ {
+    "text":  "Xaero",
+    "description": "addbot Xaero;"
+   },
+   {
+     "text": "Orbb",
+    "description": "addbot Orbb;"
+   },
+   {
+      "text": "Slash",
+    "description": "addbot Slash;"
+   },
+   {
+       "text": "Sorlag",
+    "description": "addbot Sorlag;"
+   },
+   {
+        "text": "Daemia",
+    "description": "addbot Daemia;"
+   },
+   {
+        "text": "Uriel",
+    "description": "addbot Uriel;"
+   },
+   {
+        "text": "Wrack",
+    "description": "addbot Wrack;"
+   },
+   {
+    "text":"Keel",
+    "description": "addbot Keel;"
+   },
+   {
+    "text":"Bitterman",
+    "description": "addbot Bitterman;"
+   },
+   {
+    "text": "Gorre",
+    "description": "addbot Gorre;"
+   },
+               {
+       "text": "Anarki",
+    "description": "addbot Anarki;"
+   }
+
+            ]
+}
