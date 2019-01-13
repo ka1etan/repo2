@@ -1,5 +1,5 @@
 
-function loadmap() {
+function loadMap() {
     var data = {};
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -80,6 +80,5 @@ function loadmap() {
     xhttp.send();
 }
 
-// LR: TBD
-//document.addEventListener("load", loadmap, true);
-loadmap();
+window.addEventListener("load", loadMap);
+//loadmap();
