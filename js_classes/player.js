@@ -6,7 +6,7 @@ class Player {
 		this.name = name;
 		this.team = team;
 		this.model = model;
-		this.score = score;
+		this._score = score;
 	}
 
 	get score() {
@@ -44,6 +44,8 @@ class Player {
 let player = new Player("K1", "Red", "Cyborg", "100");
 
 player.display();
+player.score = 100;
+player._score = 101;
 
 // window.alert(player.staticfunc());
 

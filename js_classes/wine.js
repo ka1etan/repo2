@@ -6,18 +6,26 @@ class Wine  {
     this.name = name;
     this.wtype = wtype;
   }
+
+  displayAll()
+  {
+    return "Name: " + name, ", wine type: " + wtype);
+  }
 }
 
 class Red extends Wine {
 
   constructor(name, country, prize) {
-    super(name);
+    super(name, "Red Wine");
     this.country = country;
     this.prize = prize;
   }
 
-  displayall2()
-  {return "Wine name: " + this.name + ", Country: " + this.country  + ", Prize: " + this.prize;}
+  displayAll()
+  {
+    //super.displayAll();
+    return super.displayAll() + ", Country: " + this.country  + ", Prize: " + this.prize;
+  }
 
 }
 
@@ -26,4 +34,4 @@ alert(wine.name);
 alert(wine.wtype);
 
 let red = new Red("Verada", "California", "16 $");
-document.write(red.displayall2());
+document.write(red.displayAll());

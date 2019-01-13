@@ -3,10 +3,6 @@ function klyk() {
   document.getElementById("klykit").innerHTML = b;
 }
 
-function showText() {
-  var e = document.getElementById("editBox").value;
-  document.getElementById("itext").innerHTML = e;
-}
 
 function pswd() {
   var x = document.getElementById("myPsw").value;
@@ -29,37 +25,60 @@ var d = document.getElementById("so");
   document.getElementById("show").innerHTML = d.value;
 }
 
-var ListUtil = new Object();
 
-function showSelectedIndexes()
+//////////
+
+var userData =
 {
-  var oListbox = document.getElementById("selListbox");
-  var arrIndexes = ListUtil.getSelectedIndexes(oListbox);
-  document.getElementById("disp").innerHTML = "selected: " + arrIndexes.length +
-  " with indexes: " + arrIndexes;
+    selectedItems: [],
+    text: "",
+    //...
+
+};
+
+function showUserData()
+{
+    var json = JSON.stringify(userData, null, 2);
+    document.getElementById("userData").textContent = json;
 }
 
-ListUtil.getSelectedIndexes = function (oListbox) {
-  var arrIndexes = new Array;
+function showText() {
+  var e = document.getElementById("editBox").value;
+  userData.text = e;
+
+  showUserData();
+}
+
+function updateSelectedItems()
+{
+  var oListbox = document.getElementById("selListbox");
+  var items = getSelectedItems(oListbox);
+  userData.selectedItems = items;
+
+  showUserData();
+}
+
+function getSelectedItems(oListbox) {
+  var items = [];
 
   for (var i=0; i < oListbox.options.length; i++) {
-    if (oListbox.options[i].selected) {
-      //oListbox.options[i].value
-      arrIndexes.push(oListbox.options[i].value);
+    if (oListbox.options[i].selected) 
+    {
+      items.push(oListbox.options[i].value);
     }
   }
 
-  return arrIndexes;
+  return items;
 };
 
-function init(){
-  var buttonList = document.getElementById("btnShowList");
-  buttonList.addEventListener("click", showSelectedIndexes);
-  var oListbox = document.getElementById("selListbox");
-  oListbox.addEventListener("change", showSelectedIndexes);
 
-  var editButton = document.getElementById("editButton");
-  editButton.addEventListener("click", showText);
+function init()
+{
+
+  var oListbox = document.getElementById("selListbox");
+  oListbox.addEventListener("change", updateSelectedItems);
+
+
   var editBox = document.getElementById('editBox');
   editBox.addEventListener("input", showText);
 
