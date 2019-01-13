@@ -3,8 +3,8 @@ function klyk() {
   document.getElementById("klykit").innerHTML = b;
 }
 
-function tekstt() {
-  var e = document.getElementById("tekst").value;
+function showText() {
+  var e = document.getElementById("editBox").value;
   document.getElementById("itext").innerHTML = e;
 }
 
@@ -31,21 +31,38 @@ var d = document.getElementById("so");
 
 var ListUtil = new Object();
 
-function showSelectedIndexes() {
-                var oListbox = document.getElementById("selListbox");
-                var arrIndexes = ListUtil.getSelectedIndexes(oListbox);
-                document.getElementById("disp").innerHTML = "selected: " + arrIndexes.length +
-				" with indexes: " + arrIndexes + " " + oListbox.value;
-            }
+function showSelectedIndexes()
+{
+  var oListbox = document.getElementById("selListbox");
+  var arrIndexes = ListUtil.getSelectedIndexes(oListbox);
+  document.getElementById("disp").innerHTML = "selected: " + arrIndexes.length +
+  " with indexes: " + arrIndexes;
+}
 
 ListUtil.getSelectedIndexes = function (oListbox) {
-    var arrIndexes = new Array;
+  var arrIndexes = new Array;
 
-    for (var i=0; i < oListbox.options.length; i++) {
-        if (oListbox.options[i].selected) {
-            arrIndexes.push(i);
-        }
+  for (var i=0; i < oListbox.options.length; i++) {
+    if (oListbox.options[i].selected) {
+      //oListbox.options[i].value
+      arrIndexes.push(oListbox.options[i].value);
     }
+  }
 
-    return arrIndexes;
+  return arrIndexes;
 };
+
+function init(){
+  var buttonList = document.getElementById("btnShowList");
+  buttonList.addEventListener("click", showSelectedIndexes);
+  var oListbox = document.getElementById("selListbox");
+  oListbox.addEventListener("change", showSelectedIndexes);
+
+  var editButton = document.getElementById("editButton");
+  editButton.addEventListener("click", showText);
+  var editBox = document.getElementById('editBox');
+  editBox.addEventListener("input", showText);
+
+}
+
+window.addEventListener("load", init);

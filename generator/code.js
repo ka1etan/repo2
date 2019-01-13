@@ -1,5 +1,6 @@
 
 function loadMap() {
+    prepareMap();
     var data = {};
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -81,4 +82,5 @@ function loadMap() {
 }
 
 window.addEventListener("load", loadMap);
-//loadmap();
+//loadMap();
+//document.addEventListener("load", loadMap);
