@@ -2,42 +2,42 @@
 
 class Player {
 
-  constructor(name, team, model, score) {
-    this.name = name;
+	constructor(name, team, model, score) {
+		this.name = name;
 		this.team = team;
 		this.model = model;
 		this.score = score;
-  }
+	}
 
-get score() {
-	    return this._score;
-	  }
+	get score() {
+		return this._score;
+	}
 
-		set score(value) {
-		 if (value < 100) {
-			 alert("You haven't won yet ;)");}
-			 else {
-			 alert("You won the game");
-}
-			 return;
-
-		 this._score = value;
+	set score(value) {
+		if (value < 100) {
+			alert("You haven't won yet ;)");
 		}
+		else {
+			alert("You won the game");
+		}
+		return;
 
-		/*static staticfunc() {
-		    return "static response - team color: " ;
-		  }*/
+		this._score = value;
+	}
 
-			static staticfunc() {
-		    alert(this == Player);
-		  }
+	/*static staticfunc() {
+			return "static response - team color: " ;
+		}*/
 
-display() {
-    alert(this.name);
-  }
+	static staticfunc() {
+		alert(this == Player);
+	}
 
-	displayall()
-{return "Player name: "  + this.name + ", Team: " + this.team  + ", Model: " + this.model + " | ";}
+	display() {
+		alert(this.name);
+	}
+
+	displayall() { return "Player name: " + this.name + ", Team: " + this.team + ", Model: " + this.model + " | "; }
 
 }
 
