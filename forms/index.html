@@ -2,95 +2,105 @@
 <html>
 
 <head>
-  <style type="text/css" media="screen">
+  <!-- <style type="text/css" media="screen">
     @import 'css.css';
-  </style>
+  </style> -->
   <script src="scripts.js"></script>
 </head>
 
 <body>
-  <div id="aform">
-    <div id="boxx2">
-      <div id="wandler"></div>
-      <button onclick="klyk()" id="przycisk" value="Click">Click</button>
-      <p id="klykit"></p>
-    </div>
 
-    <div id="wandler"></div>
+  <table>
+    <tr>
+      <td align="left">
+        <div id="aform">
+          <div id="boxx2">
+            <div id="wandler"></div>
+            <button id="firstButton" value="Click">Click</button>
 
-    <div id="boxx2">
+          </div>
+          <br>
+          <div id="wandler"></div>
 
-      <input type="text" id="editBox" maxlength="50">
+          <div id="boxx2">
 
-    </div>
+            <input type="text" id="editBox" maxlength="50">
 
-    <div id="wandler"></div>
-    <div id="boxx2">
-      <div id="wandler"></div>
-      Password: <input type="password" id="myPsw" value="">
+          </div>
 
-      <button onclick="pswd()">Check Pass</button>
+          <div id="wandler"></div>
 
-      <p id="pass"></p>
-    </div>
+          <br>
+          <div id="boxx2">
+            <div id="wandler"></div>
+            Password: <input type="password" id="myPsw" value="">
 
+          </div>
 
+          <br>
 
-    <div id="boxx2">
-      <div id="wandler"></div>
-      <input type="radio" id="myRadio">
-      <button onclick="radioc()">Check Radio</button>
-      <p id="checkit"></p>
-    </div>
+          <div id="boxx2">
+            <div id="wandler"></div>
+            <form>
+              Vinyl<input type="radio" name="myRadio" value="Vinyl">
+              CD<input type="radio" name="myRadio" value="CD">
+              <input type="button" value="Check Radio" id="myRadioButton">
+              <input type="text" id="checkit">
 
-    <div id="wandler"></div>
+            </form>
+          </div>
+          <br>
+          <div id="wandler"></div>
 
-    <div id="boxx2">
+          <div id="boxx2">
 
-      <textarea id="ta" maxlength="50"></textarea>
+            <textarea id="textfield" maxlength="50"></textarea>
 
-      <div id="wandler"></div>
-      <button onclick="tac()">Check Txt</button>
-      <p id="txtit"></p>
-    </div>
+            <div id="wandler"></div>
 
-    <div id="wandler"></div>
+            <!--  <p id="text_content"></p> -->
+          </div>
+          <br>
+          <div id="wandler"></div>
 
-    <div id="boxx2">
+          <div id="boxx2">
 
-      <form>
-        <select name="selectionlist" onchange="lb();" id="so">
-          <option value="red">red</option>
-          <option value="green">green</option>
-          <option value="blue">blue</option>
-        </select>
+            <form>
+              <select name="selectionlist" id="combo">
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="blue">blue</option>
+              </select>
 
-      </form>
-      <div id="wandler"></div>
-      <div id="show"></div>
-    </div>
+            </form>
+            <div id="wandler"></div>
+            <!--  <div id="show"></div> -->
+          </div>
+          <br>
+          <div id="wandler"></div>
 
-    <div id="wandler"></div>
+          <div id="boxx2">
 
-    <div id="boxx2">
+            <select id="selListbox" size="5" multiple="multiple">
+              <option value="wartosc0">Original Value 0</option>
+              <option value="wartosc1">Original Value 1</option>
+              <option value="wartosc2">Original Value 2</option>
+              <option value="wartosc3">Original Value 3</option>
+              <option value="wartosc4">Original Value 4</option>
+            </select><br />
 
-      <select id="selListbox" size="5" multiple="multiple">
-        <option value="wartosc0">Original Value 0</option>
-        <option value="wartosc1">Original Value 1</option>
-        <option value="wartosc2">Original Value 2</option>
-        <option value="wartosc3">Original Value 3</option>
-        <option value="wartosc4">Original Value 4</option>
-      </select><br />
+          </div>
 
-    </div>
-
-
-  </div>
-
-  <pre id="userData">
+        </div>
+      </td>
+      <td width="10%"></td>
+      <td align="left" width="50%">
+        <pre id="userData">
 
 </pre>
-
+      </td>
+    </tr>
+  </table>
 </body>
 
 </html>
