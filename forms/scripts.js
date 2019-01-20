@@ -3,6 +3,7 @@ var userData = {
   text: "",
   password: "",
   radioChecked: "",
+  checkbox: "",
   text_Area: "",
   comboSelect: "",
   selectedItems: [],
@@ -51,6 +52,26 @@ function radioCheck() {
   userData.radioChecked = y;
 
   showUserData();
+}
+
+function boxCheck() {
+
+  var cbox = document.getElementById("check").value;
+  var test = document.getElementById("check").checked;
+  //document.getElementById("check").checked
+
+  if (test == false) {
+    cbox = " ";
+  }
+  //alert("true");
+  //else {alert("false");}
+
+  userData.checkbox = cbox + " " + test;
+
+  //alert("true or false: " + test);
+
+  showUserData();
+
 }
 
 function checkText() {
@@ -107,8 +128,17 @@ function init() {
   var myPsw = document.getElementById("myPsw");
   myPsw.addEventListener("input", passwordInput);
 
-  var myRadioButton = document.getElementById("myRadioButton");
-  myRadioButton.addEventListener("click", radioCheck);
+  //var myRadioButton = document.getElementById("myRadioButton");
+  //myRadioButton.addEventListener("click", radioCheck);
+
+  var idRadio1 = document.getElementById("idRadio1");
+  idRadio1.addEventListener("click", radioCheck);
+
+  var idRadio2 = document.getElementById("idRadio2");
+  idRadio2.addEventListener("click", radioCheck);
+
+  var check = document.getElementById("check");
+  check.addEventListener("click", boxCheck);
 
   var textfield = document.getElementById("textfield");
   textfield.addEventListener("input", checkText);
