@@ -3,7 +3,7 @@ var userData = {
   text: "",
   password: "",
   radioChecked: "",
-  checkbox: "",
+  checkbox: false,
   text_Area: "",
   comboSelect: "",
   selectedItems: [],
@@ -100,8 +100,100 @@ function getSelectedItems(oListbox) {
   return items;
 };
 
+function handleEvent(elementName, eventName, stateUpdater)
+{
+
+    var eventHandler = () =>
+    {
+        var eventTarget = event.target;
+        stateUpdater(eventTarget);
+        showUserData();
+    }
+
+    var element = document.getElementById(elementName);
+    element.addEventListener(eventName,  eventHandler);
+}
+
+function handleEventSimple(elementName, eventName, valueUpdater)
+{
+    handleEvent(elementName, eventName, eventTarget => valueUpdater(eventTarget.value) );
+}
+
+function handleEvent2(elementName, eventName, stateUpdater)
+{
+
+    var eventHandler = function()
+    {
+        var eventTarget = event.target;
+        stateUpdater(eventTarget);
+        showUserData();
+    }
+
+    var element = document.getElementById(elementName);
+    element.addEventListener(eventName,  eventHandler);
+}
+
+function handleEventSimple2(elementName, eventName, valueUpdater)
+{
+    var stateUpdater = function(eventTarget)
+    {
+        valueUpdater(eventTarget.value);
+    }
+
+    handleEvent2(elementName, eventName, stateUpdater);
+}
+
+//function assignProperty(property, value)
+//{
+//    property = value;
+//}
+//
+//assignProperty(userData.text, event.target.value);
 
 function init() {
+  showUserData();
+
+  handleEventSimple("firstButton", "click", value => userData.buttonclick = value );
+  handleEventSimple("editBox", "input", value => userData.text = value );
+  handleEventSimple("myPsw", "input", value => userData.password = value );
+
+  handleEventSimple("idRadio1", "click", value => userData.radioChecked = value );
+  handleEventSimple("idRadio2", "click", value => userData.radioChecked = value );
+
+  //handleEventSimple("check", "click", function(value) { userData.checkbox = value; } );
+  handleEvent("check", "click", eventTarget => userData.checkbox = eventTarget.checked );
+
+  handleEventSimple("textfield", "input", value => userData.text_Area = value );
+
+  handleEventSimple("combo", "change", value => userData.comboSelect = value );
+
+  handleEvent("selListbox", "change", eventTarget => userData.selectedItems = getSelectedItems(eventTarget) );
+}
+
+function init2() {
+
+  handleEventSimple("firstButton", "click", function(value) { userData.buttonclick = value; } );
+  handleEventSimple("editBox", "input", function(value) { userData.text = value; } );
+  handleEventSimple("myPsw", "input", function(value) { userData.password = value; } );
+
+  handleEventSimple("idRadio1", "click", function(value) { userData.radioChecked = value; } );
+  handleEventSimple("idRadio2", "click", function(value) { userData.radioChecked = value; } );
+
+  //handleEventSimple("check", "click", function(value) { userData.checkbox = value; } );
+  handleEvent("check", "click", function(eventTarget) { userData.checkbox = eventTarget.checked; } );
+
+  handleEventSimple("textfield", "input", function(value) { userData.text_Area = value; } );
+
+
+  handleEventSimple("combo", "change", function(value) { userData.comboSelect = value; } );
+
+
+  handleEvent("selListbox", "change", function(eventTarget) { userData.selectedItems = getSelectedItems(eventTarget); } );
+}
+
+
+
+function initOrig() {
 
   var firstButton = document.getElementById("firstButton");
   firstButton.addEventListener("click", firstClick);
