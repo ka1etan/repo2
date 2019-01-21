@@ -16,21 +16,21 @@ function showUserData() {
 }
 
 function firstClick() {
-  var b = document.getElementById("firstButton").value;
+  var b = event.target.value;
   userData.buttonclick = b;
 
   showUserData();
 }
 
 function showText() {
-  var e = document.getElementById("editBox").value;
+  var e = event.target.value;
   userData.text = e;
 
   showUserData();
 }
 
 function passwordInput() {
-  var x = document.getElementById("myPsw").value;
+  var x = event.target.value;
   userData.password = x;
 
   showUserData();
@@ -38,66 +38,50 @@ function passwordInput() {
 
 function radioCheck() {
 
-  var myRadio = document.forms[0];
-  var record = "";
-  var j;
-  for (j = 0; j < myRadio.length; j++) {
-    if (myRadio[j].checked) {
-      record = record + myRadio[j].value;
-    }
-  }
-  document.getElementById("checkit").value = record;
+  var radiob1 = event.target.value;
 
-  var y = document.getElementById("checkit").value;
-  userData.radioChecked = y;
+  userData.radioChecked = radiob1;
 
   showUserData();
 }
 
 function boxCheck() {
 
-  var cbox = document.getElementById("check").value;
-  var test = document.getElementById("check").checked;
-  //document.getElementById("check").checked
+  //var cbox = event.target.value;
+  var test = event.target.checked;
 
+/*
   if (test == false) {
     cbox = " ";
-  }
-  //alert("true");
-  //else {alert("false");}
+  }*/
 
-  userData.checkbox = cbox + " " + test;
 
-  //alert("true or false: " + test);
+  userData.checkbox = test;
 
   showUserData();
 
 }
 
 function checkText() {
-  var c = document.getElementById("textfield").value;
+  var c = event.target.value;
 
-
-  var q = c;
-  userData.text_Area = q;
+  userData.text_Area = c;
 
   showUserData();
 }
 
 function comboBox() {
 
-  var d = document.getElementById("combo");
-  //document.getElementById("show").innerHTML = d.value;
+  var d = event.target.value;
 
-  var z = d.value;
-  userData.comboSelect = z;
+  userData.comboSelect = d;
 
   showUserData();
 
 }
 
 function updateSelectedItems() {
-  var oListbox = document.getElementById("selListbox");
+  var oListbox = event.target;
   var items = getSelectedItems(oListbox);
   userData.selectedItems = items;
 
