@@ -3,8 +3,8 @@ var userData = {
   text: "",
   password: "",
   radioChecked: "",
-  checkbox: false,
-  text_Area: "",
+  checkBox: false,
+  textArea: "",
   comboSelect: "",
   selectedItems: [],
 
@@ -56,7 +56,7 @@ function boxCheck() {
   }*/
 
 
-  userData.checkbox = test;
+  userData.checkBox = test;
 
   showUserData();
 
@@ -65,7 +65,7 @@ function boxCheck() {
 function checkText() {
   var c = event.target.value;
 
-  userData.text_Area = c;
+  userData.textArea = c;
 
   showUserData();
 }
@@ -160,10 +160,10 @@ function init() {
   handleEventSimple("idRadio1", "click", value => userData.radioChecked = value );
   handleEventSimple("idRadio2", "click", value => userData.radioChecked = value );
 
-  //handleEventSimple("check", "click", function(value) { userData.checkbox = value; } );
-  handleEvent("check", "click", eventTarget => userData.checkbox = eventTarget.checked );
+  //handleEventSimple("check", "click", function(value) { userData.checkBox = value; } );
+  handleEvent("check", "click", eventTarget => userData.checkBox = eventTarget.checked );
 
-  handleEventSimple("textfield", "input", value => userData.text_Area = value );
+  handleEventSimple("textfield", "input", value => userData.textArea = value );
 
   handleEventSimple("combo", "change", value => userData.comboSelect = value );
 
@@ -179,10 +179,10 @@ function init2() {
   handleEventSimple("idRadio1", "click", function(value) { userData.radioChecked = value; } );
   handleEventSimple("idRadio2", "click", function(value) { userData.radioChecked = value; } );
 
-  //handleEventSimple("check", "click", function(value) { userData.checkbox = value; } );
-  handleEvent("check", "click", function(eventTarget) { userData.checkbox = eventTarget.checked; } );
+  //handleEventSimple("check", "click", function(value) { userData.checkBox = value; } );
+  handleEvent("check", "click", function(eventTarget) { userData.checkBox = eventTarget.checked; } );
 
-  handleEventSimple("textfield", "input", function(value) { userData.text_Area = value; } );
+  handleEventSimple("textfield", "input", function(value) { userData.textArea = value; } );
 
 
   handleEventSimple("combo", "change", function(value) { userData.comboSelect = value; } );
