@@ -40,15 +40,19 @@ function fname() {
   showUserData();
 } */
 
-function boxCheck() {
+function boxCheck(test) {
+
+
   var kid = document.getElementById("kid");
   var newe = document.createElement("input");
-  newe.setAttribute("type", "number", "placeholder", "zzz", "id", "discn");
+  newe.setAttribute("type", "number");
+  newe.setAttribute( "id", "discn");
+  newe.setAttribute( "placeholder", "zzz" );
 
-  var test = event.target.checked;
-  
-  if (test == true) {
+
+  if (test) {
     kid.appendChild(newe);
+    handleEventSimple("discn", "input", value => userData.discountNumber = value );
   }
   //alert("true");
   else {
@@ -111,12 +115,24 @@ function init() {
 
   handleEventSimple("rangeBox", "input", value => userData.quantity = value);
 
-  handleEvent("discBox", "click", eventTarget => userData.discountVoucher = eventTarget.checked);
+  handleEvent("discBox", "click", eventTarget =>
+    {
+        userData.discountVoucher = eventTarget.checked;
+        var a = document.getElementById("discn");
+        if (eventTarget.checked) {
+          a.removeAttribute("disabled");
+        } else {
+          a.setAttribute("disabled", "true");
+        }
 
-  var discBox = document.getElementById('discBox');
-  discBox.addEventListener("click", boxCheck);
+        //boxCheck(eventTarget.checked);
+    });
+
+
 
   //handleEventSimple("discn", "input", value => userData.discountNumber = value );
+
+  handleEventSimple("discn", "input", value => userData.discountNumber = value);
 
   handleEventSimple("radio1", "click", value => userData.showType = value);
   handleEventSimple("radio2", "click", value => userData.showType = value);
