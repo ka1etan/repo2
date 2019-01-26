@@ -1,3 +1,9 @@
+var exampleError =
+{
+    idError: "nameBox", // id of input element with an error
+    message: "Name cannot be empty.", // error message
+};
+
 var userData = {
   name: "",
   surname: "",
@@ -16,12 +22,17 @@ var userData = {
   additionalFood: [],
   parkingPlace: false,
   payType: "",
-
 };
+
+var  validationErrors = [];  // see exampleError
+
 
 function showUserData() {
   var json = JSON.stringify(userData, null, 2);
   document.getElementById("userData").textContent = json;
+
+  var jsonErrors = JSON.stringify(validationErrors, null, 2);
+  document.getElementById("validationErrors").textContent = jsonErrors;
 }
 
 function fname() {
@@ -88,8 +99,16 @@ function handleEventSimple(elementName, eventName, valueUpdater) {
   handleEvent(elementName, eventName, eventTarget => valueUpdater(eventTarget.value));
 }
 
+function applyInitialData()
+{
+    // TODO: set HTML according to initial values in userData
+}
+
+
 function init() {
   //alert("init");
+  applyInitialData();
+  validateData();
   showUserData();
 
   handleEventSimple("nameBox", "input", value => userData.name = value);
@@ -144,6 +163,21 @@ function init() {
   handleEvent("parkBox", "click", eventTarget => userData.parkingPlace = eventTarget.checked);
 
   handleEventSimple("payList", "change", value => userData.payType = value);
+}
+
+function validateData()
+{
+    validationErrors = []; // clear errors first
+    // TODO: validate all data here
+
+//    // example error
+//    var validationError =  {};
+//    validationError.idError = "nameBox";
+//    validationError.message = "Name can't be empty.";
+//
+//
+//    validationErrors.push(validationError); // add to the errors table
+
 }
 
 window.addEventListener("load", init);
