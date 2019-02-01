@@ -118,6 +118,7 @@ function handleEvent(elementName, eventName, stateUpdater) {
   var eventHandler = () => {
     var eventTarget = event.target;
     stateUpdater(eventTarget);
+    validateData(); // LR: podpina walidacje!
     showUserData();
   }
 
@@ -265,6 +266,11 @@ function applyInitialData() {
   document.getElementById("datearray").textContent = datearray;
 }
 
+function isEmptyString(s)
+{
+    return (!s || typeof(s) != "string" || s.length==0)
+}
+
 function validateData() {
   validationErrors = []; // clear errors first
   // TODO: validate all data here
@@ -277,24 +283,30 @@ function validateData() {
   //
   //    validationErrors.push(validationError); // add to the errors table
 
-  handleEvent("nameBox", "focusout", eventTarget => {
+    //LR - to niepotrzebne:
+//  handleEvent("nameBox", "focusout", eventTarget => {
+//
+//    var name = document.getElementById("nameBox").value;
+//    if (name == "") {
+//      validationErrors.push(nameError);
+//
+//    }
+//  });
+//  handleEvent("nameBox", "input", eventTarget => {
+//
+//    var fname = document.getElementById("nameBox").value;
+//    if (fname != "") {
+//
+//      validationErrors[0] = emptyError;
+//
+//    }
+//  });
 
-    var name = document.getElementById("nameBox").value;
-    if (name == "") {
-      validationErrors.push(nameError);
-
+    if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
+    {
+        validationErrors.push(nameError);
     }
-  });
 
-  handleEvent("nameBox", "input", eventTarget => {
-
-    var fname = document.getElementById("nameBox").value;
-    if (fname != "") {
-
-      validationErrors[0] = emptyError;
-
-    }
-  });
 
   handleEvent("surnameBox", "focusout", eventTarget => {
 
