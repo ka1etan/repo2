@@ -17,7 +17,7 @@ var emailError = {
 
 var confemailError = {
   idError: "confemailBox",
-  message: "Please provide your email or your email is not the same", 
+  message: "Please provide your email or your email is not the same",
 };
 
 var phoneBoxError = {
@@ -253,10 +253,15 @@ function applyInitialData() {
   var cdate2 = cdate.getUTCFullYear();
   var cdate3 = cdate.getMonth();
   var cdate4 = cdate.getDate();
-  var cdateall = cdate.toDateString();
+  //var cdateall = cdate.toDateString();
+  var cdateall = cdate.toISOString().split('T')[0];
+  //
+  //var cdateall = cdate.toLocaleDateString();
+  //var cdateall = cdate.valueOf();
 
   var datearray = [cdate2, cdate3, cdate4];
-  userData.date = datearray;
+
+  userData.date = cdateall;
   //document.write(cdate2 + cdate3);
   //document.getElementById("cdate").textContent = cdate;
   //document.getElementById("cdate2").textContent = cdate2;
@@ -266,9 +271,33 @@ function applyInitialData() {
   document.getElementById("datearray").textContent = datearray;
 }
 
-function isEmptyString(s)
-{
-    return (!s || typeof(s) != "string" || s.length==0)
+function isEmptyString(s) {
+  return (!s || typeof(s) != "string" || s.length == 0)
+}
+
+function checkMail(c) {
+  var correctmail = /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/;
+  var mailtest = correctmail.test(c);
+  return (!c || typeof(c) != "string" || c.length == 0 || mailtest != true)
+}
+
+function confMail(d) {
+  var emailconf = userData.email;
+  var correctmail = /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/;
+  var mailtest = correctmail.test(d);
+  return (!d || typeof(d) != "string" || d.length == 0 || mailtest != true || d != emailconf)
+}
+
+function checkPhone(p) {
+  //var phone = "1122"
+  return (!p || typeof(p) != "string" || p.length == 0 || p.length < 9)
+  //alert(typeof p);
+}
+
+function checkDiscn(p) {
+  if (userData.discountVoucher) {
+    return (!p || typeof(p) != "string" || p.length == 0 || p.length < 6)
+  }
 }
 
 function validateData() {
@@ -283,132 +312,35 @@ function validateData() {
   //
   //    validationErrors.push(validationError); // add to the errors table
 
-    //LR - to niepotrzebne:
-//  handleEvent("nameBox", "focusout", eventTarget => {
-//
-//    var name = document.getElementById("nameBox").value;
-//    if (name == "") {
-//      validationErrors.push(nameError);
-//
-//    }
-//  });
-//  handleEvent("nameBox", "input", eventTarget => {
-//
-//    var fname = document.getElementById("nameBox").value;
-//    if (fname != "") {
-//
-//      validationErrors[0] = emptyError;
-//
-//    }
-//  });
-
-    if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
-    {
-        validationErrors.push(nameError);
-    }
 
 
-  handleEvent("surnameBox", "focusout", eventTarget => {
+  if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
+  {
+    validationErrors.push(nameError);
+  }
 
-    var surname = document.getElementById("surnameBox").value;
-    if (surname == "") {
-      validationErrors.push(surnameError);
+  if (isEmptyString(userData.surname)) {
+    validationErrors.push(surnameError);
+  }
 
-    }
-  });
 
-  handleEvent("surnameBox", "input", eventTarget => {
+  if (checkMail(userData.email)) {
+    validationErrors.push(emailError);
+  }
 
-    var surname = document.getElementById("surnameBox").value;
-    if (surname != "") {
 
-      validationErrors[1] = emptyError;
 
-    }
-  });
+  if (confMail(userData.confirmEmail)) {
+    validationErrors.push(confemailError);
+  }
 
-  handleEvent("emailBox", "focusout", eventTarget => {
-    var correctmail = /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/;
-    var email = document.getElementById("emailBox").value;
-    var mailtest = correctmail.test(email);
-    if (mailtest == "" || mailtest != true) {
-      validationErrors.push(emailError);
+  if (checkPhone(userData.phone)) {
+    validationErrors.push(phoneBoxError);
+  }
 
-    }
-  });
-
-  handleEvent("emailBox", "input", eventTarget => {
-
-    var email = document.getElementById("emailBox").value;
-    if (email != "") {
-
-      validationErrors[2] = emptyError;
-
-    }
-  });
-
-  handleEvent("confemailBox", "focusout", eventTarget => {
-    var emailconf = userData.email;
-    //alert(emailconf);
-    var confemailBox = document.getElementById("confemailBox").value;
-    if (confemailBox == "" || confemailBox != emailconf) {
-      validationErrors.push(confemailError);
-
-    }
-  });
-
-  handleEvent("confemailBox", "input", eventTarget => {
-
-    //alert(emailconf);
-    var confemailBox = document.getElementById("confemailBox").value;
-    if (confemailBox != "") {
-
-      validationErrors[3] = emptyError;
-
-    }
-  });
-
-  handleEvent("phoneBox", "focusout", eventTarget => {
-
-    var phoneBox = document.getElementById("phoneBox").value;
-    //alert(phoneBox.length);
-    if (phoneBox == "" || phoneBox.length < 9) {
-      validationErrors.push(phoneBoxError);
-
-    }
-  });
-
-  handleEvent("phoneBox", "input", eventTarget => {
-
-    //alert(emailconf);
-    var phoneBox = document.getElementById("phoneBox").value;
-    if (phoneBox != "") {
-
-      validationErrors[4] = emptyError;
-
-    }
-  });
-
-  handleEvent("discn", "focusout", eventTarget => {
-
-    var discn = document.getElementById("discn").value;
-    //alert(phoneBox.length);
-    if (discn == "" || discn.length < 6) {
-      validationErrors.push(discnError);
-
-    }
-  });
-
-  handleEvent("discn", "input", eventTarget => {
-
-    //alert(emailconf);
-    var discn = document.getElementById("discn").value;
-    if (discn != "") {
-
-      validationErrors[5] = emptyError;
-
-    }
-  });
+  if (checkDiscn(userData.discountNumber)) {
+    validationErrors.push(discnError);
+  }
 
 }
 
