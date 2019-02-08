@@ -1,0 +1,22 @@
+{
+  "name": "Xane",
+  "surname": "K1x",
+  "email": "ka1etan2@wp.pl",
+  "confirmEmail": "ka1etan2@wp.pl",
+  "phone": "987654321",
+  "cinemaLocation": "location1",
+  "movie": "Movie2",
+  "date": "2019-02-09",
+  "hour": "19:00",
+  "quantity": "2",
+  "discountVoucher": false,
+  "discountNumber": "",
+  "showType": "Normal",
+  "language": "Language3",
+  "additionalFood": [
+    "Drink"
+  ],
+  "parkingPlace": true,
+  "payType": "Transfer"
+
+}
