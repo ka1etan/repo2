@@ -30,8 +30,10 @@ var discnError = {
   message: "Please provide your discount number or your number is too short",
 };
 
+
+
 var userData = {
-  name: "Filip",
+  name: "",
   surname: "K1",
   email: "ka1etan@wp.pl",
   confirmEmail: "ka1etan@wp.pl",
@@ -50,25 +52,93 @@ var userData = {
   payType: "Transfer",
 };
 
+
+
 var validationErrors = []; // see exampleError
+
+var userDataStack = [];
+
+let userDataObj = {};
+
+var dataObj;
+
+
+var XMLHttp = new XMLHttpRequest();
+
+function loadata() {
+
+
+  XMLHttp.onreadystatechange = function() {
+    if (XMLHttp.readyState == 4 && XMLHttp.status == 200) {
+
+      document.getElementById("userDataLoad").innerHTML =
+     this.responseText;
+       dataObj = JSON.parse(this.responseText);
+       var userName = dataObj.name;
+       var userSurname = dataObj.surname;
+
+
+
+    //document.getElementById("userData2b").value = dataObj.surname;
+
+    document.getElementById("nameBox").value = dataObj.name;
+
+    Object.assign(userDataObj, dataObj.name);
+
+    userDataStack.push(dataObj);
+
+    userDataStack.push(userName);
+
+    userDataStack.push(userSurname);
+
+    //alert(userDataStack);
+
+    document.getElementById("userData2a").textContent = userDataStack;
+
+    document.getElementById("surnameBox").value = dataObj.surname;
+
+    //userData.name = userName;
+
+    }
+  }
+  XMLHttp.open("GET", "userdata.json");
+  XMLHttp.send();
+
+
+}
+function validateData2(){
+//alert(userDataStack);
+
+}
 
 
 function showUserData() {
-  var json = JSON.stringify(userData, null, 2);
+
+var json = JSON.stringify(userData, null, 2);
   document.getElementById("userData").textContent = json;
 
-
-
-  var jsonErrors = JSON.stringify(validationErrors, null, 2);
+var jsonErrors = JSON.stringify(validationErrors, null, 2);
   document.getElementById("validationErrors").textContent = jsonErrors;
+
+  var jsonData = JSON.stringify(userDataStack, null, 2);
+  document.getElementById("userData2a").textContent = jsonData;
+
+  var jsonData2 = JSON.stringify(userDataObj, null, 2);
+  document.getElementById("userData2obj").textContent = jsonData2;
+
+
 }
 
 
 
-function fname() {
+
+
+
+
+/*function fname() {
   var firstName = event.target.value;
   userData.name = firstName;
-}
+}*/
 
 
 /*function slider() {
@@ -120,6 +190,7 @@ function handleEvent(elementName, eventName, stateUpdater) {
     stateUpdater(eventTarget);
     validateData(); // LR: podpina walidacje!
     showUserData();
+    //loadata();
   }
 
   var element = document.getElementById(elementName);
@@ -134,10 +205,15 @@ function handleEventSimple(elementName, eventName, valueUpdater) {
 
 
 function init() {
+
   //alert("init");
+  loadata();
+  //xmlhttptest()
   applyInitialData();
   validateData();
   showUserData();
+
+  validateData2();
 
   handleEventSimple("nameBox", "input", value => userData.name = value);
 
@@ -194,11 +270,13 @@ function init() {
 
 function applyInitialData() {
   // TODO: set HTML according to initial values in userData
-  var name = userData.name;
-  document.getElementById("nameBox").value = name;
+//  var name = userData.name;
 
-  var surn = userData.surname;
-  document.getElementById("surnameBox").value = surn;
+
+  document.getElementById("nameBox").value = userData.name;
+
+  //var surn = dataObj.surname;
+  //document.getElementById("surnameBox").value = dataObj.surname;
 
   var mail = userData.email;
   document.getElementById("emailBox").value = mail;
@@ -215,8 +293,30 @@ function applyInitialData() {
   var movieTitle = userData.movie;
   document.getElementById("movieList").value = movieTitle;
 
-  var dates = userData.date;
-  document.getElementById("dateBox").value = dates;
+  var cdate = new Date();
+  var cdateall = cdate.toISOString().split('T')[0];
+
+  var cdate2 = cdate.getUTCFullYear();
+  var cdate3 = cdate.getMonth();
+  var cdate4 = cdate.getDate();
+  //var cdateall = cdate.toDateString();
+
+  //
+  //var cdateall = cdate.toLocaleDateString();
+  //var cdateall = cdate.valueOf();
+
+  var datearray = [cdate2, cdate3, cdate4];
+
+   userData.date = cdateall;
+  //document.write(cdate2 + cdate3);
+  //document.getElementById("cdate").textContent = cdate;
+  //document.getElementById("cdate2").textContent = cdate2;
+  //document.getElementById("cdate3").textContent = cdate3;
+  //  document.getElementById("cdate4").textContent = cdate4;
+  document.getElementById("cdateall").textContent = cdateall;
+  document.getElementById("datearray").textContent = datearray;
+
+  document.getElementById("dateBox").value = userData.date;
 
   var time = userData.hour;
   document.getElementById("timeBox").value = time;
@@ -249,26 +349,8 @@ function applyInitialData() {
   var pt = userData.payType;
   document.getElementById("payList").value = pt;
 
-  var cdate = new Date();
-  var cdate2 = cdate.getUTCFullYear();
-  var cdate3 = cdate.getMonth();
-  var cdate4 = cdate.getDate();
-  //var cdateall = cdate.toDateString();
-  var cdateall = cdate.toISOString().split('T')[0];
-  //
-  //var cdateall = cdate.toLocaleDateString();
-  //var cdateall = cdate.valueOf();
 
-  var datearray = [cdate2, cdate3, cdate4];
 
-  userData.date = cdateall;
-  //document.write(cdate2 + cdate3);
-  //document.getElementById("cdate").textContent = cdate;
-  //document.getElementById("cdate2").textContent = cdate2;
-  //document.getElementById("cdate3").textContent = cdate3;
-  //  document.getElementById("cdate4").textContent = cdate4;
-  document.getElementById("cdateall").textContent = cdateall;
-  document.getElementById("datearray").textContent = datearray;
 }
 
 function isEmptyString(s) {
@@ -300,6 +382,8 @@ function checkDiscn(p) {
   }
 }
 
+
+
 function validateData() {
   validationErrors = []; // clear errors first
   // TODO: validate all data here
@@ -314,10 +398,10 @@ function validateData() {
 
 
 
-  if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
-  {
-    validationErrors.push(nameError);
-  }
+//  if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
+//  {
+//   validationErrors.push(nameError);
+//  }
 
   if (isEmptyString(userData.surname)) {
     validationErrors.push(surnameError);
