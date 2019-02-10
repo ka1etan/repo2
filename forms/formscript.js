@@ -43,7 +43,7 @@ var userData = {
   date: "",
   hour: "18:00",
   quantity: "5",
-  discountVoucher: false,
+  discountVoucher: "",
   discountNumber: "",
   showType: "Normal",
   language: "Language2",
@@ -52,107 +52,113 @@ var userData = {
   payType: "Transfer",
 };
 
-
-
 var validationErrors = []; // see exampleError
 
 var userDataStack = [];
+//alert("var userDataStack");
 
-let userDataObj = {};
-
+//let userDataObj = {};
 var dataObj;
-
 
 var XMLHttp = new XMLHttpRequest();
 
 function loadata() {
 
-
   XMLHttp.onreadystatechange = function() {
+    //  alert("loadata before if");
     if (XMLHttp.readyState == 4 && XMLHttp.status == 200) {
-
+      //  alert("loadata after if");
       document.getElementById("userDataLoad").innerHTML =
-     this.responseText;
-       dataObj = JSON.parse(this.responseText);
-       var userName = dataObj.name;
-       var userSurname = dataObj.surname;
+        this.responseText;
+      dataObj = JSON.parse(this.responseText);
+      // var userName = dataObj.name;
+      // var userSurname = dataObj.surname;
+      //document.getElementById("userData2b").value = dataObj.surname;
+      //document.getElementById("nameBox").value = dataObj.name;
+      document.getElementById("userData2a").textContent = userDataStack;
 
-
-
-    //document.getElementById("userData2b").value = dataObj.surname;
-
-    document.getElementById("nameBox").value = dataObj.name;
-
-    Object.assign(userDataObj, dataObj.name);
-
-    userDataStack.push(dataObj);
-
-    userDataStack.push(userName);
-
-    userDataStack.push(userSurname);
-
-    //alert(userDataStack);
-
-    document.getElementById("userData2a").textContent = userDataStack;
-
-    document.getElementById("surnameBox").value = dataObj.surname;
-
-    //userData.name = userName;
-
+      initData2();
+      //alert("initData2 XHR");
+      showUserData2();
+      //alert("showuserdata2 XHR");
+      applyInitialData();
+      //  alert("applyInitialData XHR");
+      validateData();
+      //alert("validate XHR");
+      showErrors();
+      //  alert("showErrors XHR");
     }
   }
+  //  alert("loadata after after if");
   XMLHttp.open("GET", "userdata.json");
   XMLHttp.send();
-
-
-}
-function validateData2(){
-//alert(userDataStack);
-
 }
 
+function initData2() {
 
-function showUserData() {
+  var userName = dataObj.name;
+  var userSurname = dataObj.surname;
+  var userMail = dataObj.email;
+  var userConfMail = dataObj.confirmEmail;
+  var userPhone = dataObj.phone;
+  var userLocation = dataObj.cinemaLocation;
+  var userMovie = dataObj.movie;
+  var userDate = dataObj.date;
+  var userHour = dataObj.hour;
+  var userQuantity = dataObj.quantity;
+  var userDiscount = dataObj.discountVoucher;
+  var userDiscountN = dataObj.discountNumber;
+  var userShow = dataObj.showType;
+  var userLang = dataObj.language;
+  var userFood = dataObj.additionalFood;
+  var userPark = dataObj.parkingPlace;
+  var userPay = dataObj.payType;
+  //Object.assign(userDataObj, dataObj.name);
+  //userDataStack.push(dataObj);
+  userDataStack.push(userName);
+  userDataStack.push(userSurname);
+  userDataStack.push(userMail);
+  userDataStack.push(userConfMail);
 
-var json = JSON.stringify(userData, null, 2);
+  //document.getElementById("nameBox").value = userName;
+  //document.getElementById("surnameBox").value = userSurname;
+
+  userData.name = userName;
+  userData.surname = userSurname;
+  userData.email = userMail;
+  userData.confirmEmail = userConfMail;
+  userData.phone = userPhone;
+  userData.cinemaLocation = userLocation;
+  userData.movie = userMovie;
+  userData.date = userDate;
+  userData.hour = userHour;
+  userData.quantity = userQuantity;
+  userData.discountVoucher = userDiscount;
+  userData.discountNumber = userDiscountN;
+  userData.showType = userShow;
+  userData.language = userLang;
+  userData.additionalFood = userFood;
+  userData.parkingPlace = userPark;
+  userData.payType = userPay;
+  //alert("userDatastack:" + userDataStack);
+}
+
+function showUserData2() {
+
+  var json = JSON.stringify(userData, null, 2);
   document.getElementById("userData").textContent = json;
 
-var jsonErrors = JSON.stringify(validationErrors, null, 2);
+}
+
+function showErrors() {
+
+  var jsonErrors = JSON.stringify(validationErrors, null, 2);
   document.getElementById("validationErrors").textContent = jsonErrors;
-
-  var jsonData = JSON.stringify(userDataStack, null, 2);
-  document.getElementById("userData2a").textContent = jsonData;
-
-  var jsonData2 = JSON.stringify(userDataObj, null, 2);
-  document.getElementById("userData2obj").textContent = jsonData2;
-
 
 }
 
 
-
-
-
-
-
-/*function fname() {
-  var firstName = event.target.value;
-  userData.name = firstName;
-}*/
-
-
-/*function slider() {
-
-  var slide = event.target.value;
-  document.getElementById('rangeValue').innerHTML = slide;
-
-  userData.quantity = slide;
-
-  showUserData();
-} */
-
 function boxCheck(test) {
-
 
   var kid = document.getElementById("kid");
   var newe = document.createElement("input");
@@ -187,10 +193,14 @@ function handleEvent(elementName, eventName, stateUpdater) {
 
   var eventHandler = () => {
     var eventTarget = event.target;
+
     stateUpdater(eventTarget);
-    validateData(); // LR: podpina walidacje!
-    showUserData();
-    //loadata();
+    validateData();
+    //alert("state updater/validate data");
+    showErrors();
+    showUserData2();
+    // LR: podpina walidacje!
+
   }
 
   var element = document.getElementById(elementName);
@@ -202,18 +212,11 @@ function handleEventSimple(elementName, eventName, valueUpdater) {
 }
 
 
-
-
 function init() {
 
-  //alert("init");
+  //  alert("init");
   loadata();
-  //xmlhttptest()
-  applyInitialData();
-  validateData();
-  showUserData();
-
-  validateData2();
+  //  alert("function loadata");
 
   handleEventSimple("nameBox", "input", value => userData.name = value);
 
@@ -241,6 +244,7 @@ function init() {
   handleEvent("discBox", "click", eventTarget => {
     userData.discountVoucher = eventTarget.checked;
     var a = document.getElementById("discn");
+    //var b = userData.discountNumber;
     if (eventTarget.checked) {
       a.removeAttribute("disabled");
     } else {
@@ -249,7 +253,6 @@ function init() {
 
     //boxCheck(eventTarget.checked);
   });
-
 
 
   //handleEventSimple("discn", "input", value => userData.discountNumber = value );
@@ -266,17 +269,18 @@ function init() {
   handleEvent("parkBox", "click", eventTarget => userData.parkingPlace = eventTarget.checked);
 
   handleEventSimple("payList", "change", value => userData.payType = value);
+
+
 }
 
 function applyInitialData() {
   // TODO: set HTML according to initial values in userData
-//  var name = userData.name;
-
+  //  var name = userData.name;
 
   document.getElementById("nameBox").value = userData.name;
 
   //var surn = dataObj.surname;
-  //document.getElementById("surnameBox").value = dataObj.surname;
+  document.getElementById("surnameBox").value = userData.surname;
 
   var mail = userData.email;
   document.getElementById("emailBox").value = mail;
@@ -300,14 +304,10 @@ function applyInitialData() {
   var cdate3 = cdate.getMonth();
   var cdate4 = cdate.getDate();
   //var cdateall = cdate.toDateString();
-
-  //
   //var cdateall = cdate.toLocaleDateString();
   //var cdateall = cdate.valueOf();
-
   var datearray = [cdate2, cdate3, cdate4];
-
-   userData.date = cdateall;
+  userData.date = cdateall;
   //document.write(cdate2 + cdate3);
   //document.getElementById("cdate").textContent = cdate;
   //document.getElementById("cdate2").textContent = cdate2;
@@ -325,9 +325,10 @@ function applyInitialData() {
   document.getElementById("rangeBox").value = quant;
 
   var dv = userData.discountVoucher;
-  document.getElementById("discBox").value = dv;
+  document.getElementById("discBox").checked = dv;
 
-  //discountNumber
+  document.getElementById("discn").value = userData.discountNumber;
+
   var st1 = userData.showType;
   document.getElementById("radio1").checked = st1;
   var st2 = userData.showType;
@@ -348,8 +349,6 @@ function applyInitialData() {
 
   var pt = userData.payType;
   document.getElementById("payList").value = pt;
-
-
 
 }
 
@@ -383,25 +382,13 @@ function checkDiscn(p) {
 }
 
 
-
 function validateData() {
   validationErrors = []; // clear errors first
-  // TODO: validate all data here
 
-  //    // example error
-  //    var validationError =  {};
-  //    validationError.idError = "nameBox";
-  //    validationError.message = "Name can't be empty.";
-  //
-  //
-  //    validationErrors.push(validationError); // add to the errors table
-
-
-
-//  if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
-//  {
-//   validationErrors.push(nameError);
-//  }
+  if (isEmptyString(userData.name)) // LR: zrob to zamiast tego
+  {
+    validationErrors.push(nameError);
+  }
 
   if (isEmptyString(userData.surname)) {
     validationErrors.push(surnameError);
@@ -411,8 +398,6 @@ function validateData() {
   if (checkMail(userData.email)) {
     validationErrors.push(emailError);
   }
-
-
 
   if (confMail(userData.confirmEmail)) {
     validationErrors.push(confemailError);
