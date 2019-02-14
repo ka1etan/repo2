@@ -62,6 +62,8 @@ var dataObj;
 
 var XMLHttp = new XMLHttpRequest();
 
+var hyperlink = "data:application/octet-stream;charset=utf-8;base64,";
+
 function loadata() {
 
   XMLHttp.onreadystatechange = function() {
@@ -87,6 +89,9 @@ function loadata() {
       //alert("validate XHR");
       showErrors();
       //  alert("showErrors XHR");
+      buttonCheck();
+      //  decode();
+      //  alert("decode XHR");
     }
   }
   //  alert("loadata after after if");
@@ -141,6 +146,17 @@ function initData2() {
   userData.parkingPlace = userPark;
   userData.payType = userPay;
   //alert("userDatastack:" + userDataStack);
+  //alert("userdata z initData2:"+JSON.stringify(userData, null, 2));
+  //var deco = utoa(JSON.stringify(userData, null, 2));
+  //var enco = atou(deco);
+  //document.getElementById("decode").innerHTML = deco;
+  //document.getElementById("encode").innerHTML = enco;
+  //var newlink = document.getElementById("anewlink");
+
+  //if (event.target.click) {
+  //  newlink.setAttribute("href", hyperlink + deco);
+  //  newlink.setAttribute("download", "userdata.json");
+  //}
 }
 
 function showUserData2() {
@@ -189,16 +205,45 @@ function getSelectedItems(oListbox) {
   return items;
 }
 
+/*function decode() {
+  var deco = utoa(JSON.stringify(userData, null, 2));
+  var enco = atou(deco);
+  //document.getElementById("decode").innerHTML = deco;
+  //document.getElementById("encode").innerHTML = enco;
+  //alert("userdata z decode:"+JSON.stringify(userData, null, 2));
+}*/
+
+function decoClick() {
+  var deco2 = utoa(JSON.stringify(userData, null, 2));
+  //var enco = atou(deco);
+  var newlink = document.getElementById("newlink");
+  var newa = document.createElement("a");
+  newa.setAttribute("href", hyperlink + deco2);
+  newa.setAttribute("download", "userdata.json");
+  newa.innerText = "Download link";
+  //alert("userdata z decoclick:"+JSON.stringify(userData, null, 2));
+
+  if (event.target.click) {
+
+    newlink.appendChild(newa);
+  }
+}
+
 function handleEvent(elementName, eventName, stateUpdater) {
 
   var eventHandler = () => {
     var eventTarget = event.target;
+
 
     stateUpdater(eventTarget);
     validateData();
     //alert("state updater/validate data");
     showErrors();
     showUserData2();
+    //alert("userdata z handleEvent:"+JSON.stringify(userData, null, 2));
+    //decode();
+    buttonCheck();
+
     // LR: podpina walidacje!
 
   }
@@ -270,6 +315,9 @@ function init() {
 
   handleEventSimple("payList", "change", value => userData.payType = value);
 
+  var buttonSubmit = document.getElementById("buttonSubmit");
+  buttonSubmit.addEventListener("click", decoClick);
+
 
 }
 
@@ -307,7 +355,7 @@ function applyInitialData() {
   //var cdateall = cdate.toLocaleDateString();
   //var cdateall = cdate.valueOf();
   var datearray = [cdate2, cdate3, cdate4];
-  userData.date = cdateall;
+  //userData.date = cdateall;
   //document.write(cdate2 + cdate3);
   //document.getElementById("cdate").textContent = cdate;
   //document.getElementById("cdate2").textContent = cdate2;
@@ -412,5 +460,50 @@ function validateData() {
   }
 
 }
+
+function buttonCheck() {
+  var sbtn = document.getElementById("buttonSubmit");
+  /*  if (checkMail(userData.email)) {
+
+      sbtn.setAttribute("disabled", "true");
+
+    } else {
+
+      sbtn.removeAttribute("disabled");
+    }*/
+  if (validationErrors != 0) {
+
+    sbtn.setAttribute("disabled", "true");
+  } else {
+    sbtn.removeAttribute("disabled");
+  }
+
+};
+
+function utoa(str) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+// base64 encoded ascii to ucs-2 string
+function atou(str) {
+  return decodeURIComponent(escape(window.atob(str)));
+}
+
+//alert("userdata poza:"+JSON.stringify(userData, null, 2));
+//var deco = utoa(JSON.stringify(userDataStack, null, 2));
+//var enco = atou(deco);
+
+//function decode(){
+//document.getElementById("decode").innerHTML = deco;
+//document.getElementById("encode").innerHTML = enco;
+//alert("decode");
+//}
+
+//function createA() {
+//  var newlink = document.getElementById("anewlink");
+
+//  if (event.target.click) {
+//  newlink.setAttribute("href", hyperlink + deco);
+//  newlink.setAttribute("download", "userdata.json");
+//  }
 
 window.addEventListener("load", init);
