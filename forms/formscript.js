@@ -223,10 +223,14 @@ function decoClick() {
   newa.innerText = "Download link";
   //alert("userdata z decoclick:"+JSON.stringify(userData, null, 2));
 
-  if (event.target.click) {
+  while (newlink.firstChild) {
 
-    newlink.appendChild(newa);
+    newlink.removeChild(newlink.firstChild);
+
   }
+
+  newlink.appendChild(newa);
+
 }
 
 function handleEvent(elementName, eventName, stateUpdater) {
