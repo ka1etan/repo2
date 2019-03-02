@@ -322,6 +322,7 @@ function init() {
   var buttonSubmit = document.getElementById("buttonSubmit");
   buttonSubmit.addEventListener("click", decoClick);
 
+  domtrip();
 
 }
 
@@ -509,5 +510,95 @@ function atou(str) {
 //  newlink.setAttribute("href", hyperlink + deco);
 //  newlink.setAttribute("download", "userdata.json");
 //  }
+
+function domtrip() {
+
+  var collect = [];
+  var collectdiv = [];
+  var collecta = [];
+  var collectp = [];
+  var collectscript = [];
+  var collectform = [];
+  var collecttable = [];
+  var collecttr = [];
+  var collecttd = [];
+  var collectinput = [];
+  var collectbr = [];
+  var collectselect = [];
+  var collectfieldset = [];
+  var collectpre = [];
+  var collectkeys = ["SCRIPT", "DIV", "TABLE", "TR", "TD", "INPUT", "SELECT", "FIELDSET", "BR",
+    "PRE", "A", "FORM", "P"];
+
+  var objcoll = {};
+
+
+  for (i = 0; i < document.all.length; i++) {
+    collect.push(document.all[i].nodeName);
+  }
+
+  for (j = 0; j < collect.length; j++) {
+
+    if (collect[j] == "SCRIPT") {
+      collectscript.push(collect[j]);
+
+    } else if (collect[j] == "DIV") {
+      collectdiv.push(collect[j]);
+    } else if (collect[j] == "TABLE") {
+      collecttable.push(collect[j]);
+    } else if (collect[j] == "TR") {
+      collecttr.push(collect[j]);
+    } else if (collect[j] == "TD") {
+      collecttd.push(collect[j]);
+    } else if (collect[j] == "INPUT") {
+      collectinput.push(collect[j]);
+    } else if (collect[j] == "SELECT") {
+      collectselect.push(collect[j]);
+    } else if (collect[j] == "FIELDSET") {
+      collectfieldset.push(collect[j]);
+    } else if (collect[j] == "BR") {
+      collectbr.push(collect[j]);
+    } else if (collect[j] == "PRE") {
+      collectpre.push(collect[j]);
+    } else if (collect[j] == "A") {
+      collecta.push(collect[j]);
+    } else if (collect[j] == "FORM") {
+      collectform.push(collect[j]);
+    } else if (collect[j] == "P") {
+      collectp.push(collect[j]);
+    }
+  }
+
+  var collectkeyvalues = [collectscript.length, collectdiv.length, collecttable.length,
+    collecttr.length, collecttd.length, collectinput.length, collectselect.length, collectfieldset.length,
+    collectbr.length, collectpre.length, collecta.length, collectform.length,
+    collectp.length];
+
+  for (k = 0; k < collectkeys.length; k++) {
+    let x = collectkeys[k];
+    objcoll[x] = collectkeyvalues[k];
+  }
+
+  alert("SCRIPT: " + collectscript.length + "\n" +
+    "DIV: " + collectdiv.length + "\n" +
+    "TABLE: " + collecttable.length + "\n" +
+    "TR: " + collecttr.length + "\n" +
+    "TD: " + collecttd.length + "\n" +
+    "FORM: " + collectform.length + "\n" +
+    "INPUT: " + collectinput.length + "\n" +
+    "SELECT: " + collectselect.length + "\n" +
+    "FILEDSET: " + collectfieldset.length + "\n" +
+    "A: " + collecta.length + "\n" +
+    "P: " + collectp.length + "\n" +
+    "BR: " + collectbr.length + "\n" +
+    "PRE: " + collectpre.length + "\n" +
+    "ALL: " + (collectscript.length + collectdiv.length + collecttable.length + collecttr.length +
+      collecttd.length + collectform.length + collectinput.length + collectselect.length +
+      collectfieldset.length + collecta.length + collectp.length + collectbr.length + collectpre.length)
+  );
+
+  alert(JSON.stringify(objcoll));
+
+}
 
 window.addEventListener("load", init);
