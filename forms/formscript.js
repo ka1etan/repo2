@@ -511,7 +511,49 @@ function atou(str) {
 //  newlink.setAttribute("download", "userdata.json");
 //  }
 
-function domtrip() {
+function domtrip()
+{
+
+    let nodesInfo = {}
+/*
+    nodeName ->
+        {
+            nodes: []
+            count: 0
+        }
+*/
+
+// EXAMPLE:
+//    let nodesInfo =
+//    {
+//        "DIV": { count: 2, nodes: [node1, node2]},
+//        "SCRIPT": { count: 1, nodes: [node3] }
+//    }
+
+    // EXAMPLE:
+    let node = { nodeName: "DIV" }
+    nodesInfo[node.nodeName] =
+    {
+        count: 0,
+        nodes: []
+    };
+
+
+    let nodeInfo = nodesInfo[node.nodeName]
+    nodeInfo.count += 1
+    nodeInfo.nodes.push(node)
+
+
+    for (i = 0; i < document.all.length; i++) {
+        node = document.all[i]
+
+
+    }
+}
+
+function domtrip2() {
+
+
 
   var collect = [];
   var collectdiv = [];
