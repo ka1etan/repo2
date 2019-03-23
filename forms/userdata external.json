@@ -1,0 +1,21 @@
+{
+  "name": "xxxzzz",
+  "surname": "cccccFilip",
+  "email": "ka1etan@wp.pl",
+  "confirmEmail": "ka1etan@wp.pl",
+  "phone": "123456789",
+  "cinemaLocation": "location3",
+  "movie": "Movie4",
+  "date": "2019-02-02",
+  "hour": "22:00",
+  "quantity": "4",
+  "discountVoucher": true,
+  "discountNumber": "221144",
+  "showType": "Normal",
+  "language": "Language1",
+  "additionalFood": [
+    "Drink"
+  ],
+  "parkingPlace": false,
+  "payType": "Cash"
+}
