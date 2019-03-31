@@ -137,6 +137,7 @@ function numCheckObj4(x) {
     {
         
         let o = null;
+        o = counters[x[i].toString()];
 
         // ???
         // for (let j=0; j<counters.length && !o; j++){
@@ -145,16 +146,16 @@ function numCheckObj4(x) {
         //     }
         // }
 
-        if (o != null)
+        if (o)
         {
-            o.count += 1; // ???
+            o += 1; // ???
         }
         else
         {
             //console.log("Did not find: " + x[i])
             // ???
-            o = {name: x[i].toString(), count: 1};  // ???
-            counters.push(o);
+            o = 1;  // ???
+            counters[x[i].toString()] = o;
         }
 
     }
