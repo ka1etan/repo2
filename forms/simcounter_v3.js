@@ -113,6 +113,8 @@ function numCheckObj3(x) {
         {
             //console.log("Did not find: " + x[i])
             // ???
+            o = {name: x[i].toString(), count: 1};
+            counters.push(o);
         }
 
     }
@@ -120,8 +122,8 @@ function numCheckObj3(x) {
     return counters;
 }
 
-let x = [1,1,1,2,4,6,9,1,4,6,0,0,7,4];
-
+//let x = [1,1,1,2,4,6,9,1,4,6,0,0,7,4];
+let x = ["DIV", "DIV", "SELECT", "BR", "DIV", "BR", "INPUT", "BR"];
 // let check = numCheck(x);
 // let check2 = numCheckObj(x);
 // let check3 = numCheckObj2(x);
