@@ -136,28 +136,20 @@ function numCheckObj4(x) {
     for (let i = 0; i < x.length; i++) 
     {
         
-        let o = null;
-        o = counters[x[i].toString()];
+        let o = counters[x[i].toString()];
 
-        // ???
-        // for (let j=0; j<counters.length && !o; j++){
-        //     if (counters[j].name == x[i].toString()){
-        //         o = counters[j];
-        //     }
-        // }
 
         if (o)
         {
-            o += 1; // ???
+            o += 1; 
         }
         else
         {
-            //console.log("Did not find: " + x[i])
-            // ???
-            o = 1;  // ???
-            counters[x[i].toString()] = o;
+
+            o = 1; 
         }
 
+        counters[x[i].toString()] = o;        
     }
 
     return counters;
@@ -173,3 +165,5 @@ let x = ["DIV", "DIV", "SELECT", "BR", "DIV", "BR", "INPUT", "BR"];
 // console.log(check3);
 
 console.log( numCheckObj4(x) )
+
+
