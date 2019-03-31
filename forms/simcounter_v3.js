@@ -81,33 +81,37 @@ function numCheckObj3(x) {
     //let z = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     //let z = [];
     let counters = [ 
+        {name: "6", count: 0}, 
         {name: "0", count: 0}, 
         {name: "1", count: 0}, 
-        {name: "2", count: 0}, 
         {name: "3", count: 0}, 
         {name: "4", count: 0}, 
         {name: "5", count: 0}, 
-        {name: "6", count: 0}, 
+        {name: "9", count: 0}, 
         {name: "7", count: 0}, 
         {name: "8", count: 0}, 
-        {name: "9", count: 0}, 
+        {name: "2", count: 0}, 
     ];
 
 
     for (let i = 0; i < x.length; i++) 
     {
         
-        if (0 <= x[i] && x[i] < counters.length) 
-        {
-            let o = null;
-            for (let j=0; j<counters.length; j++){
-                if (counters[j].name == x[i]){
-                    o = counters[];
-                }
-            }
-            
-           o.count += 1;
+        let o = null;
 
+        for (let j=0; j<counters.length && !o; j++){
+            if (counters[j].name == x[i].toString()){
+                o = counters[j];
+            }
+        }
+
+        if (o != null)
+        {
+            o.count += 1;
+        }
+        else
+        {
+            console.log("Did not find: " + x[i])
         }
 
     }
