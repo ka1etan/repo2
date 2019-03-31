@@ -99,7 +99,8 @@ function numCheckObj3(x) {
         
         if (0 <= x[i] && x[i] < counters.length) 
         {
-            counters[x[i]].count += 1;
+            let o = counters[x[i]];
+            o.count += 1;
 
         }
 
