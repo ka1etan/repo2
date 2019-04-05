@@ -4,7 +4,21 @@ function createaudio() {
 
   newtrack.addEventListener('suspend', (event) => {
     console.log('Data loading has been suspended.');
+
   });
+
+  newtrack.addEventListener('loadedmetadata', (event) => {
+    console.log(newtrack.duration);
+    let tracktime = newtrack.duration/60;
+    let trackmins = parseInt(tracktime);
+    //console.log(trackmins);
+    let tracksecs = parseInt((tracktime - trackmins)*60);
+
+    document.getElementById("dura").innerHTML = "Duration: " + trackmins + " : " + tracksecs;
+
+  });
+
+
 
   let bplay = document.getElementById("play");
   let bpause = document.getElementById("stop");
@@ -35,7 +49,10 @@ function createaudio() {
     newtrack.currentTime = 0;
   }
 
-  document.getElementById("dura").innerHTML = "Duration: " + newtrack.duration;
+
+
+
+
 }
 
 function init() {
