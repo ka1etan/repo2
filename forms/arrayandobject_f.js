@@ -31,11 +31,29 @@ function arrayToDict(b) // a is an array [], returns dictionary/object
 
 }
 
+function createDictWithFewPropsThenRemoveOne() {
+    let obj = { x: "x", a: 1, b: 2, c: "zzz", d: 3, e: "4" };
+    let mat = [];
+    let buf = null;
+
+    //delete obj["a"];
+    // return obj;
+    for (var props in obj) {
+        mat.push(props);
+        buf = props;
+    }
+
+    delete obj[mat[0]]; // delete first key val
+    delete obj[buf]; // delete last key val
+    console.log(obj);
+}
+
 let a = { a: 1, b: 2, c: "zxzx" };
 let b = ["a", 22, "b", "zxzxz", "c", 3];
 let x = objToArray(a);
 let y = arrayToDict(b);
 console.log(x);
 console.log(y);
+createDictWithFewPropsThenRemoveOne();
 
 
