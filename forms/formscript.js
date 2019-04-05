@@ -537,267 +537,33 @@ function atou(str) {
 
 function domtrip() {
 
-  //    let container = {};
-  /*
-      nodeName ->
-          {
-              nodes: []
-              count: 0
-          }
-  */
-
-  // EXAMPLE:
-  //    let nodesInfo =
-  //    {
-  //        "DIV": { count: 2, nodes: [node1, node2]},
-  //        "SCRIPT": { count: 1, nodes: [node3] }
-  //    }
-
-  // EXAMPLE:
-  /*
-    let node = { nodeName: "DIV" }
-    nodesInfo[node.nodeName] =
-    {
-        count: 0,
-        nodes: []
-    };
-
-
-    let nodeInfo = nodesInfo[node.nodeName]
-    nodeInfo.count += 1
-    nodeInfo.nodes.push(node)
-*/
-  //let i;
-  //let node = document.all[i];
-  //let name = [];
-  //nodesInfo[name] = obj;
-  //let node = [];
-
-  function objcre(o, a, b) {
-    return o[a] = b, o;
-  }
-
-  function checkDom(cname, ccounter) {
-    return funobj = {
-      cname,
-      ccounter
-    };
-  }
-
-  function checkDom2(ccname) {
-    return funobj2 = {
-      ccname
-    };
-  }
-
-  function checkDom3(cccounter) {
-    return funobj3 = {
-      cccounter
-    };
-  }
-  let nodesInfo = {};
-  //
-  //  let DivCounter = {count: ""};
-  //let nodeInfo = {};
-  //let counter = 0;
-  let object = {};
-  let objectc = {};
-  let objectc1 = {};
-
-
-  let divcount = {
-    counter: 0
-  };
-  let selcount = {
-    counter: 0
-  };
-
-  let buf = {};
-  let buf2 = {};
-  let buf3 = {};
-  let buf4 = {};
-  let obj = {};
-  let arrobj = [];
-  let funmat = [];
-  let funmat2 = [];
-
-  let ocounter = {
-    count: 0
-  };
-  let matrix = [];
-  let namemat = [];
-  let x = [0];
-  let str2 = "check";
-
-  let arr = [];
   let webtree = [];
+  let counters = {};
 
   for (i = 0; i < document.all.length; i++) {
     let node = document.all[i];
     let name = node.nodeName;
-    let ccontainer = name;
-    let mat = name + [i];
-    //let counter = name + ocounter;
-    //let container = objcre(nodesInfo,name,object);
-    //alert(JSON.stringify(container));
-    let str = {};
-    //let x;
-    //let count = x.name;
-    //let obj = {count[name]: 0, nodes: []};
-    //alert(mat);
-    //nodesInfo[name] = obj;
-    //let divar = "DIV";
-    //nodeInfo = nodesInfo[name];
+
     webtree.push(name);
-
-    let check = "check";
-    arrobj.push(check);
-
-    buf2[name] = 0;
-
-    obj[name] = buf3;
-
-    nodesInfo["DIV"] = divcount;
-    nodesInfo["SELECT"] = selcount;
-
-    if (name == "DIV") {
-      nodesInfo["DIV"].counter += 1;
-    }
-    if (name == "SELECT") {
-      nodesInfo["SELECT"].counter += 1;
-    }
-
-    let dcheck = checkDom(name, [i]);
-    funmat.push(dcheck);
-
-
-    let dcheck2 = objcre(buf4, name, [i]);
-    funmat2.push(dcheck2);
-
-    //alert(JSON.stringify(funobj.cname));
-    //alert(JSON.stringify(buf2));
-
-    for (name in buf2) {
-      var variable = buf2[name];
-    }
-
-    //alert(JSON.stringify(variable));
-
-    if (name == "DIV" || name == "SELECT") {
-      namemat.push(name);
-
-      // objectc1[JSON.stringify(container2)] = "zx";
-      //let container = objcre(objectc1, check, str);
-      //  container[check].str = container2;
-      //  object[check] = container;
-      //  object[]
-      //alert(JSON.stringify(container));
-      //  objectc[ename] = name;
-      //objectc1[name] = container2;
-      // container2[name] = objectc1;
-      //for (name in container2){
-      // container2[name] = name;
-      // }
-      object[name] = objectc1;
-      ocounter.count = object;
-      ocounter.count[name] += 1;
-
-      //nodesInfo[name] = ocounter;
-      //  nodesInfo[name].count[name] += 1;
-      // alert(JSON.stringify(nodesInfo));
-      //nodesInfo[name].count += 1;
-
-      /*  for (name in nodesInfo){
-         nodesInfo[name] = name ;
-}*/
-      /*   for (count in ocounter){
-           ocounter[count] = name;
-         }*/
-
-      //// if (name) {
-      //  nodesInfo[name].ename = name;
-      //   }
-      // nodesInfo[name].count += 1;
-      // alert(JSON.stringify(container));
-      //nodesInfo[name] = object;
-      //object[name] = container;
-      //DivCounter[DIV] = container;
-      // object[name].SELECT += 1;
-      //  container[count] =
-      //   object[name] = container[count]; // obiekt
-
-      // container[count] += 1;
-      //nodesInfo["DIV"].count4"DIV" += 1;
-      //nodesInfo["SELECT"].count4"SELECT" += 1;
-      // alert(JSON.stringify(nodesInfo[node] + " " + nodesInfo[name].count));
-      //  nodesInfo[name].nodes.push(node);
-      //alert(node + " " + name);
-    }
-
   }
-  let f = objcre(objectc, str2, namemat);
-  matrix.push(f);
 
-  /*  if (name){
-               nodesInfo[name] = obj;
-               nodesInfo[name].count += 1;
-              // alert(JSON.stringify(nodesInfo[node] + " " + nodesInfo[name].count));
-          //  nodesInfo[name].nodes.push(node);
-    //alert(node + " " + name);
-  }*/
+    for (let k = 0; k < webtree.length; k++) {
 
-  //  let nodeInfo = nodesInfo[node.nodeName];
-  //  nodeInfo.count += 1;
-  //  nodeInfo.nodes.push(node);
-  //  alert()
-  let dyna = objcre(buf, obj, buf2);
+      let o = counters[webtree[k].toString()];
 
-  //alert(webtree);
-  //alert(JSON.stringify(funobj));
-  //alert(JSON.stringify(funmat));
-  //alert(JSON.stringify(funmat2));
-  //alert(JSON.stringify(buf2));
-  //alert(JSON.stringify(ocounter));
-  //alert(JSON.stringify(nodesInfo));
-  //alert(JSON.stringify(buf));
+      if (o) {
+        o += 1;
+      } else {
 
-  for (var property1 in buf2) {
-    arr.push(property1);
-  }
-  //alert(arr);
-
-  /*let propcount = 0;
-  for (j = 0; j < document.all.length; j++) {
-  let jnode = document.all[j];
-  let jname = jnode.nodeName;
-  //let dcheck3 = checkDom2(jname);
-  //for (k = 0; k < arr.length; k++){
-    //  if (funobj2[jname]==arr[k]){
-        // (jname==arr[k])
-        // buf2[]
-
-    //  }*/
-  //  for (var props in buf2) {
-  //   if (jname==props) {
-
-  //   xx = checkDom3(propcount);
-  //   funobj3.cccounter += 1;
-  //  buf2[props] = xx;
-  //  }}
-
-  //}
-
-  //alert(JSON.stringify(buf2));
-  for (j = 0; j < webtree.length; j++) {
-    for (k = 0; k < arr.length; k++) {
-      if (webtree[j] == arr[k]) {
-        let temp = webtree[j];
-        buf2[temp] += 1;
+        o = 1;
       }
+
+      counters[webtree[k].toString()] = o;
     }
+
+    alert(JSON.stringify(counters));
   }
-  //alert(JSON.stringify(buf2));
-}
+
 
 function domtrip2() {
 
