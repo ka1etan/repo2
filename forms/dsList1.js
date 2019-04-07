@@ -63,7 +63,44 @@ function listExample()
     printList(listNode2)
 }
 
-function arrayToList(a) {}
+function arrayToList(a) {
+    let prev = null;
+    let first = null;
+    for (let i=0; i<a.length; i++){
+        let nlist = {data: a[i], next: null};
+        if (prev) {
+            prev.next = nlist;
+        } else {first = nlist; } 
+        prev = nlist;
+    }
+     return first;
+}
+
+function elemToList(a,b,c){
+   let prev = null;
+
+
+
+   let nlist1 = {data: a, next: null};
+   if (prev) {
+       prev.next = nlist1;
+   } 
+   prev = nlist1;
+
+   let nlist2 = {data: b, next: null};
+   if (prev) {
+    prev.next = nlist2;
+   }
+   prev = nlist2;
+
+   let nlist3 = {data:c, next: null};
+   if (prev) {
+    prev.next = nlist3;
+   }
+   prev = nlist3;
+
+   return nlist1;
+}
 
 function listToArray(llist)
 {
@@ -86,20 +123,33 @@ function addItem(){
     //console.log(list);
     }
 
-listExample();
+//listExample();
 
-let nlist1 = { data: 0, next: null };
-let nlist2 = { data: 1, next: null };
-let nlist3 = { data: 2, next: null };
-let nlist4 = { data: 3, next: null };
-nlist1.next = nlist2;
-nlist2.next = nlist3;
-nlist3.next = nlist4;
-let llist = nlist1;
+// let nlist1 = { data: 0, next: null };
+// let nlist2 = { data: 1, next: null };
+// let nlist3 = { data: 2, next: null };
+// let nlist4 = { data: 3, next: null };
+// nlist1.next = nlist2;
+// nlist2.next = nlist3;
+// nlist3.next = nlist4;
+// let llist = nlist1;
 
-let x = listToArray(llist);
-console.log(" ");
-console.log(x);
-console.log(" ");
+// let x = listToArray(llist);
+// console.log(" ");
+// console.log(x);
+// console.log(" ");
 
-addItem();
+// addItem();
+// console.log(" ");
+
+// let a = 0;
+// let b = "zzz";
+// let c = "c";
+// let y = elemToList(a,b,c);
+// console.log(y);
+// printList(y);
+
+let a = [0, 1, "a", "b"];
+let z = arrayToList(a);
+printList(z);
+
