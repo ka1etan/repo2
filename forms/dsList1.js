@@ -150,9 +150,9 @@ function testListLength(){
     
 }
 
-// given a list and number n return n-th element of the list - or null if list has less elements
-function findN(list, n) {
-    let node = null
+// given a list and number n return n-th element of the list (0-based)- or null if list has less elements
+function findN(head, n) {
+    let node = null // jedna zmienna powinna wystarczyc, ew jedna dodatkowa zmienna
 
     // (...)
 
@@ -161,7 +161,7 @@ function findN(list, n) {
 }
 
 // given a list and data find a node with that data and return it
-function findData(list, data) {
+function findData(head, data) {
     let node = null
 
     // (...)
@@ -170,9 +170,9 @@ function findData(list, data) {
 }
 
 // given a list and a node from that list, remove the node from the list and return the previous element (or null if it was the first one)
-function removeNode(list, node) {
+function removeNode(head, node) {
     let prev = null
-
+    // chodzi o przesuniecie nexta
     // (...)
 
     return prev
