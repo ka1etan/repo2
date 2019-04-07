@@ -123,6 +123,50 @@ function addItem(){
     //console.log(list);
     }
 
+// given a link list return count of elements in it
+function listLength(list)
+{
+    let count = 0
+
+    // (...)
+
+    return count
+}
+
+// given a list and number n return n-th element of the list - or null if list has less elements
+function findN(list, n)
+{
+    let node = null
+
+    // (...)
+
+    return node
+
+}
+
+// given a list and data find a node with that data and return it
+function findData(list, data)
+{
+    let node = null
+
+    // (...)
+
+    return node
+}
+
+// given a list and a node from that list, remove the node from the list and return the previous element (or null if it was the first one)
+function removeNode(list, node)
+{
+    let prev = null
+
+    // (...)
+
+    return prev
+}
+
+
+
+
 //listExample();
 
 // let nlist1 = { data: 0, next: null };
