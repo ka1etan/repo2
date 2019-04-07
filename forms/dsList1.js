@@ -1,6 +1,6 @@
 // https://www.interviewbit.com/courses/programming/topics/linked-lists/
 
-let mat = [];
+
 
 class LinkedListNode {
     constructor(data) {
@@ -67,6 +67,7 @@ function arrayToList(a) {}
 
 function listToArray(llist)
 {
+    let mat = [];
     //convert linked list to array and return
     for (let i = llist; i != null; i = i.next)
     {
