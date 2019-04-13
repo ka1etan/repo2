@@ -135,9 +135,11 @@ function createList1(){
     let nlist2 = { data: 1, next: null };
     let nlist3 = { data: 2, next: null };
     let nlist4 = { data: 3, next: null };
+    let nlist5 = { data: "zzz", next: null };
     nlist1.next = nlist2;
     nlist2.next = nlist3;
     nlist3.next = nlist4;
+    nlist4.next = nlist5;
     let llist = nlist1;
     return llist;
 }
@@ -152,11 +154,21 @@ function testListLength(){
 
 // given a list and number n return n-th element of the list (0-based)- or null if list has less elements
 function findN(head, n) {
-    let node = null // jedna zmienna powinna wystarczyc, ew jedna dodatkowa zmienna
+    let node = null;
+    let count = 0; // jedna zmienna powinna wystarczyc, ew jedna dodatkowa zmienna
+    for (let nodel = head; nodel != null; nodel = nodel.next) {
+        count += 1;
+        if (count == n) {
+            node = nodel.data;
+        }
+    }
+    return node;
+}
 
-    // (...)
+function testFindN() {
+    let list1 = createList1();
+    console.log(findN(list1, 5));
 
-    return node
 
 }
 
@@ -164,21 +176,62 @@ function findN(head, n) {
 function findData(head, data) {
     let node = null
 
-    // (...)
+    for (let nodel = head; nodel != null; nodel = nodel.next) {
 
-    return node
+        if (nodel.data == data) {
+            node = nodel.data
+
+        }
+    }
+    if (node) {
+        return node;
+    }
+    else { return "No such data in list"; };
+}
+
+function testFindData() {
+    let list1 = createList1();
+    try { console.log(findData(list1, 6)); }
+
+    catch (error) { console.log("Incorrect data format"); }
+    //finally{console.log(findData(list1, "6"))};
 }
 
 // given a list and a node from that list, remove the node from the list and return the previous element (or null if it was the first one)
 function removeNode(head, node) {
-    let prev = null
+    let prev = null;
     // chodzi o przesuniecie nexta
     // (...)
 
-    return prev
+    let count = 0;
+
+    for (let nodel = head; nodel != null; nodel = nodel.next) {
+
+        count += 1;
+        if (count !== 1) {
+            if (count == 2) {
+                prev = head;
+            } else {
+                prev = prev.next;
+            }
+        }
+
+        if (head.data == node) {
+            return null;
+        }
+
+        if (nodel.data == node) {
+            return prev.data;
+        }
+
+    }
 }
 
+function testRemN() {
+    let list1 = createList1();
+    console.log(removeNode(list1, 2));
 
+}
 
 
 //listExample();
@@ -210,7 +263,14 @@ function removeNode(head, node) {
 // let a = [0, 1, "a", "b"];
 // let z = arrayToList(a);
 // printList(z);
-testListLength();
+//testListLength();
+
+testFindN();
+console.log(" ");
+testFindData();
+console.log(" ");
+testRemN();
+
 
 
 
