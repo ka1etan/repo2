@@ -153,6 +153,8 @@ function testListLength(){
 }
 
 // given a list and number n return n-th element of the list (0-based)- or null if list has less elements
+// Q1. Does the loop continue after the element is found ?
+// Q2. can count instructions be incorporated into "for" init/condition/iterate statement (instead of being outside/inside the body) ?
 function findN(head, n) {
     let node = null;
     let count = 0; // jedna zmienna powinna wystarczyc, ew jedna dodatkowa zmienna
@@ -173,6 +175,10 @@ function testFindN() {
 }
 
 // given a list and data find a node with that data and return it
+// Q1. Does the loop continue when the node is found ?
+// Q2. What should the function return (what type of value / data) ? Does it always return the same type of data ?
+// Q3. Can a test for whether we found the element or not be incorporated into init/condition/iterate of the loop (instead of the body) ?
+// Q4. If yes to Q3  - how would return statement need to be changed ?
 function findData(head, data) {
     let node = null
 
@@ -198,6 +204,11 @@ function testFindData() {
 }
 
 // given a list and a node from that list, remove the node from the list and return the previous element (or null if it was the first one)
+// Q1. Should the function return the node or its data ?
+// Q2. Could we track prev without using "count" variable ?
+// Q3. Does 'if' from line 228 need to be in loop body ?
+// Q4. Is the 'if' condition in 233 accurate ?
+// Q5. Does the function actually modify the list (remove the node) ?
 function removeNode(head, node) {
     let prev = null;
     // chodzi o przesuniecie nexta
