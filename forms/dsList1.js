@@ -130,7 +130,7 @@ function listLength(head) {
     return count;
 }
 
-function createList1(){
+function createList1() {
     let nlist1 = { data: 0, next: null };
     let nlist2 = { data: 1, next: null };
     let nlist3 = { data: 2, next: null };
@@ -144,34 +144,55 @@ function createList1(){
     return llist;
 }
 
-function testListLength(){
+function createList2() {
+    let nlist1 = { data: 0, next: null };
+    let nlist2 = { data: 1, next: null };
+    let nlist3 = { data: 2, next: null };
+    let nlist4 = { data: 3, next: null };
+    let nlist5 = { data: "zzz", next: null };
+    nlist1.next = nlist2;
+    nlist2.next = nlist3;
+    nlist3.next = nlist4;
+    nlist4.next = nlist5;
+    nlist1.next = nlist3;
+    nlist2.next = null;
+    let llist = nlist1;
+    return llist;
+}
+
+function testListLength() {
     let list1 = createList1();
     console.log(listLength(list1));
     console.log(listLength(null));
-    console.log(listLength({data: 0, next: null}));
-    
+    console.log(listLength({ data: 0, next: null }));
+
 }
 
 // given a list and number n return n-th element of the list (0-based)- or null if list has less elements
 // Q1. Does the loop continue after the element is found ?
 // Q2. can count instructions be incorporated into "for" init/condition/iterate statement (instead of being outside/inside the body) ?
 function findN(head, n) {
-    let node = null;
-    let count = 0; // jedna zmienna powinna wystarczyc, ew jedna dodatkowa zmienna
-    for (let nodel = head; nodel != null; nodel = nodel.next) {
-        count += 1;
-        if (count == n) {
-            node = nodel.data;
-        }
+    let nodel, count;
+    // let count = 0; // jedna zmienna powinna wystarczyc, ew jedna dodatkowa zmienna
+    for (nodel = head, count = 0;
+        nodel != null && count != n;
+        nodel = nodel.next, count += 1) {
+
+        // if (count == n) {
+        //     node = nodel.data;
+        //     break;
+        // }
     }
-    return node;
+    if (count == n) {
+        return nodel;
+    } else {
+        return null;
+    }
 }
 
 function testFindN() {
     let list1 = createList1();
-    console.log(findN(list1, 5));
-
-
+    console.log(findN(list1, 0));
 }
 
 // given a list and data find a node with that data and return it
@@ -180,19 +201,20 @@ function testFindN() {
 // Q3. Can a test for whether we found the element or not be incorporated into init/condition/iterate of the loop (instead of the body) ?
 // Q4. If yes to Q3  - how would return statement need to be changed ?
 function findData(head, data) {
-    let node = null
+    let nodel = null
 
-    for (let nodel = head; nodel != null; nodel = nodel.next) {
+    for (nodel = head;
+        nodel != null && nodel.data != data;
+        nodel = nodel.next) {
 
-        if (nodel.data == data) {
-            node = nodel.data
-
-        }
     }
-    if (node) {
-        return node;
+
+    if (nodel == null) {
+        return null;
     }
-    else { return "No such data in list"; };
+    else if (nodel.data == data) {
+        return nodel;
+    } else return null;
 }
 
 function testFindData() {
@@ -211,36 +233,39 @@ function testFindData() {
 // Q5. Does the function actually modify the list (remove the node) ?
 function removeNode(head, node) {
     let prev = null;
+    let nodel = null;
     // chodzi o przesuniecie nexta
     // (...)
 
     let count = 0;
 
-    for (let nodel = head; nodel != null; nodel = nodel.next) {
-
-        count += 1;
-        if (count !== 1) {
-            if (count == 2) {
-                prev = head;
-            } else {
-                prev = prev.next;
-            }
-        }
-
-        if (head.data == node) {
-            return null;
-        }
-
-        if (nodel.data == node) {
-            return prev.data;
-        }
-
+    for (nodel = head;
+        nodel != null && nodel !== node;
+        prev = nodel, nodel = nodel.next) {
     }
+
+    if (nodel == null) {
+        return null;
+    } else if (nodel == node) {
+        if (prev !== null) {
+            let ret = node.next;
+            prev.next = node.next;
+            node.next = null;
+            return ret;
+            
+        } else {
+            ret = node.next;
+            node.next = null;
+            return ret;
+        }
+
+    } else return null;
 }
 
 function testRemN() {
     let list1 = createList1();
-    console.log(removeNode(list1, 2));
+    let node2 = list1.next;
+    console.log(removeNode(list1, node2));
 
 }
 
