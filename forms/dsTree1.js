@@ -36,6 +36,8 @@ function getTreeData(data, root)
     }
 }
 
+
+// recursive version
 function getListData(data, node)
 {
     if (node != null)
@@ -74,7 +76,7 @@ function printTreeData2(root)
         if (node.left != null) 
         {
             stack.push(node.left)
-        }
+        } 
 
         if (node.right != null)
         {
