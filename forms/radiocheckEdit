@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="radio.js"></script>
+</head>
+
+<body>
+<form>
+  <input type="radio" id="r1" name="coffee" value="cream" >With cream<br>
+  <input type="radio" id="r2" name="coffee" value="sugar" >With sugar<br>
+  <br>
+
+  <br><br>
+
+
+</form>
+ <input type="text" id="order">
+
+<br><br>
+
+Checkbox test<input type="checkbox" value="checkboxvalue" id="check">
+<div id="cb1"></div>
+
+<script>
+
+</script>
+</body>
+</html>

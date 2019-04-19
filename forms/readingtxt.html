@@ -1,0 +1,31 @@
+<html>
+
+<head>
+<script src=""></script>
+</head>
+
+<body>
+  <div id="first">
+  <input type="file" id="browse" onchange="openFile(event)">
+  <input type="file" id="browse2">
+  <input type="button" id="upl" value="Load">
+  <div id="userDataLoad"></div>
+  <div id="fileNum"></div>
+  <div id="fileSize"></div>
+  <div id="content"></div>
+</div>
+<script>
+var openFile = function(event){
+var input1 = event.target;
+var reader = new FileReader();
+  reader.onload = function(){
+    var text = reader.result;
+document.getElementById("content").innerHTML = text;
+  }
+reader.readAsText(input1.files[0]);
+
+}
+</script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<form>
+  <input type="radio" name="coffee" value="cream" onclick="radioCheck(this.value)">With cream<br>
+  <input type="radio" name="coffee" value="sugar" onclick="radioCheck(this.value)">With sugar<br>
+  <br>
+  <button onclick="myFunction()" >zz</button>
+  <br><br>
+
+
+</form>
+ <input type="text" id="order">
+<script>
+function myFunction() {
+  var coffee = document.forms[0];
+  var txt = "";
+  var i;
+  for (i = 0; i < coffee.length; i++) {
+    if (coffee[i].checked) {
+      txt = txt + coffee[i].value + " ";
+    }
+  }
+  document.getElementById("order").value = "You ordered a coffee with: " + txt;
+}
+</script>
+<script>
+function radioCheck(coffee){
+  document.getElementById("order").value = coffee;
+}
+</script>
+</html>
