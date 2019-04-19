@@ -146,7 +146,7 @@ function createList1() {
 
 function createList2() {
     let nlist1 = { data: 0, next: null };
-    let nlist2 = {d data: 1, next: null };
+    let nlist2 = { data: 1, next: null };
     let nlist3 = { data: 2, next: null };
     let nlist4 = { data: 3, next: null };
     let nlist5 = { data: "zzz", next: null };
