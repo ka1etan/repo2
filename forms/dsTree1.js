@@ -37,7 +37,7 @@ function getTreeData(data, root)
 }
 
 
-// recursive version ////
+// recursive version /////
 function getListData(data, node)
 {
     if (node != null)
