@@ -29,15 +29,15 @@ function createTree1()
 function getTreeData(data, root)
 {
     if (root != null)
-    { 
+    {
         getTreeData(data, root.left)
         getTreeData(data, root.right)
-        data.push(root.data)       
+        data.push(root.data)
     }
 }
 
 
-// recursive version ///
+// recursive version ////
 function getListData(data, node)
 {
     if (node != null)
@@ -73,10 +73,10 @@ function printTreeData2(root)
     {
         let node = stack.pop()
 
-        if (node.left != null) 
+        if (node.left != null)
         {
             stack.push(node.left)
-        } 
+        }
 
         if (node.right != null)
         {
@@ -87,14 +87,14 @@ function printTreeData2(root)
     }
 
     console.log(s)
-    
+
 }
 
 // pre-order
-// 2, 7, 2, 6, 5, 11, 5, 9, 4, 
+// 2, 7, 2, 6, 5, 11, 5, 9, 4,
 
 // in-order
-// 2, 7, 5, 6, 11, 2, 5, 4, 9, 
+// 2, 7, 5, 6, 11, 2, 5, 4, 9,
 
 
 
