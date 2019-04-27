@@ -101,4 +101,4 @@ function printTreeData2(root)
 
 
 printTreeData(createTree1())
-printTreeData2(createTree1())
+//printTreeData2(createTree1())
