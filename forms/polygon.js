@@ -10,7 +10,7 @@ class Polygon {
         return sum;
     }
 }
-
+//
 function perimeter(sides){
     let sum = 0;
     for (let i=0; i < sides.length; i++){
