@@ -11,6 +11,27 @@ class Polygon {
     }
 }
 //
+class Rectangle {
+    constructor(width, height){
+        this.width = width;
+        this.height = height;
+    }
+    Area() {
+        let a;
+        //return this.width * this.height;
+        if (this.width > 0 && this.height > 0 )
+           a = this.width * this.height;
+           return a;
+        }
+}
+
+class Square extends Rectangle {
+    constructor(width){
+        super(width, width);
+    }
+   
+}
+
 function perimeter(sides){
     let sum = 0;
     for (let i=0; i < sides.length; i++){
@@ -25,3 +46,9 @@ let triangle = new Polygon([3, 4, 5]);
 
 // Print the perimeter
 console.log(triangle.perimeter());
+
+let rec1 = new Rectangle(4,5);
+console.log(rec1.Area());
+
+let squ = new Square(4);
+console.log(squ.Area());
