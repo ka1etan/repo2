@@ -12,6 +12,13 @@ function modifyArray(nums) {
 
 }
 
+function modifyArray2(nums) {
+
+    let nums2 = nums.map(x => x % 2 == 0 ? x * 2 : x * 3);
+    return nums2;
+}
+
+
 // function modifyArray2(nums) {
    
 //     //let buf2 = [];
@@ -39,15 +46,17 @@ function modifyArray(nums) {
 //     }
 // }
 
+
+// let nums2 = [1,2,3,4,5];
+
+// const f = x => (x % 2) === 0 ? "even" : "odd";
+
+// console.log(modifyArray(nums));
+// console.log("");
+// // console.log(modifyArray2(nums2));
+// console.log(f(3));
+// // console.log(div(3));
+
 let nums = [1,2,3,4,5];
-let nums2 = [1,2,3,4,5];
 
-const f = x => (x % 2) === 0 ? "even" : "odd";
-
-console.log(modifyArray(nums));
-console.log("");
-// console.log(modifyArray2(nums2));
-console.log(f(3));
-// console.log(div(3));
-
-
+console.log(modifyArray2(nums));
