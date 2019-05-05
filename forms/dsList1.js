@@ -285,6 +285,14 @@ function reverseList(list)
 {
 }
 
+// takes a linked list and returns true if the list is sorted and false otherwise
+// e.g. 1 -> 2-> 3-> 5-> 10  returns true
+//      3 -> 1 -> 4  returns false
+// list is sorted if for each element e, e.data <= e.next.data (if e.next exists)
+function isSorted(list)
+{
+}
+
 // merge 2 sorted lists
 // takes two lists which are sorted and outputs sorted list which combines them both such that output is also sorted
 // e.g.:
@@ -296,6 +304,8 @@ function reverseList(list)
 function mergeSortedLists(list1, list2)
 {
 }
+
+
 
 
 
