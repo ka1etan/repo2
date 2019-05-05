@@ -277,6 +277,28 @@ function testRemN() {
 
 }
 
+// takes a linked list (list) and returns a new list which is reverse of the input one, e.g.:
+// 1 -> 2 -> 3 returns 3 -> 2 -> 1
+// only variables constant size
+// write good unit tests
+function reverseList(list)
+{
+}
+
+// merge 2 sorted lists
+// takes two lists which are sorted and outputs sorted list which combines them both such that output is also sorted
+// e.g.:
+// 1 -> 5 -> 5 -> 10
+// 1 -> 2 -> 3 -> 11
+// outputs: 1 -> 1 -> 2 -> 3 -> 5 -> 5 -> 10 -> 11
+// only variables of constant size
+// write good unit tests
+function mergeSortedLists(list1, list2)
+{
+}
+
+
+
 
 //listExample();
 
