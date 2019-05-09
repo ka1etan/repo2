@@ -2,7 +2,7 @@
 
 
 var fs = require("fs");
-var stream = fs.createReadStream("node1/in2.txt");
+var stream = fs.createReadStream("in2.txt");
 // var stream = process.stdin;
 
 // process.stdin.resume();
@@ -30,11 +30,12 @@ function readLine() {
 }
 
 function main(input) {
-    var date1 = new Date(input[0]);
+    var date1 = new Date(readLine());
     console.log(date1.toString());
     console.log(date1.toISOString());
 
-    var date2 = new Date(input[1]);
+
+    var date2 = new Date(readLine());
     console.log(date2.toString());
     console.log(date2.toISOString());
 }
