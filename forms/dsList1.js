@@ -73,6 +73,19 @@ function arrayToList(a) {
     return first;
 }
 
+function revArrayToList(a) {
+    let prev = null;
+    let first = null;
+    for (let i = a.length -1 ; i >= 0; i=i-1) {
+        let nlist = { data: a[i], next: null };
+        if (prev) {
+            prev.next = nlist;
+        } else { first = nlist; }
+        prev = nlist;
+    }
+    return first;
+}
+
 function elemToList(a, b, c) {
     let prev = null;
 
@@ -156,6 +169,26 @@ function createList2() {
     nlist4.next = nlist5;
     nlist1.next = nlist3;
     nlist2.next = null;
+    let llist = nlist1;
+    return llist;
+}
+
+function createList3() {
+    let nlist1 = { data: 0, next: null };
+    let nlist2 = { data: 1, next: null };
+  
+    nlist1.next = nlist2;
+  
+    let llist = nlist1;
+    return llist;
+}
+
+function createList4() {
+    let nlist1 = { data: 10, next: null };
+    
+  
+    //nlist1.next = null;
+  
     let llist = nlist1;
     return llist;
 }
@@ -281,8 +314,30 @@ function testRemN() {
 // 1 -> 2 -> 3 returns 3 -> 2 -> 1
 // only variables constant size
 // write good unit tests
-function reverseList(list)
-{
+function reverseList(list) {
+    let buf = [];
+
+    for (let n = list; n != null; n = n.next) {
+        buf.push(n.data);
+    }
+
+    return revArrayToList(buf);
+}
+
+function reverseListTest1(){
+    console.log(reverseList(createList1()));
+}
+function reverseListTest2(){
+    console.log(reverseList(createList2()));
+    printList(reverseList(createList2()));
+}
+
+function reverseListTest3(){
+    console.log(reverseList(createList3()));
+}
+
+function reverseListTest4(){
+    console.log(reverseList(createList4()));
 }
 
 // takes a linked list and returns true if the list is sorted and false otherwise
@@ -341,11 +396,24 @@ function mergeSortedLists(list1, list2)
 // printList(z);
 //testListLength();
 
-testFindN();
+// testFindN();
+// console.log(" ");
+// testFindData();
+// console.log(" ");
+// testRemN();
+
+// console.log(createList1());
+// printList(createList1());
+reverseListTest1()
 console.log(" ");
-testFindData();
+reverseListTest2()
 console.log(" ");
-testRemN();
+reverseListTest3()
+console.log(" ");
+reverseListTest4()
+// console.log(" ");
+//printList(createList4())
+
 
 
 
