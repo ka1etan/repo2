@@ -1,51 +1,101 @@
 // https://www.hackerrank.com/challenges/js10-bitwise/problem
 
-// function bitwise(a,b){
-//     let andresult = a & b;
-//     return andresult;
-// }
+var fs = require("fs");
+var stream = fs.createReadStream("inBitwise.txt");
+// var stream = process.stdin;
 
-// function test1() {
-// let a = 2;    
-// let b = 3;
-// console.log(bitwise(a,b));
-// }
+// process.stdin.resume();
+// process.stdin.setEncoding('ascii');
+stream.resume();
+stream.setEncoding("ascii");
 
-// function test2() {
-//     let a = 4;    
-//     let b = 5;
-//     console.log(bitwise(a,b));
-//     }
+var input_stdin = "";
+var input_stdin_array = "";
+var input_currentline = 0;
 
-// test1();
-// test2();
+//process.stdin.
+stream.on('data', function (data) {
+    input_stdin += data;
+});
 
-// let a = [1,1,2,2]
-// console.log(maxarray(a))
+//process.stdin.
+stream.on('end', function () {
+    input_stdin_array = input_stdin.split("\n");
+    main();    
+});
 
-// (a,b)   a < b   1 <= a,b <= n
-
-// n
-// op(a,a) < k
-
-// n = 3
-// 1..n
-// 1  => op(1,1)
-// 2 => op(2,2)
-// 3 => op(3,3)
-// ... 
-// n => op(n,n)
+function readLine() {
+    return input_stdin_array[input_currentline++];
+}
 
 // a is array, returns index of max element of the array
-function max(a)
-{
+function max(a, k, op) {
+    let max = 0;
+    let maxind = -1;
+    for (let i = 0; i < a.length; i++) {
+        let result = op(a[i],a[i]);
+        if (result >= max && result < k) {
+            max = result;
+            maxind = i;
+        }
+    }
+    return maxind;
+}
 
+function max2(n, k, op) {
+    let max = 0;
+    let result = 0;
+    for (let a = 1; a <= n; a++) {
+        for (let b = a + 1; b <= n; b++) {
+            result = op(a, b)
+            if (result >= max && result < k) {
+
+                max = result;
+
+            }
+        }
+    }
+    return max;
+}
+
+function getMaxLessThanK(n, k) {
+    let max = 0;
+    let result = 0;
+    for (let a = 1; a <= n; a++) {
+        for (let b = a + 1; b <= n; b++) {
+            result = a & b;
+            if (result >= max && result < k) {
+
+                max = result;
+
+            }
+        }
+    }
+    return max;
+}
+
+function testMax1(){
+    let and = (a,b) => a & b;
+    let a = [1,2,3,4];
+    let m = max(a, 10, and);
+    console.log(m);
+}
+
+function testMax2(){
+    let and = (a,b) => a & b;
+    
+    let m = max2(4, 3, and);
+    console.log(m);
 }
 
 function maxOpN(n, k, op)
 {
     // 1 <= a <= n
     // op(a,a) is max - meaning for any other 1 <= b <= n  op(b,b) <= op(a,a)
+    for (let i=1; i <= n; i++){
+        let a;
+        
+    }
 }
 
 function maxarray(a) {
@@ -120,8 +170,23 @@ function unitTest5() {
 
 
 
-unitTest1()
-unitTest2()
-unitTest3()
-unitTest4()
-unitTest5()
+// unitTest1()
+// unitTest2()
+// unitTest3()
+// unitTest4()
+// unitTest5()
+//testMax1();
+// testMax2();
+
+function main() {
+    const q = +(readLine());
+    
+    for (let i = 0; i < q; i++) {
+        const [n, k] = readLine().split(' ').map(Number);
+        
+        console.log(getMaxLessThanK(n, k));
+    }
+}
+
+main()
+console.log("done")

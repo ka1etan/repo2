@@ -2,7 +2,7 @@
 
 
 var fs = require("fs");
-var stream = fs.createReadStream("in2.txt");
+var stream = fs.createReadStream("node1/in2.txt");
 // var stream = process.stdin;
 
 // process.stdin.resume();
