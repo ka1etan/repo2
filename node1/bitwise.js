@@ -23,6 +23,18 @@
 // let a = [1,1,2,2]
 // console.log(maxarray(a))
 
+// (a,b)   a < b   1 <= a,b <= n
+
+// n
+// op(a,a) < k
+
+
+function maxOpN(n, k, op)
+{
+    // 1 <= a <= n
+    // op(a,a) is max - meaning for any other 1 <= b <= n  op(b,b) <= op(a,a)
+}
+
 function maxarray(a) {
     let maxi;
     for (i = 0; i < a.length; i++) {
