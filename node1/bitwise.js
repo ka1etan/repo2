@@ -1,32 +1,36 @@
 // https://www.hackerrank.com/challenges/js10-bitwise/problem
 
+'use strict';
+
 var fs = require("fs");
 var stream = fs.createReadStream("inBitwise.txt");
-// var stream = process.stdin;
 
-// process.stdin.resume();
-// process.stdin.setEncoding('ascii');
 stream.resume();
-stream.setEncoding("ascii");
+stream.setEncoding('utf-8');
 
-var input_stdin = "";
-var input_stdin_array = "";
-var input_currentline = 0;
+let inputString = '';
+let currentLine = 0;
 
-//process.stdin.
-stream.on('data', function (data) {
-    input_stdin += data;
+stream.on('data', inputStdin => {
+    inputString += inputStdin;
 });
 
-//process.stdin.
-stream.on('end', function () {
-    input_stdin_array = input_stdin.split("\n");
+stream.on('end', _ => {
+    inputString = inputString.trim().split('\n').map(string => {
+        return string.trim();
+    });
+    
     main();    
+    console.log("done")
 });
 
 function readLine() {
-    return input_stdin_array[input_currentline++];
+    return inputString[currentLine++];
 }
+
+    
+
+
 
 // a is array, returns index of max element of the array
 function max(a, k, op) {
@@ -188,5 +192,4 @@ function main() {
     }
 }
 
-main()
-console.log("done")
+//main()
