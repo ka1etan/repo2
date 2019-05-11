@@ -28,6 +28,19 @@
 // n
 // op(a,a) < k
 
+// n = 3
+// 1..n
+// 1  => op(1,1)
+// 2 => op(2,2)
+// 3 => op(3,3)
+// ... 
+// n => op(n,n)
+
+// a is array, returns index of max element of the array
+function max(a)
+{
+
+}
 
 function maxOpN(n, k, op)
 {
