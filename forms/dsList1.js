@@ -76,7 +76,7 @@ function arrayToList(a) {
 function revArrayToList(a) {
     let prev = null;
     let first = null;
-    for (let i = a.length -1 ; i >= 0; i=i-1) {
+    for (let i = a.length - 1; i >= 0; i = i - 1) {
         let nlist = { data: a[i], next: null };
         if (prev) {
             prev.next = nlist;
@@ -176,19 +176,89 @@ function createList2() {
 function createList3() {
     let nlist1 = { data: 0, next: null };
     let nlist2 = { data: 1, next: null };
-  
+
     nlist1.next = nlist2;
-  
+
     let llist = nlist1;
     return llist;
 }
 
 function createList4() {
-    let nlist1 = { data: 10, next: null };
+    let nlist1 = { data: 2, next: null };
+    let nlist2 = { data: 3, next: null };
+    let nlist3 = { data: 4, next: null };
+
+    nlist1.next = nlist2;
+    nlist2.next = nlist3;
+
+
+    let llist = nlist1;
+    return llist;
+}
+
+function createList5() {
+    let nlist1 = { data: 4, next: null };
+    let nlist2 = { data: 5, next: null };
+    let nlist3 = { data: 6, next: null };
+
+    nlist1.next = nlist2;
+    nlist2.next = nlist3;
+
+
+    let llist = nlist1;
+    return llist;
+}
+
+function createList6() {
+    let nlist1 = { data: 4, next: null };
+    let nlist2 = { data: 2, next: null };
+    let nlist3 = { data: 6, next: null };
+    let nlist4 = { data: 1, next: null };
+
+    nlist1.next = nlist2;
+    nlist2.next = nlist3;
+    nlist3.next = nlist4;
+
+
+    let llist = nlist1;
+    return llist;
+}
+
+function createList7() {
+    let nlist1 = { data: 3, next: null };
+    let nlist2 = { data: 1, next: null };
+    let nlist3 = { data: 2, next: null };
     
-  
-    //nlist1.next = null;
-  
+    nlist1.next = nlist2;
+    nlist2.next = nlist3;
+    
+    let llist = nlist1;
+    return llist;
+}
+
+function createList8() {
+    let nlist1 = { data: 4, next: null };
+    let nlist2 = { data: 5, next: null };
+    let nlist3 = { data: 6, next: null };
+    let nlist4 = { data: 1, next: null };
+    let nlist5 = { data: 1, next: null };
+    let nlist6 = { data: 3, next: null };
+
+    nlist1.next = nlist2;
+    nlist2.next = nlist3;
+    nlist3.next = nlist4;
+    nlist4.next = nlist5;
+    nlist5.next = nlist6;
+
+    let llist = nlist1;
+    return llist;
+}
+
+function emptyList() {
+    let nlist1 = { data: null, next: null };
+
+
+
     let llist = nlist1;
     return llist;
 }
@@ -281,17 +351,17 @@ function removeNode(head, node) {
         return null;
     }
     else if (nodel == node) {
-//        if (prev !== null) {
-//            let ret = node.next;
-//            prev.next = node.next;
-//            node.next = null;
-//            return ret;
-//
-//        } else {
-//            ret = node.next;
-//            node.next = null;
-//            return ret;
-//        }
+        //        if (prev !== null) {
+        //            let ret = node.next;
+        //            prev.next = node.next;
+        //            node.next = null;
+        //            return ret;
+        //
+        //        } else {
+        //            ret = node.next;
+        //            node.next = null;
+        //            return ret;
+        //        }
         let ret = node.next;
         if (prev !== null) {
             prev.next = node.next;
@@ -324,28 +394,80 @@ function reverseList(list) {
     return revArrayToList(buf);
 }
 
-function reverseListTest1(){
-    console.log(reverseList(createList1()));
-}
-function reverseListTest2(){
-    console.log(reverseList(createList2()));
-    printList(reverseList(createList2()));
+
+
+function reverseList2(list) {
+    let node = list,
+        prev = null,
+        tmp = null;
+
+    while (node) {
+        tmp = node.next;   // 1  /  2  /  3
+        node.next = prev;  // -  /  0  /  1
+        prev = node;       // 0  /  1  /  2
+        node = tmp;        // 1  /  2  /  3
+    }
+
+    return prev;
 }
 
-function reverseListTest3(){
-    console.log(reverseList(createList3()));
+function reverseListTest1() {
+    console.log(reverseList2(createList1()));
+}
+function reverseListTest2() {
+    console.log(reverseList2(createList2()));
+    printList(reverseList2(createList2()));
 }
 
-function reverseListTest4(){
-    console.log(reverseList(createList4()));
+function reverseListTest3() {
+    console.log(reverseList2(createList3()));
+}
+
+function reverseListTest4() {
+    console.log(reverseList2(createList4()));
 }
 
 // takes a linked list and returns true if the list is sorted and false otherwise
 // e.g. 1 -> 2-> 3-> 5-> 10  returns true
 //      3 -> 1 -> 4  returns false
 // list is sorted if for each element e, e.data <= e.next.data (if e.next exists)
-function isSorted(list)
-{
+function isSorted(list) {
+    let n = list;
+    let check = null;
+    let tmp = [];
+    while (n != null && n.next != null) {
+        if (n.data <= n.next.data) {
+            if (tmp != 0) {
+                for (let i = 0; i < tmp.length; i++) {
+                    if (n.data < tmp[i]) {
+                        check = false;
+                    }
+                }
+                break;
+            }
+            check = true;
+        } else {
+            tmp.push(n.data);
+        }
+        n = n.next;
+    }
+    return check;
+}
+
+function isSortedTest1(){
+    console.log(isSorted(createList5()));
+}
+
+function isSortedTest2(){
+    console.log(isSorted(createList6()));
+}
+
+function isSortedTest3(){
+    console.log(isSorted(createList7()));
+}
+
+function isSortedTest4(){
+    console.log(isSorted(createList8()));
 }
 
 // merge 2 sorted lists
@@ -356,10 +478,46 @@ function isSorted(list)
 // outputs: 1 -> 1 -> 2 -> 3 -> 5 -> 5 -> 10 -> 11
 // only variables of constant size
 // write good unit tests
-function mergeSortedLists(list1, list2)
-{
+
+
+
+function mergeSortedLists(list1, list2) {
+    let n1 = list1;
+    let n2 = list2,
+        head = emptyList();
+    let prev = head;
+
+    while (n1 !== null && n2 !== null) {
+        if (n1.data <= n2.data) {
+            prev.next = n1;
+            n1 = n1.next
+        } else {
+            prev.next = n2;
+            n2 = n2.next
+        }
+        prev = prev.next
+
+    }
+
+    if (n1 == null) { prev.next = n2; }
+    if (n2 == null) { prev.next = n1; }
+
+    return head.next;
 }
 
+
+function mergeListTest1() {
+    console.log(mergeSortedLists(createList3(), createList4()));
+}
+function mergeListTest2() {
+    console.log(mergeSortedLists(createList4(), createList5()));
+    printList(mergeSortedLists(createList4(), createList5()));
+}
+
+function mergeListTest3() {
+    console.log(mergeSortedLists(createList5(), createList6()));
+    printList(mergeSortedLists(createList5(), createList6()));
+}
 
 
 
@@ -404,15 +562,25 @@ function mergeSortedLists(list1, list2)
 
 // console.log(createList1());
 // printList(createList1());
-reverseListTest1()
-console.log(" ");
-reverseListTest2()
-console.log(" ");
-reverseListTest3()
-console.log(" ");
-reverseListTest4()
+
+// reverseListTest1()
 // console.log(" ");
-//printList(createList4())
+// reverseListTest2()
+// console.log(" ");
+// reverseListTest3()
+// console.log(" ");
+// reverseListTest4()
+// console.log(" ");
+
+
+// mergeListTest1()
+// mergeListTest2()
+// mergeListTest3()
+
+isSortedTest1();
+isSortedTest2();
+isSortedTest3();
+isSortedTest4();
 
 
 
