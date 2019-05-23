@@ -254,10 +254,15 @@ function createList8() {
     return llist;
 }
 
+function createList9() {
+    let nlist1 = { data: 0, next: null };
+    
+    let llist = nlist1;
+    return llist;
+}
+
 function emptyList() {
     let nlist1 = { data: null, next: null };
-
-
 
     let llist = nlist1;
     return llist;
@@ -456,11 +461,12 @@ function isSorted(list) {
 
 function isSorted2(list) {
     let n = list;
-    let check = null;
+    let check = true;
     
-    while (n != null && n.next.next != null) {
-        if (n.data <= n.next.next.data) {
-            check = true;
+    while (n != null  && check && n.next != null && n.next.next != null) {
+       
+        if ( n.data <= n.next.next.data) {
+            //check = true;
         } else {
             check = false;
             break;
@@ -484,6 +490,14 @@ function isSortedTest3(){
 
 function isSortedTest4(){
     console.log(isSorted2(createList8()));
+}
+
+function isSortedTest5(){
+    console.log(isSorted2(createList9()));
+}
+
+function isSortedTest6(){
+    console.log(isSorted2(emptyList()));
 }
 
 // merge 2 sorted lists
@@ -594,6 +608,9 @@ function mergeListTest3() {
 // mergeListTest2()
 // mergeListTest3()
 
+
+isSortedTest5();
+isSortedTest6();
 isSortedTest1();
 isSortedTest2();
 isSortedTest3();
