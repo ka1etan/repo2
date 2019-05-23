@@ -454,20 +454,36 @@ function isSorted(list) {
     return check;
 }
 
+function isSorted2(list) {
+    let n = list;
+    let check = null;
+    
+    while (n != null && n.next.next != null) {
+        if (n.data <= n.next.next.data) {
+            check = true;
+        } else {
+            check = false;
+            break;
+        }
+        n = n.next;
+    }
+    return check;
+}
+
 function isSortedTest1(){
-    console.log(isSorted(createList5()));
+    console.log(isSorted2(createList5()));
 }
 
 function isSortedTest2(){
-    console.log(isSorted(createList6()));
+    console.log(isSorted2(createList6()));
 }
 
 function isSortedTest3(){
-    console.log(isSorted(createList7()));
+    console.log(isSorted2(createList7()));
 }
 
 function isSortedTest4(){
-    console.log(isSorted(createList8()));
+    console.log(isSorted2(createList8()));
 }
 
 // merge 2 sorted lists
@@ -484,7 +500,8 @@ function isSortedTest4(){
 function mergeSortedLists(list1, list2) {
     let n1 = list1;
     let n2 = list2,
-        head = emptyList();
+       head = emptyList();
+       // head = n1;
     let prev = head;
 
     while (n1 !== null && n2 !== null) {
