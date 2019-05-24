@@ -80,6 +80,33 @@ function isPalindrome4(s) {
 
 }
 
+// a is an array of numbers
+// return true is a is sorted (for any i and j, if i < j then a[i] <= a[j], czyli a[0] <= a[1], a[1] <= a[2] etc ...)
+function isSorted(a)
+{
+}
+
+// a is an array of numbers, sorted
+// create a copy of 'a' of a such that aCopy contains only unique elements of a (in sorted order). original 'a' is not changed.
+// Examples:
+// [1,1,2,2,2,3,4,4,4,4,5,6] returns [1,2,3,4,5,6]
+// [1, 10, 10, 10, 20, 30, 30] return [1,10,20,30]
+function dedupCopy(a)
+{
+}
+
+// Like dedupCopy, but modifies 'a' instead of returning its copy. Don't introduce new array.
+// a is an array of numbers, sorted
+// modify 'a' of a such that it contains only unique elements of a (in sorted order).
+// Examples:
+// [1,1,2,2,2,3,4,4,4,4,5,6] returns [1,2,3,4,5,6]
+// [1, 10, 10, 10, 20, 30, 30] return [1,10,20,30]
+// If after deduping the modifed array is shorter than before, be sure to remove older elements.
+function dedupInPlace(a)
+{
+}
+
+
 function main(){
     let a = ["abba", "eye", "1234321", "luke"]
 
