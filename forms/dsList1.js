@@ -462,42 +462,64 @@ function isSorted(list) {
 function isSorted2(list) {
     let n = list;
     let check = true;
-    
-    while (n != null  && check && n.next != null && n.next.next != null) {
-       
-        if ( n.data <= n.next.next.data) {
-            //check = true;
-        } else {
-            check = false;
-            break;
+
+    while (n != null && check) {
+        if (n.next != null) {
+            if (n.data <= n.next.data) {
+                //check = true;
+            } else {
+                check = false;
+                // break;
+            }
+            
         }
         n = n.next;
     }
+
+    return check;
+}
+
+function isSorted3(list) {
+    let n;
+    let check = true;
+
+    for (n = list; n != null && check; n = n.next) {
+        if (n.next != null) {
+            if (n.data <= n.next.data) {
+
+            } else {
+                check = false;
+
+            }
+
+        }
+    }
+
     return check;
 }
 
 function isSortedTest1(){
-    console.log(isSorted2(createList5()));
+    console.log(isSorted3(createList5()));
 }
 
 function isSortedTest2(){
-    console.log(isSorted2(createList6()));
+    console.log(isSorted3(createList6()));
 }
 
 function isSortedTest3(){
-    console.log(isSorted2(createList7()));
+    console.log(isSorted3(createList7()));
 }
 
 function isSortedTest4(){
-    console.log(isSorted2(createList8()));
+    console.log(isSorted3(createList8()));
 }
 
 function isSortedTest5(){
-    console.log(isSorted2(createList9()));
+    console.log(isSorted3(createList9()));
 }
 
 function isSortedTest6(){
-    console.log(isSorted2(emptyList()));
+    console.log(isSorted3(emptyList()));
 }
 
 // merge 2 sorted lists
