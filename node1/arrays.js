@@ -84,6 +84,40 @@ function isPalindrome4(s) {
 // return true is a is sorted (for any i and j, if i < j then a[i] <= a[j], czyli a[0] <= a[1], a[1] <= a[2] etc ...)
 function isSorted(a)
 {
+    let check = true;
+
+    for (let i = 0, j = i + 1; i < a.length && j < a.length; i++ , j++) 
+    {
+        if (a[i] <= a[j]) 
+        {
+
+        } else 
+        {
+             check = false; 
+        }
+
+
+    }
+
+    return check;
+}
+
+function isSortedTest()
+{
+    
+    let a = [];
+    let b = [1,2,3];
+    let c = [3,1,2,4];
+    let d = [2,1];
+    let e = [0,1];
+    let f = [1];
+
+    console.log(isSorted(a));
+    console.log(isSorted(b));
+    console.log(isSorted(c));
+    console.log(isSorted(d));
+    console.log(isSorted(e));
+    console.log(isSorted(f));
 }
 
 // a is an array of numbers, sorted
@@ -115,4 +149,5 @@ function main(){
     }
 }
 
-main();
+//main();
+isSortedTest();
