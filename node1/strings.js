@@ -22,7 +22,7 @@ stream.on('data', function (data) {
 //process.stdin.
 stream.on('end', function () {
     input_stdin_array = input_stdin.split("\n");
-    processData();    
+    main();    
 });
 
 function readLine() {
@@ -30,18 +30,46 @@ function readLine() {
 }
 
 function processData(input) {
-    var str = readLine();
+    //var str = readLine();
     //console.log(str);
     let a1 = [];
     let a2 = [];
     
-    for ( let  j = 0;  j < str.length;  j++)
-    {
-        if (j%2 == 0){
-           a1.push(str[j]);
-        } else {a2.push(str[j])}
+    // for ( let  j = 0;  j < str.length;  j++)
+    // {
+    //     if (str[j] !== "\n"){
+    //     if (j%2 == 0){
+    //        a1.push(str[j]);
+    //     } else {a2.push(str[j])}
+    // }
+    // }
+    
+    // console.log(a1.join("")+" "+a2.join(""));
+
+    // for (let j = 0, i = 1; j < str.length && i < str.length; j = j+2, i= i + 2){
+    //     a1.push(str[j]);
+    //     a2.push(str[i]);
+
+    // }
+
+    for (let j = 0; j < input.length; j++) {
+        if (input[j] !== "\n") {
+            if (j % 2 == 0) {
+                a1.push(input[j]);
+            } else { a2.push(input[j]) }
+        }
     }
+
+    console.log(a1.join("") + " " + a2.join(""));
     
-    console.log(a1.join("")+" "+a2.join(""));
-    
+}
+
+function main()
+{
+    var T = parseInt(readLine());
+    for (i = 0; i < T; i++) {
+        var str = readLine();
+        processData(str);
+    }
+
 }
