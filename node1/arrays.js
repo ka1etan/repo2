@@ -1,4 +1,5 @@
 
+
 // s is a string
 // function returns true if s is a palindrome else returns false
 // Examples:
@@ -127,6 +128,49 @@ function isSortedTest()
 // [1, 10, 10, 10, 20, 30, 30] return [1,10,20,30]
 function dedupCopy(a)
 {
+    let b = [];
+    let c = [];
+    
+    for (let i = 0, j = i + 1; i < a.length && j < a.length; i++, j++) 
+    {
+        if (a[i] == a[j]) 
+        {
+            b.push(a[i]);
+            
+            i += 1;
+            j += 1;
+        } 
+
+    
+    }
+
+    for (let i = 0; i < a.length; i++)
+    {
+        for (let j = 0, k =1; j < b.length && k < b.length; j++, k++)
+        {
+            if (a[i] !== b[j] && a[i] !== b[k])
+            {
+                c.push(a[i]);
+            }
+        }
+    }
+
+    //return b;
+    console.log(b);
+    console.log(a);
+    console.log(c);
+    
+}
+
+function testDedup()
+{
+ let a = [1,1,2,2,3];
+ let b = [1, 10, 10, 10, 20, 30, 30];
+ let c = [2,2,2,3,4,4,4,5,5,6,6];
+
+ console.log(dedupCopy(a));
+ console.log(dedupCopy(b));
+ console.log(dedupCopy(c));
 }
 
 // Like dedupCopy, but modifies 'a' instead of returning its copy. Don't introduce new array.
@@ -150,4 +194,6 @@ function main(){
 }
 
 //main();
-isSortedTest();
+//isSortedTest();
+
+testDedup();

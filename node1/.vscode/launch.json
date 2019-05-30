@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/strings.js",
+            "program": "${workspaceFolder}/arrays.js",
             //"args": ["150", "1", "20"]
         }
     ]
