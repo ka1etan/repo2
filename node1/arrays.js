@@ -126,39 +126,50 @@ function isSortedTest()
 // Examples:
 // [1,1,2,2,2,3,4,4,4,4,5,6] returns [1,2,3,4,5,6]
 // [1, 10, 10, 10, 20, 30, 30] return [1,10,20,30]
-function dedupCopy(a)
-{
+function dedupCopy(a) {
+    
     let b = [];
     let c = [];
-    
-    for (let i = 0, j = i + 1; i < a.length && j < a.length; i++, j++) 
-    {
-        if (a[i] == a[j]) 
-        {
+
+    for (let i = 0, j = i + 1; i < a.length && j < a.length; i++ , j++) {
+        if (a[i] == a[j]) {
             b.push(a[i]);
-            
+
             i += 1;
             j += 1;
-        } 
-
-    
+        }
     }
 
-    for (let i = 0; i < a.length; i++)
-    {
-        for (let j = 0, k =1; j < b.length && k < b.length; j++, k++)
-        {
-            if (a[i] !== b[j] && a[i] !== b[k])
-            {
-                c.push(a[i]);
+    for (let i = 0; i < a.length; i++) {
+
+        let j = 0;
+
+        while (j < b.length && i < a.length) {
+
+            if (a[i] == b[j]) {
+
+                i += 1;
+
+            } else if (a[i] !== b[j]) {
+
+                if (j == (b.length - 1)) {
+                    c.push(a[i]);
+                }
+                j++;
             }
+
         }
     }
 
     //return b;
-    console.log(b);
-    console.log(a);
-    console.log(c);
+    // console.log(a);
+    // console.log(b);
+    // console.log(c);
+    // console.log("");
+    // console.log(b.concat(c));
+    var x = b.concat(c);
+    return x;
+    
     
 }
 
