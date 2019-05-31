@@ -127,7 +127,7 @@ function isSortedTest()
 // [1,1,2,2,2,3,4,4,4,4,5,6] returns [1,2,3,4,5,6]
 // [1, 10, 10, 10, 20, 30, 30] return [1,10,20,30]
 function dedupCopy(a) {
-    
+
     let b = [];
     let c = [];
 
@@ -140,26 +140,47 @@ function dedupCopy(a) {
         }
     }
 
+    
+
     for (let i = 0; i < a.length; i++) {
 
-        let j = 0;
+        if (b.length == 0) {
+            c.push(a[i])
+        }
+        else {
 
-        while (j < b.length && i < a.length) {
+            let j = 0;
 
-            if (a[i] == b[j]) {
+            while (j < b.length && i < a.length) {
 
-                i += 1;
+                if (a[i] == b[j]) {
 
-            } else if (a[i] !== b[j]) {
+                    i += 1;
 
-                if (j == (b.length - 1)) {
-                    c.push(a[i]);
+                } else if (a[i] !== b[j]) {
+
+                    if (j == (b.length - 1)) {
+                        c.push(a[i]);
+                    }
+                    j++;
                 }
-                j++;
-            }
 
+            }
         }
     }
+
+    // if (b!==null)
+    // {
+        
+    // }
+    // else
+    // {
+    //     for (let i = 0; i < a.length; i++) 
+    //     {
+    //         c.push(a[i]);
+    //     } 
+    // }
+    
 
     //return b;
     // console.log(a);
@@ -178,10 +199,16 @@ function testDedup()
  let a = [1,1,2,2,3];
  let b = [1, 10, 10, 10, 20, 30, 30];
  let c = [2,2,2,3,4,4,4,5,5,6,6];
+ let d = [1];
+ let e = [1,2];
+ let f = [1,1];
 
  console.log(dedupCopy(a));
  console.log(dedupCopy(b));
  console.log(dedupCopy(c));
+ console.log(dedupCopy(d));
+ console.log(dedupCopy(e));
+ console.log(dedupCopy(f));
 }
 
 // Like dedupCopy, but modifies 'a' instead of returning its copy. Don't introduce new array.
