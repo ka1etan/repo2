@@ -141,7 +141,6 @@ function dedupCopy(a) {
     }
 
     
-
     for (let i = 0; i < a.length; i++) {
 
         if (b.length == 0) {
@@ -169,19 +168,7 @@ function dedupCopy(a) {
         }
     }
 
-    // if (b!==null)
-    // {
-        
-    // }
-    // else
-    // {
-    //     for (let i = 0; i < a.length; i++) 
-    //     {
-    //         c.push(a[i]);
-    //     } 
-    // }
     
-
     //return b;
     // console.log(a);
     // console.log(b);
