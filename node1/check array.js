@@ -13,3 +13,53 @@ if (a.length==0)
 }
 
 check();
+
+function objToArray(a) {
+    let arr = [];
+    for (var property1 in a) {
+        arr.push(parseInt(property1));
+    }
+    return arr;
+}
+
+function numCheckObj4(x) {
+
+    let counters = {
+        // name: counter, 
+        // "0": 0,
+        // "1": 0,
+    } 
+
+    //counters["0"]
+
+
+    for (let i = 0; i < x.length; i++) 
+    {
+        
+        let o = counters[x[i]];
+
+        if (o)
+        {
+            o += 1; 
+        }
+        else
+        {
+
+            o = 1; 
+        }
+
+        counters[x[i]] = o;        
+    }
+
+    //return counters;
+    console.log(counters);
+    let y = objToArray(counters);
+    return y;
+}
+
+let x = [1,1,1,2,4,6,9,1,4,6,0,0,7,4];
+let e = [1,2];
+
+
+console.log( numCheckObj4(e) )
+console.log( numCheckObj4(x) )

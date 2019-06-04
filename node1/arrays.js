@@ -181,6 +181,37 @@ function dedupCopy(a) {
     
 }
 
+function objToArray(a) {
+    let arr = [];
+    for (var property1 in a) {
+        arr.push(parseInt(property1));
+    }
+    return arr;
+}
+
+function dedupCopy2(a) {
+    let counters = {};
+
+    for (let i = 0; i < a.length; i++) {
+
+        let o = counters[a[i]];
+
+        if (o) {
+            o += 1;
+        }
+        else {
+
+            o = 1;
+        }
+
+        counters[a[i]] = o;
+    }
+
+    //console.log(counters);
+    let x = objToArray(counters);
+    return x;
+}
+
 function testDedup()
 {
  let a = [1,1,2,2,3];
@@ -189,13 +220,15 @@ function testDedup()
  let d = [1];
  let e = [1,2];
  let f = [1,1];
+ let g = [1, 1, 1, 1, 2, 3, 3, 4, 5];
 
- console.log(dedupCopy(a));
- console.log(dedupCopy(b));
- console.log(dedupCopy(c));
- console.log(dedupCopy(d));
- console.log(dedupCopy(e));
- console.log(dedupCopy(f));
+ console.log(dedupCopy2(a));
+ console.log(dedupCopy2(b));
+ console.log(dedupCopy2(c));
+ console.log(dedupCopy2(d));
+ console.log(dedupCopy2(e));
+ console.log(dedupCopy2(f));
+ console.log(dedupCopy2(g));
 }
 
 // Like dedupCopy, but modifies 'a' instead of returning its copy. Don't introduce new array.
