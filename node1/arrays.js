@@ -220,11 +220,22 @@ function dedupCopy3(a)
     let lastUnique;
     let b = [];
 
-    for (let i = a.length - 1; i >= 0; i--) {
+    // for (let i = a.length - 1; i >= 0; i--) {
+
+    //     lastUnique = a[i];
+
+    //     if (a[i] !== a[i - 1]) {
+    //         b.push(lastUnique);
+
+
+    //     }
+    // }
+
+    for (let i = 0; i < a.length; i++) {
 
         lastUnique = a[i];
 
-        if (a[i] !== a[i - 1]) {
+        if (a[i] !== a[i + 1]) {
             b.push(lastUnique);
 
 
@@ -362,5 +373,5 @@ function main(){
 //main();
 //isSortedTest();
 
-//testDedup();
-testDedupInPlace();
+testDedup();
+//testDedupInPlace();
