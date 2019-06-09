@@ -184,6 +184,8 @@ function dedupCopy(a) {
     
 }
 
+// zmienic tak zeby dzialalo rowniez dla nie posortowanej tablicy
+
 function objToArray(a) {
     let arr = [];
     for (var property1 in a) {
@@ -231,12 +233,14 @@ function dedupCopy3(a)
     //     }
     // }
 
-    for (let i = 0; i < a.length; i++) {
+    b.push(a[0]);
+    
+    for (let i = 1; i < a.length; i++) {
 
-        lastUnique = a[i];
+        //lastUnique = a[i];
 
-        if (a[i] !== a[i + 1]) {
-            b.push(lastUnique);
+        if (a[i - 1] !== a[i]) {
+            b.push(a[i]);
 
 
         }
@@ -320,6 +324,10 @@ function removeNode(head, node) {
 // [1,1,2,2,2,3,4,4,4,4,5,6] returns [1,2,3,4,5,6]
 // [1, 10, 10, 10, 20, 30, 30] return [1,10,20,30]
 // If after deduping the modifed array is shorter than before, be sure to remove older elements.
+
+// bedzie jedna petla, bez nowych struktur, uzyc dwoch indeksow,
+// do zapisywania i przesuwania
+
 function dedupInPlace(a)
 {
     

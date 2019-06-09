@@ -31,20 +31,20 @@ function score(a)
     
 // });
 
-var v1 = function (req, res, next) {
-    res.send(tmp);
-    next()
+var v1 = function (req, res) {
+    res.send(b.toString());
+    //next()
   }
   
-  var v2 = function (req, res) {
-    console.log(a +b);
-  }
+  //var v2 = function (req, res) {
+  //   console.log(a +b);
+  // }
   
-  //app.get('/k1x', [v1, v2]);
+  app.get('/k1x', [v1]);
 
   //app.get('/:Value', (req, res) => res.send(req.params.Value.toUpperCase()))
 
-  app.get('/add:Value', (req, res) => res.send(req.params.Value.toUpperCase()))
+  // app.get('/add:Value', (req, res) => res.send(req.params.Value.toUpperCase()))
 
 // app.get('/ab?cd', function (req, res) {
 //     //res.send('<html><body><h1>Hello World</h1></body></html>');
