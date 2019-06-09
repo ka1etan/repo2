@@ -32,7 +32,14 @@ function score(a)
 // });
 
 var v1 = function (req, res) {
-    res.send(b.toString());
+  console.log(req.query)
+  let input = { a: parseInt(req.query.a), b: parseInt(req.query.b)}
+  let ret = { result: input.a + input.b}
+  //res.set('Content-Type', 'appliction/json')
+  res.set('Cache-control', 'no-cache')
+  res.status(200)
+  res.send(ret);
+ 
     //next()
   }
   
