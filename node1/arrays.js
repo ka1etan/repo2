@@ -267,55 +267,9 @@ function testDedup()
  console.log(dedupCopy3(g));
 }
 
-function arrayToList(a) {
-    let prev = null;
-    let first = null;
-    for (let i = 0; i < a.length; i++) {
-        let nlist = { data: a[i], next: null };
-        if (prev) {
-            prev.next = nlist;
-        } else { first = nlist; }
-        prev = nlist;
-    }
-    return first;
-}
 
-function listToArray(llist) {
-    let mat = [];
-    //convert linked list to array and return
-    for (let i = llist; i != null; i = i.next) {
 
-        mat.push(i.data);
 
-    }
-    return mat;
-
-}
-
-function removeNode(head, node) {
-    let prev = null;
-    let nodel = null;
-    
-    for (nodel = head;
-        nodel != null && nodel !== node;
-        prev = nodel, nodel = nodel.next) {
-    }
-
-    if (nodel == null) {
-        return null;
-    }
-    else if (nodel == node) {
-       
-        let ret = node.next;
-        if (prev !== null) {
-            prev.next = node.next;
-        }
-        node.next = null;
-        return ret;
-
-    }
-    else return null;
-}
 
 // Like dedupCopy, but modifies 'a' instead of returning its copy. Don't introduce new array.
 // a is an array of numbers, sorted
@@ -330,21 +284,63 @@ function removeNode(head, node) {
 
 function dedupInPlace(a)
 {
+    let tmp;
+    let tmp2;
+
+    for (let i = 1, j = 0; i < a.length && j < a.length; i++, j++) {
+
+        
+
+        if (a[i - 1] !== a[i])
+         {
+            
+
+        } else if (a[i] == tmp)
+        {
+            tmp2 = a[a.length - 1];
+            a[a.length - 1] = a[i];
+            a[i] = tmp2;
+            a.pop(a[a.length - 1]);
+            i = 1;
+            j = i - 1;
+        }
+        
+        else 
+        {
+            tmp = a[i];
+            a[j] = a[i];
+            a[i] = a[i + 1];
+        }
+    }
+
+    return a;
     
-    
-    let tmp = null;
-    let tmp2 = null;
-    let x = arrayToList(a);
-    for (let i = x; i != null; i = i.next) 
-    {
-         tmp = i.data;
-         tmp2 = i.next.data;
-        if (tmp == tmp2){
-            removeNode(x, i);
+
+}
+
+function dedupInPlace2(a) {
+    let tmp;
+
+    //[2,2,2,3,4,4,4,5,5,6,6];
+
+    for (let i = a.length - 1, j = a.length - 2; i >= 0 && j >= 0; i-- , j--) {
+
+        if (a[i] !== a[j]) {
+
+        }
+
+        else {
+
+            tmp = a[a.length - 1];
+            a[a.length - 1] = a[i];
+            a[i] = tmp;
+            a.pop();
+
         }
 
     }
-return x;
+
+    return a;
 
 }
 
@@ -352,7 +348,7 @@ return x;
 
 function testDedupInPlace()
 {
- let a = [1,1,2,2,3];
+ let a = [1,1,2,3,3,3];
  let b = [1, 10, 10, 10, 20, 30, 30];
  let c = [2,2,2,3,4,4,4,5,5,6,6];
  let d = [1];
@@ -360,13 +356,13 @@ function testDedupInPlace()
  let f = [1,1];
  let g = [1, 1, 1, 1, 2, 3, 3, 4, 5];
 
- console.log(dedupInPlace(a));
- console.log(dedupInPlace(b));
- console.log(dedupInPlace(c));
- console.log(dedupInPlace(d));
- console.log(dedupInPlace(e));
- console.log(dedupInPlace(f));
- console.log(dedupInPlace(g));
+ console.log(dedupInPlace2(a));
+ console.log(dedupInPlace2(b));
+ console.log(dedupInPlace2(c));
+ console.log(dedupInPlace2(d));
+ console.log(dedupInPlace2(e));
+ console.log(dedupInPlace2(f));
+ console.log(dedupInPlace2(g));
 }
 
 
@@ -381,5 +377,5 @@ function main(){
 //main();
 //isSortedTest();
 
-testDedup();
-//testDedupInPlace();
+//testDedup();
+testDedupInPlace();
