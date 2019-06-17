@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
     res.set('Cache-control', 'no-cache');
-    res.sendFile('d:/node_server/webapp.html');
+    res.sendFile('webapp.html');
     // let resultCheck = req.body.add;
     // resultCheck.addEventListener("click", app.post);
-    
+
 });
 
 
