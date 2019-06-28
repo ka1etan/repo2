@@ -1,4 +1,6 @@
 var express = require('express');
+const path = require('path');
+
 var app = express();
 
 var bodyParser = require("body-parser");
@@ -7,8 +9,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get('/', function (req, res) {
+    var options = {
+        root: path.join(__dirname, ''),
+        // dotfiles: 'deny',
+        // headers: {
+        //   'x-timestamp': Date.now(),
+        //   'x-sent': true
+        // }
+      }    
     res.set('Cache-control', 'no-cache');
-    res.sendFile('webapp.html');
+    res.sendFile('webapp.html', options);
     // let resultCheck = req.body.add;
     // resultCheck.addEventListener("click", app.post);
 
