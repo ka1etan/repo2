@@ -24,7 +24,20 @@ app.get('/', function (req, res) {
 
 });
 
-
+app.get('/script.js', function (req, res) {
+    var options = {
+        root: path.join(__dirname, ''),
+        // dotfiles: 'deny',
+        // headers: {
+        //   'x-timestamp': Date.now(),
+        //   'x-sent': true
+        // }
+      }    
+    res.set('Cache-control', 'no-cache');
+    res.sendFile('script.js', options);
+    // let resultCheck = req.body.add;
+    // resultCheck.addEventListener("click", app.post);
+});
 
 app.post('/result', function (req, res) {
     let input = { a: parseInt(req.body.inputBox1), b: parseInt(req.body.inputBox2)};
