@@ -4,11 +4,16 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
+<<<<<<< HEAD
             "program": "${workspaceFolder}/checklist.js",
+=======
+            "program": "${workspaceFolder}/app3.js",
+>>>>>>> c1d641ae72a722fb9193377aab71512fb129054a
             //"args": ["150", "1", "20"]
         }
     ]
