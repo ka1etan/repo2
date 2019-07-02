@@ -343,6 +343,14 @@ function dedupInPlace2(a) {
     return a;
 
 }
+// [1,2,3]
+// [10,10,20,30] - 10,20,30
+
+//[2,2,2,3,4,4,4,5,5,6,6]
+//i - next to read
+//j - next to write to
+// lastWritten - last one that was written (or null at the beginning)
+
 
 
 
@@ -364,6 +372,34 @@ function testDedupInPlace()
  console.log(dedupInPlace2(f));
  console.log(dedupInPlace2(g));
 }
+
+// given an arbitrarily nested array a - return "flattened" version of it
+// For example:
+// [1, [2, [3, [4, 5], 6], 7]] should be "flattened" to [1, 2, 3, 4, 5, 6, 7]
+// [1, [[2, 3], [4, 5]], 6, [7]]   --->  [1,2,3,4,5,6,7]
+// etc
+// so the elements of an array 'a' are either a number - or an array (of numbers or arrays)
+// An easy way to solve it is by recursion - which works for "shallow" arrays (small enough not to cause "stack overflow" error)
+// A bit harder way is to solve it without recursion - which works for arbitrarily deep arrays (as long as they fit in memory)
+function flattenArray(a)
+{
+
+}
+
+// skeleton of a recursive (easier) version:
+
+function flattenArrayRecursive(a)
+{
+    let result = []
+    flattenCore(a, result)
+    return result
+}
+
+function flattenCore(a, result)
+{
+    // this faction just appends to result and calls itself recursively if needed
+}
+
 
 
 function main(){
