@@ -351,12 +351,88 @@ function dedupInPlace2(a) {
 //j - next to write to
 // lastWritten - last one that was written (or null at the beginning)
 
+function dedupInPlace3(a)
+{
+    //let lastWritten = a[0];
+    let lastWritten = null;
+   // let i,j ;
+  // let j = 0;
+   // for ( let i = 0, j = 1; i < a.length && j < a.length; i++, j++)
 
+    for ( let i = 1, j = 0; i < a.length && j < a.length ; i++, j++)
+    {
+        
+
+        if (a[i] == a[j])
+        {
+             lastWritten = a[j];
+             a[i] = a[j];
+             a[j] = null;
+             //a.splice(a[j],1);
+
+        }
+
+        // if (a[i] == a[j])
+        // {
+        //      lastWritten = a[i];
+        //      a[j] = a[i];
+        //      a[i] = a[i +1]; 
+        //     //  a[i] = a[a.length - 1];
+        //     //  a[a.length - 1] = lastWritten;
+        //    // a[i] = null;
+        //    //  j++;
+
+        // } 
+        else
+        {
+            // lastWritten = a[i];
+            // a[i-1] = a[i];
+           // j++;
+
+            // if (a[j] == lastWritten)
+            // {
+            //     a[i]=a[j];
+            // }
+        }
+
+        
+          
+            // if (a[i] == lastWritten) 
+            // {
+            //     a[i-1] = a[i];
+            // }
+            
+            // a[i] = a[j];
+            // //a[j] = a[i];
+            // lastWritten = a[i];
+            // // a.push(a[i]);
+            // // a.pop();
+
+        // } else if (a[i] == lastWritten)
+        // {
+        //     // a.push(a[i]);
+        //     a[i] = a[j];
+        //     lastWritten = a[j];
+        //     // a.pop();
+
+        // }
+        //a[i +1] = lastWritten;
+        
+        // if (a[a.length -1] == a[a.length - 2])
+        // {
+        //     a.pop();
+        // }
+        
+    }
+
+   return a;
+}
 
 
 function testDedupInPlace()
 {
- let a = [1,1,2,3,3,3];
+ let a = [2,2,3,3,3,4,5,5];
+ //let a = [1,1,2,3,3,3];
  let b = [1, 10, 10, 10, 20, 30, 30];
  let c = [2,2,2,3,4,4,4,5,5,6,6];
  let d = [1];
@@ -364,7 +440,7 @@ function testDedupInPlace()
  let f = [1,1];
  let g = [1, 1, 1, 1, 2, 3, 3, 4, 5];
 
- console.log(dedupInPlace2(a));
+ console.log(dedupInPlace3(a));
  console.log(dedupInPlace2(b));
  console.log(dedupInPlace2(c));
  console.log(dedupInPlace2(d));

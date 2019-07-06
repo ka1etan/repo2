@@ -57,9 +57,23 @@ function numCheckObj4(x) {
     return y;
 }
 
+function aWrite(a)
+{
+    for (let i=0; i<a.length; i++)
+    {
+        if (a[i]==1)
+        {
+            a[a.length - 1] = "";
+        }
+    }
+
+    return a;
+}
+
 let x = [1,1,1,2,4,6,9,1,4,6,0,0,7,4];
 let e = [1,2];
 
 
 console.log( numCheckObj4(e) )
 console.log( numCheckObj4(x) )
+console.log( aWrite(x) )
