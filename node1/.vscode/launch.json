@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\input_obj3.js"
+            "program": "${workspaceFolder}\\shiftArrays.js"
         }
     ]
 }

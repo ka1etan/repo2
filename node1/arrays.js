@@ -363,12 +363,38 @@ function dedupInPlace3(a)
     {
         
 
-        if (a[i] == a[j])
+        // if (a[i] == a[j])
+        // {
+        //      lastWritten = a[j];
+        //      a[i] = a[j];
+        //      a[j] = null;
+        //      //a.splice(a[j],1);
+
+        // }
+
+        // if (a[i] == a[j])
+        // {
+        //      lastWritten = a[a.length - 1];
+             
+        //      a[i] = a[i+1];
+        //      a.pop();
+        //      if(a[a.length-1] !== lastWritten)
+        //      {
+        //      a.push(lastWritten)
+        //      }
+        //     // j = j-1;
+             
+             
+        // }
+
+         if (a[i] == a[j])
         {
-             lastWritten = a[j];
-             a[i] = a[j];
-             a[j] = null;
-             //a.splice(a[j],1);
+            a[j] = a[i];
+            lastWritten = a[a.length - 1];
+            a.pop();
+            a[a.length - 1] = lastWritten;
+            j--;
+            
 
         }
 
