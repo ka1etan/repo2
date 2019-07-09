@@ -20,6 +20,9 @@ function shiftArray(a)
  }
 
 
+
+
+
 // Like above - but 'a' is an array of numbers and e is a number.
 
 // Shift all the elements of 'a' one place to the right except elements equal to e, which are skipped (disregarded).
@@ -56,9 +59,76 @@ function shiftArrayButSkip(a, e)
     return a;
 }
 
+////// LR - begin
+function shiftArray2(a)
+ {
+     let previous = a[0]; 
+
+     for (let i = 1; i < a.length; i++)
+     {
+         let temp = a[i]
+         a[i] = previous;
+         previous = temp;
+     }
+
+     return a
+ }
+
+ function shiftArray3(a)
+ {
+     for (let nextToRead = a.length-2, nextToWrite = a.length-1; nextToRead >= 0; nextToRead--)
+     {
+         a[nextToWrite] = a[nextToRead];
+         nextToWrite -= 1; 
+     }
+
+     return a
+ }
+
+ function shiftArray4(a)
+ {
+     let currVal = a[0], nextVal;
+
+     for (let nextToRead = 0, nextToWrite = 1; nextToRead < a.length-1; nextToRead++)
+     {
+         nextVal = a[nextToRead+1]
+
+         a[nextToWrite] = currVal
+         nextToWrite++
+
+         currVal = nextVal
+     }
+
+     return a
+ }
+
+ function shiftArrayButSkip2(a,e )
+ {
+     let currVal = a[0], nextVal;
+
+     for (let nextToRead = 0, nextToWrite = 1; nextToRead < a.length-1; nextToRead++)
+     {
+         nextVal = a[nextToRead+1]
+
+         if (currVal != e)
+         {
+            a[nextToWrite] = currVal
+            nextToWrite++
+         }
+
+         currVal = nextVal
+     }
+
+     return a
+ }
+ /////// LR - end
 
  let x = [1,2,3,4,5,0];
  let y = [1,2,3,3,3,4,5,0];
   
- //console.log(shiftArray(y));
- console.log(shiftArrayButSkip(y, 3));
+//console.log(shiftArray4(x));
+console.log(shiftArrayButSkip2(y, 3));
+
+/*
+    read buff write
+*/
