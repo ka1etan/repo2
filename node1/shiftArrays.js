@@ -129,6 +129,35 @@ function shiftArray2(a)
 
      return a
  }
+
+ function dedupInPlace2(a,e )
+ {
+     let prevVal;
+     let nextToWrite = 0;
+
+     for (let nextToRead = 0; nextToRead < a.length; nextToRead++)
+     {
+        let currVal = a[nextToRead]
+
+         if (currVal != prevVal)
+         {
+            a[nextToWrite] = currVal
+            nextToWrite++
+         }
+
+         prevVal = currVal
+     }
+
+     let length = a.length; // important to store for referencing in the loop condition
+     // () because a.pop() will alter a.length )
+     for (; nextToWrite < length; nextToWrite++)
+     {
+        a.pop()
+     }
+
+     return a
+ }
+
  /////// LR - end
 
  function deduplicate(a)
@@ -164,11 +193,16 @@ function shiftArray2(a)
  let x = [1,2,3,4,5,0];
  let y = [1,2,3,3,3,4,5,0];
  let z = [1,1,2,3,3,3]
-  
+ //let x = [1,2,3,4,5,0];
+ //let z = [1,3]
+ let y2 = [1,2,2,2,2,3,3,3,4,4,5]
+ let y3 = [1,1]
+
 //console.log(shiftArray4(x));
 
-// console.log(shiftArrayButSkip2(y, 3));
-// console.log(shiftArrayButSkip2(z, 3));
+//console.log(shiftArrayButSkip2(y, 3));
+console.log(`Deduped: ${dedupInPlace2(y2.slice())}, original: ${y2}`);
+console.log(`Deduped: ${dedupInPlace2(y3.slice())}, original: ${y3}`);
 
 console.log(deduplicate(z));
 /*
