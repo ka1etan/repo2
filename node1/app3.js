@@ -1,8 +1,8 @@
 var express = require('express');
 const path = require('path');
-
+var cors = require('cors');
 var app = express();
-
+app.use(cors({credentials: true}));
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -47,6 +47,39 @@ app.post('/result', function (req, res) {
 
 
 
-var server = app.listen(5000, function () {
-    console.log('Node server is running...');
-});
+// var http = require('http');
+// http.createServer(function (req, res) {
+ 
+//    if (req.method == 'POST') {
+//       var post_data = '';
+//       req.on('data', function (data) {
+//          post_data += data;
+//       });
+//       req.on('end', function () {
+//          res.writeHead(200, {'Content-Type': 'text/plain'});
+//          res.end('\n');
+ 
+//          console.log('RECEIVED THIS DATA:\n'+ post_data)
+ 
+//       });
+//    }
+//    else
+//    {
+//       res.writeHead(200, {'Content-Type': 'text/plain'});
+//       res.end('\n');
+//    }
+ 
+// }).listen(5000, '127.0.0.1');
+//console.log('Server running at http://127.0.0.1:5000/');
+
+
+
+// var server = app.listen(5000, function () {
+//     console.log('Node server is running...');
+// });
+
+var server = app.listen(5000, '127.0.0.1');
+console.log('Node server is running...');
+   
+    
+
