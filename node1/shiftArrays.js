@@ -131,15 +131,46 @@ function shiftArray2(a)
  }
  /////// LR - end
 
+ function deduplicate(a)
+ {
+     let currVal = a[0], nextVal;
+     let nextToWrite = 1;
+
+     for (let nextToRead = 0; nextToRead < a.length-1; nextToRead++)
+     {
+         nextVal = a[nextToRead+1]
+
+         if (currVal == nextVal)
+         {
+            nextToRead++
+            nextToWrite++
+            a[nextToRead] = a[nextToWrite];
+         }
+
+         currVal = nextVal
+     }
+
+     let length = a.length; // important to store for referencing in the loop condition
+     // () because a.pop() will alter a.length )
+     for (; nextToWrite < length; nextToWrite++)
+     {
+        a.pop()
+     }
+
+     return a
+ }
+
+
  let x = [1,2,3,4,5,0];
  let y = [1,2,3,3,3,4,5,0];
- let z = [1,3]
+ let z = [1,1,2,3,3,3]
   
 //console.log(shiftArray4(x));
 
-console.log(shiftArrayButSkip2(y, 3));
-console.log(shiftArrayButSkip2(z, 3));
+// console.log(shiftArrayButSkip2(y, 3));
+// console.log(shiftArrayButSkip2(z, 3));
 
+console.log(deduplicate(z));
 /*
     read buff write
 */
