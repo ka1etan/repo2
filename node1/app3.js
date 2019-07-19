@@ -3,9 +3,11 @@ const path = require('path');
 var cors = require('cors');
 var app = express();
 app.use(cors({credentials: true}));
+
+
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(bodyParser.json()); // LR: this is what parses JSON body (application/json). See: https://www.npmjs.com/package/body-parser#expressconnect-top-level-generic
 
 
 app.get('/', function (req, res) {
@@ -55,12 +57,17 @@ app.get('/test.txt', function (req, res) {
 });
 
 app.post('/result', function (req, res) {
+    console.log("Received: " + JSON.stringify(req.body))
     let input = { a: parseInt(req.body.inputBox1), b: parseInt(req.body.inputBox2)};
     let ret = { result: input.a + input.b};
     res.send(ret);
 });
 
-
+app.get('/result2', function (req, res) {
+  console.log("Received: " + JSON.stringify(req.query))
+  let ret = { result: 123.456 };
+  res.send(ret);
+});
 
 // var http = require('http');
 // http.createServer(function (req, res) {
