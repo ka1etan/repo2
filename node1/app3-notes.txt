@@ -1,0 +1,45 @@
+html/script (script.js)
+    let numbers = {a: 1, b: 2}
+    let numberString = JSON.stringify(numbers)
+
+/*
+  let numbers = { x: 1, y: 2 };
+*/
+    // currently sent: JSON.stringify({result: input.x + input.y})
+    JSON.stringify(input)
+
+
+web svc (app3.js)
+
+    "add" (POST)
+        "2 numbers" as JSON
+            input:
+                // example data to be received:
+                '{ "a": 1, "b": 2 }'
+
+                // on the client side
+                data = JSON.stringify({a: <number>, b: <number>}) // client to send it
+                
+                // on the server side
+                let data = JSON.parse(input) // req.body
+                data.a
+                data.b
+
+            output:
+                // example data to be sent:
+                '{ "add": 3 }'
+
+                // on the server side:
+                JSON.stringify({ add: <number> }) // req.send does JSON.stringy 
+
+                    // curently done: 
+                    // { result: input.a + input.b};
+                    // and should be:
+                    // { add: <number> }
+
+                // on the client side:
+                output = JSON.parse(data)
+                output.add
+
+
+

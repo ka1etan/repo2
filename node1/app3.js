@@ -60,6 +60,7 @@ app.post('/result', function (req, res) {
     console.log("Received: " + JSON.stringify(req.body))
     let input = { a: parseInt(req.body.inputBox1), b: parseInt(req.body.inputBox2)};
     let ret = { result: input.a + input.b};
+    console.log("Sent back:" + JSON.stringify(ret))
     res.send(ret);
 });
 
