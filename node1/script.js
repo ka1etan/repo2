@@ -21,9 +21,14 @@ function xhr() {
 
 
   // LR: always use relative URLs for own site's resources/queries !
-  xhr.open('POST', '/result'); // LR: this must be /result (so full URL is: http://127.0.0.1:5000/result - not http://127.0.0.1:5000)
-  //xhr.open('GET', '/result2?a=1.1&b=2.2'); // LR: alternative - see app3.js/get('/result2')
-  
+
+ // xhr.open('GET', '/result'); // LR: this must be /result (so full URL is: http://127.0.0.1:5000/result - not http://127.0.0.1:5000)
+   // LR: alternative - see app3.js/get('/result2')
+ // xhr.open('GET', '/result2?a');
+
+xhr.open('POST', '/result');  
+//xhr.open('GET', '/result2?a=4&b=4');
+
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -32,18 +37,22 @@ function xhr() {
     }
   }
 
-  let a = document.getElementById("inputBox1").value;
-  let b = document.getElementById("inputBox2").value;
+  // let a = document.getElementById("inputBox1").value;
+  // let b = document.getElementById("inputBox2").value;
 
-  let input = {
-    x: parseInt(a),
-    y: parseInt(b)
-  };
+// let input = {
+  //   x: parseInt(a),
+  //   y: parseInt(b)
+  // };
 
-  let ret = JSON.stringify({result: input.x + input.y});
+// let ret = JSON.stringify({add: input.x + input.y});
 
   // LR: you're sending the wrong thing here ...
-  xhr.send(ret);
+
+  let numbers = {a: document.getElementById("inputBox1").value, b: document.getElementById("inputBox2").value}
+  let numberString = JSON.stringify(numbers)
+
+  xhr.send(numberString);
 
 }
 
