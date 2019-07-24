@@ -15,6 +15,8 @@ function buttons() {
 
 function xhr() {
   var xhr = new XMLHttpRequest();
+  let reqResult;
+  let output;
       // xhr.open('GET', 'http://127.0.0.1:5000', true);
       // xhr.withCredentials = true;
       // xhr.send();
@@ -34,6 +36,9 @@ xhr.open('POST', '/result');
     if (xhr.readyState == 4 && xhr.status == 200) {
       document.getElementById("result").innerHTML = xhr.response;
       console.log("xhr");
+      reqResult = xhr.response;
+      output = JSON.parse(reqResult);
+      console.log(output.add);
     }
   }
 
@@ -53,6 +58,8 @@ xhr.open('POST', '/result');
   let numberString = JSON.stringify(numbers)
 
   xhr.send(numberString);
+
+  
 
 }
 
