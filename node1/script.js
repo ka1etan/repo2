@@ -63,7 +63,8 @@ xhr.open('POST', '/result');
   xhr.send(numberString);
 
   //document.cookie =  "add_data=" + numberString + ";" + expires + ";path=/";
-  document.cookie =  "data=" + numberString + ";" +  ";path=/";
+  
+  //document.cookie =  "data=" + numberString + ";" +  ";path=/";
 
   //showCookies();
 
