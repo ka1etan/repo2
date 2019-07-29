@@ -1,9 +1,9 @@
-var session = require('cookie-session')
+//var session = require('cookie-session')
 var express = require('express');
 const path = require('path');
-var cors = require('cors');
+//var cors = require('cors');
 var app = express();
-app.use(cors({credentials: true}));
+//app.use(cors({credentials: true}));
 
 var expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 
@@ -12,16 +12,16 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // LR: this is what parses JSON body (application/json). See: https://www.npmjs.com/package/body-parser#expressconnect-top-level-generic
 
-app.use(session({
-  name: 'session-x',
-  keys: ['key1', 'key2'],
-  cookie: {
-    //secure: true,
-    //httpOnly: true,
-    expires: expiryDate,
-    path: '/'
-    }
-}))
+//app.use(session({
+//  name: 'session-x',
+//  keys: ['key1', 'key2'],
+//  cookie: {
+//    //secure: true,
+//    //httpOnly: true,
+//    expires: expiryDate,
+//    path: '/'
+//    }
+//}))
 
 
 app.get('/', function (req, res) {
@@ -35,7 +35,7 @@ app.get('/', function (req, res) {
       }    
     res.set('Cache-control', 'no-cache');
     res.sendFile('webapp.html', options);
-    res.cookie('cias', "test",  { maxAge: 500000 });
+//    res.cookie('cias', "test",  { maxAge: 500000 });
 });
 
 app.get('/script.js', function (req, res) {
