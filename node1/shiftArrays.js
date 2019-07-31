@@ -189,9 +189,36 @@ function shiftArray2(a)
      return a
  }
 
+ function dedupExcercise(a)
+ {
+     let prev, nextToWrite = 0;
+
+     for (let nextToRead = 0; nextToRead < a.length; nextToRead++)
+     {
+         let curr = a[nextToRead];
+
+         if (curr != prev)
+         {
+             a[nextToWrite] = curr;
+             nextToWrite++
+         }
+
+         prev = curr;
+     }
+
+     length = a.length;
+
+     for (; nextToWrite < length; nextToWrite)
+     {
+         a.pop();
+     }
+
+     return a;
+}
+
 
  let x = [1,2,3,4,5,0];
- let y = [1,2,3,3,3,4,5,0];
+ let y = [1,2,3,3,3,4,5];
  let z = [1,1,2,3,3,3]
  //let x = [1,2,3,4,5,0];
  //let z = [1,3]
@@ -204,7 +231,10 @@ function shiftArray2(a)
 console.log(`Deduped: ${dedupInPlace2(y2.slice())}, original: ${y2}`);
 console.log(`Deduped: ${dedupInPlace2(y3.slice())}, original: ${y3}`);
 
-console.log(deduplicate(z));
+//console.log(deduplicate(z));
+//console.log(dedupInPlace2(y));
+
+console.log(dedupExcercise(z));
 /*
     read buff write
 */

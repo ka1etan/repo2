@@ -1,5 +1,6 @@
 
 
+
 // s is a string
 // function returns true if s is a palindrome else returns false
 // Examples:
@@ -500,6 +501,52 @@ function flattenArrayRecursive(a)
 function flattenCore(a, result)
 {
     // this faction just appends to result and calls itself recursively if needed
+    for (let i = 0; i < a.length; i++)
+    {
+        result.push(a[i]);
+    }
+}
+
+function flatten(a)
+{
+    let res = [];
+    let arr = [];
+    let arrL = a.length;
+    arr.push(a[arrL-1]);
+
+    for ( let h = 0; h < arrL-1; h++)
+    {
+        res.push(a[h]);
+    }
+    for (let i = 0; i < arr.length; i++)
+    {
+        
+       let x = arr[i].length;
+
+       for (let j = 0; j < x; j++)
+       {
+           let y = arr[i][j];
+           console.log(y);
+           res.push(y);
+       }
+         
+        //let xx = xi.length;
+
+        //arr.push(a[i]);
+       // flatten(a, result);
+    }
+
+    return res;
+}
+
+function testFlatten()
+{
+    let result = [];
+    let a =  [1, 1, [2, [3, [4, 5], 6], 7]];
+    let b =  [1, [[2, 3], [4, 5]], 6, [7]]; 
+
+    console.log(flatten(a, result));
+    console.log(flatten(b));
 }
 
 
@@ -516,4 +563,6 @@ function main(){
 //isSortedTest();
 
 //testDedup();
-testDedupInPlace();
+//testDedupInPlace();
+
+testFlatten();

@@ -124,8 +124,9 @@ function readCookies()
   if(dcookies["data"])
   {
   //document.getElementById("readCookie").innerHTML = dcookies["data-a"];
-  document.getElementById("inputBox1").value = dcookies["data-a"];
-  document.getElementById("inputBox2").value = dcookies["data-b"];
+  let cvalues = JSON.parse(dcookies["data"]);
+  document.getElementById("inputBox1").value = cvalues.a;
+  document.getElementById("inputBox2").value = cvalues.b;
   }
 
  //alert(JSON.stringify(dcookies));
