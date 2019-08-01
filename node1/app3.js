@@ -72,8 +72,8 @@ app.post('/result', function (req, res) {
     let data = req.body;
     let result = {add: parseInt(data.a) + parseInt(data.b) }
    // res.cookie('inputBox1', data.a,  { maxAge: 500000 });
-    res.cookie("data-a", data.a);
-    res.cookie("data-b", data.b);
+   // res.cookie("data-a", data.a);
+    //res.cookie("data-b", data.b);
     res.cookie("data", JSON.stringify(data), {encode: String});
     res.send(result);
 });

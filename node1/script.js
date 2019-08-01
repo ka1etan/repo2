@@ -135,7 +135,7 @@ function readCookies()
     if (prop == "data")
     {
       console.log("true");
-      console.log(dcookies["data-a"]);
+      //console.log(dcookies["data-a"]);
     }
     else
     {
