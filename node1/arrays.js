@@ -545,7 +545,7 @@ function testFlatten()
     let a =  [1, 1, [2, [3, [4, 5], 6], 7]];
     let b =  [1, [[2, 3], [4, 5]], 6, [7]]; 
 
-    console.log(flatten(a, result));
+    console.log(flatten(a));
     console.log(flatten(b));
 }
 

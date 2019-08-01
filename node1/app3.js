@@ -63,30 +63,24 @@ app.get('/test.txt', function (req, res) {
   
 });
 
+function handleAdd(res, data)
+{
+  let result = {add: parseInt(data.a) + parseInt(data.b) }
+  res.cookie("data", JSON.stringify(data), {encode: String});
+  res.send(result);
+}
+
 app.post('/result', function (req, res) {
     console.log("Received: " + JSON.stringify(req.body))
-    // let input = { a: parseInt(req.body.inputBox1), b: parseInt(req.body.inputBox2)};
-    // let ret = { add: input.a + input.b};
-    // let ret1 = { inputA: "test"};
-    //let ret = { result: 123.456 };
     let data = req.body;
-    let result = {add: parseInt(data.a) + parseInt(data.b) }
-   // res.cookie('inputBox1', data.a,  { maxAge: 500000 });
-   // res.cookie("data-a", data.a);
-    //res.cookie("data-b", data.b);
-    res.cookie("data", JSON.stringify(data), {encode: String});
-    res.send(result);
+    handleAdd(res, data);
 });
 
 app.get('/result2', function (req, res) {
   console.log("Received: " + JSON.stringify(req.query))
   let data = req.query;
-  let result = {add: parseInt(data.a) + parseInt(data.b) }
-  res.cookie("data-a", data.a);
-    res.cookie("data-b", data.b);
-    res.send(result);
-    
-});
+  handleAdd(res, data);
+    });
 
 app.post('/cookiename', function (req, res) {
   console.log("Received: " + JSON.stringify(req.body))
