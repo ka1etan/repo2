@@ -489,23 +489,7 @@ function flattenArray(a)
 
 }
 
-// skeleton of a recursive (easier) version:
 
-function flattenArrayRecursive(a)
-{
-    let result = []
-    flattenCore(a, result)
-    return result
-}
-
-function flattenCore(a, result)
-{
-    // this faction just appends to result and calls itself recursively if needed
-    for (let i = 0; i < a.length; i++)
-    {
-        result.push(a[i]);
-    }
-}
 
 function flatten(a)
 {
@@ -539,14 +523,119 @@ function flatten(a)
     return res;
 }
 
+function countArrays(a)
+{
+    let count = 0;
+    for (let i = 0; i < a.length; i++)
+    {
+        let x = Array.isArray(a[i]);
+        
+
+        if (x)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+function countArrays2(a)
+{
+    let count = countArrays(a);
+
+    for (let j = 0; j < a.length; j++)
+    {
+        let x = Array.isArray(a[j]);
+        
+
+        if (x)
+        {
+            
+            count += countArrays(a[j]);
+        }
+    }
+    return count;
+}
+
+function countArraysN(a)
+{
+    // if (n >= 1)
+    // {
+    //     return 0;
+    // }
+    let count = 0;
+    let collect = [];
+    for (let i = 0; i < a.length; i++)
+    {
+        let x = Array.isArray(a[i]);
+        
+        //if (n < 2)
+        {
+            if (x)
+            {
+                count++;
+                
+                count += countArraysN(a[i], collect);
+
+                // for (let j = 0; j < a[i].length; j++)
+                // {
+                //     collect.push(a[i][j])
+                // }
+            }
+            else
+            {
+                collect.push(a[i]);
+            }
+        }
+        
+    }
+    //return collect;
+    console.log(collect)
+    return count;
+}
+
+// skeleton of a recursive (easier) version:
+
+
+
+function flattenCore(a, result)
+{
+   
+    let count = 0;
+    for (let i = 0; i < a.length; i++)
+    {
+        let x = Array.isArray(a[i]);
+        
+        if (x)
+            {
+                count++;
+                count += flattenCore(a[i], result);
+            }
+            else
+            {
+                result.push(a[i])
+            }
+    }
+        
+    return count;
+}
+
+function flattenArrayRecursive(a)
+{
+    let result = []
+    flattenCore(a, result)
+    return result
+}
+
 function testFlatten()
 {
-    let result = [];
-    let a =  [1, 1, [2, [3, [4, 5], 6], 7]];
-    let b =  [1, [[2, 3], [4, 5]], 6, [7]]; 
+    
+    let a =  [1, 1, [2, [3, [4, 5], 6], 7, 8]];
+    let b =  [1, [[2, 3], [4, 5]], 6, [7], [1, 2]]; 
 
-    console.log(flatten(a));
-    console.log(flatten(b));
+    console.log(flattenArrayRecursive(a));
+    console.log(flattenArrayRecursive(b));
+
 }
 
 
