@@ -37,7 +37,7 @@ web svc (app3.js)
                     // and should be:
                     // { add: <number> }
 
-                // on the client side:
+                //// on the client side:
                 output = JSON.parse(data)
                 output.add
 
