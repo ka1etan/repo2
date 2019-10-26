@@ -52,6 +52,22 @@ function convert(a)
     return matrix
 }
 
+function convert2(a)
+{
+    let maxCount = 0 // count of 1s in longest series thus far
+    let currentCount = 0 // count of 1s in current serie
+
+    for (let i = a ; i > 0; i = i/2)
+    {
+        let x =  i % 2 //always true: x==0 || x==1
+        assert(x==0 || x==1)
+
+        // TODO
+    }
+
+    return maxCount
+}
+
 function ones(a)
 {
     let mat = []
