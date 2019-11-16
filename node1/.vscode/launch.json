@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/binaryCheck.js"
+            "program": "${workspaceFolder}/2darrays_hr.js"
         }
     ]
 }
