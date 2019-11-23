@@ -28,7 +28,6 @@ function readLine() {
 function glassHour(array, startA, startB, a, b) {
     let sum = 0
 
-
     for (let i = startA; i < a; i++) {
         for (let j = startB; j < b; j++) {
             if (i == startA + 1 && j == startB || i == startA + 1 && j == startB + 2) {
@@ -47,6 +46,16 @@ function glassHour(array, startA, startB, a, b) {
     return sum
 }
 
+function glassHour2(array, a, b)
+{
+    let sum = array[a][b] + array[a][b+ 1] + array[a][b +2] + array[a+1][b+1] + array[a+2][b] + array[a+2][b+1] + array[a+2][b+2]
+
+    return sum
+}
+
+//glasshour2: bez petli, tylko zlicza wspolrzedne + offset
+// pozniej przerobic na uniwersalne dla n kwadratu
+
 function traverse(x) {
     let maxcount = 0
     let current = 0
@@ -57,7 +66,8 @@ function traverse(x) {
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 4; j++) {
 
-            let sum = glassHour(x, i, j, i + 3, j + 3)
+           // let sum = glassHour(x, i, j, i + 3, j + 3)
+            let sum = glassHour2(x, i, j)
             mat.push(sum)
             current = sum
             // if(j==0)
