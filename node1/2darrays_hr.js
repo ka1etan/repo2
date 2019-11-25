@@ -53,21 +53,40 @@ function glassHour2(array, a, b)
     return sum
 }
 
-//glasshour2: bez petli, tylko zlicza wspolrzedne + offset
-// pozniej przerobic na uniwersalne dla n kwadratu
+function glassHour3(a, n, startA ,startB) {
+    let sum = 0
+    let x = startA + n
+    let y = startB + n
+    for ( let i = startA; i < x; i++) {
+        for (let  j = startB; j < y; j++)
+            if (i == startA || i == (startA + (n - 1))) {
+                sum += a[i][j]
+            } else if (j !== startB && j !== (startB + (n - 1))) {
+                sum += a[i][j]
 
-function traverse(x) {
+            } 
+    }
+    console.log(sum)
+    return sum
+}
+
+
+//glasshour2: bez petli, tylko zlicza wspolrzedne + offset
+// pozniej przerobic na uniwersalne dla n kwadratu - min n = 3
+
+function traverse(x,n) {
     let maxcount = 0
     let current = 0
     let mat = []
 
     var i, j = 0
 
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
+    for (i = 0; i <= n/2; i++) {
+        for (j = 0; j <= n/2; j++) {
 
            // let sum = glassHour(x, i, j, i + 3, j + 3)
-            let sum = glassHour2(x, i, j)
+            //let sum = glassHour2(x, i, j)
+            let sum = glassHour3(x, n/2, i, j)
             mat.push(sum)
             current = sum
             // if(j==0)
@@ -86,10 +105,12 @@ function traverse(x) {
 }
 
 function main() {
-    let arr = Array(6);
+    let n = 6
+    let arr = Array(n);
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < n; i++) {
         arr[i] = readLine().split(' ').map(arrTemp => parseInt(arrTemp, 10));
     }
-    traverse(arr)
+    traverse(arr, n)
+    //glassHour3(arr, n/2)
 }
