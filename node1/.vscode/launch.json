@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/inher_hr.js"
+            "program": "${workspaceFolder}/abstract_hr.js"
         }
     ]
 }
