@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/linkedList_hr.js"
+            "program": "${workspaceFolder}/trycatch_hr.js"
         }
     ]
 }
