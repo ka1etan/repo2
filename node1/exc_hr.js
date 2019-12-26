@@ -32,20 +32,19 @@ function readLine() {
 
 class Calculator {
     power(a, b) {
-        let i = 0
-        let score = a
-        if (b == 0) {
-            score = 1
-
-        } else if (a < 0 || b < 0) {
+        if (a < 0 || b < 0) {
             throw "n and p should be non-negative"
-        } else {
-            while (i < (b - 1)) {
-                score = score * a
-                i++
-            }
         }
-        return score
+
+        let i = 0
+        let score = 1
+        
+        for (; i< b; i++ )
+        {
+            score *=  a
+        }
+        
+       return score
     }
 }
 
