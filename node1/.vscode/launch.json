@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/stacks_hr.js"
+            "program": "${workspaceFolder}/bubbleSort_hr.js"
         }
     ]
 }
