@@ -26,14 +26,58 @@ function createTree1()
     return root
 }
 
+
+
 function getTreeData(data, root)
 {
+    
+    
     if (root != null)
     {
+        
         getTreeData(data, root.left)
         getTreeData(data, root.right)
         data.push(root.data)
+        
     }
+
+   
+}
+
+function max(a)
+{
+    let max = 0
+    for (let i = 0; i < a.length; i++)
+    {
+        if (a[i]>max)
+        {
+            max = a[i]
+        }
+    }
+    return max
+}
+
+function getTreeData2(root, obj, data) {
+
+
+    if (root != null) {
+        obj["height"] += 1
+        if (root.left !== null) {
+        obj["left"] += 1
+            data[0] += 1
+        }
+        if (root.right !== null) {
+        obj["right"] += 1
+            data[1] += 1
+        }
+        getTreeData2(root.left, obj, data)
+        getTreeData2(root.right, obj, data)
+
+    }
+
+    // console.log(JSON.stringify(obj) + data)
+    // console.log(max(data))
+    return max(data)
 }
 
 
@@ -96,9 +140,19 @@ function printTreeData2(root)
 // in-order
 // 2, 7, 5, 6, 11, 2, 5, 4, 9,
 
+function countHeight()
+{
+    let data = [0,0]
+    let count = 0
+    let obj = {height: 0, left: 0, right: 0}
+    console.log(getTreeData2(createTree1(), obj, data))
+
+    //console.log(data)
+}
+
+countHeight()
 
 
 
-
-printTreeData(createTree1())
+//printTreeData(createTree1())
 //printTreeData2(createTree1())
