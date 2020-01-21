@@ -13,14 +13,17 @@ export default class Container2 extends React.Component {
     updateCounter(id)
     {
         let newVal = 1
-        if (this.state.store[id]) newVal = this.state.store[id]+1
-
+        if (this.state.store[id]) 
+        {
+            newVal = this.state.store[id]+1
+        } else {this.state.store[id] = newVal}
         let newStore = Object.assign(this.state.store, {id: newVal})
 
         // this.state or this.state.store - are still as they were
-
+        // eslint-disable-next-line
+        console.log(JSON.stringify(newStore))
         this.state = Object.assign(this.state, {store: newStore})
-
+        
         this.setState(this.state)
     }
 
@@ -39,7 +42,7 @@ export default class Container2 extends React.Component {
     getTotal()
     {
         let sum = 0
-        for (id in this.state.store)
+        for (let id in this.state.store)
         {
             sum += this.state.store[id]
         }
