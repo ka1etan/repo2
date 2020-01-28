@@ -66,7 +66,7 @@ function BinarySearchTree() {
 
         // Add your code here
         let data = []
-        let firstNode = root.data
+        //let firstNode = root.data
         let lcount=0
         let rcount=0
         let count = 0
@@ -121,21 +121,67 @@ function BinarySearchTree() {
     // }
     //     return treeWalk(root, data)
 
-    function checkDepth(root, data, count)
-    {
-        if (root!==null)
-        {
-            count++
-            checkDepth(root.left, data, count)
-            checkDepth(root.right, data, count)
-        }
+    // working version
+    // function checkDepth(root, data, count)
+    // {
+    //     if (root!==null)
+    //     {
+    //         count++
+    //         checkDepth(root.left, data, count)
+    //         checkDepth(root.right, data, count)
+    //     }
 
-        data.push(count)
-        //console.log(JSON.stringify(data))
-        return max(data)-1
+    //     data.push(count)
+    //     //console.log(JSON.stringify(data))
+    //     return max(data)-1
+    // }
+    // return checkDepth(root, data, count)
+
+    function treeWalk(root)
+    {
+        if (root == null)
+        {
+            return 0
+        } else {
+            let lDepth = treeWalk(root.left)
+            let rDepth = treeWalk(root.right)
+
+            if (lDepth > rDepth)
+            {
+                return lDepth + 1
+            } else {
+                return rDepth + 1
+            }
+        }
     }
-    return checkDepth(root, data, count)
+    return treeWalk(root) - 1
+
+    
+
+    // if (root == null)
+    //     {
+    //         return 0
+    //     } else {
+            
+    //         let lDepth = this.getHeight(root.left)
+    //         let rDepth = this.getHeight(root.right)
+
+    //         if (lDepth > rDepth)
+    //         {
+    //             return lDepth + 1
+    //         } else {
+    //             return rDepth + 1
+    //         }
+
+    //     }
+
+        
+
+
+
     }; // End of function getHeight
+
+
 }
 
 function main()
