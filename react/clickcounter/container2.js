@@ -13,18 +13,27 @@ export default class Container2 extends React.Component {
     updateCounter(id)
     {
         let newVal = 1
-        if (this.state.store[id]) 
-        {
-            newVal = this.state.store[id]+1
-        } else {this.state.store[id] = newVal}
-        let newStore = Object.assign(this.state.store, {id: newVal})
+        //let obj = {}
+        if (this.state.store[id]) {
+            this.state.store[id] += newVal
 
+            //obj[id]+=newVal
+        } else {
+            this.state.store[id] = newVal
+            //obj[id] = newVal
+        }
+        //let newStore = Object.assign(this.state.store, {id: newVal})
+        //obj[id]=4
+        newVal = this.state.store
+        let newStore = Object.assign(this.state.store, newVal)
         // this.state or this.state.store - are still as they were
         // eslint-disable-next-line
-        console.log(JSON.stringify(newStore))
-        this.state = Object.assign(this.state, {store: newStore})
-        
+
+        console.log("Newstore: " + JSON.stringify(newStore))
+        this.state = Object.assign(this.state.store, newStore)
+
         this.setState(this.state)
+        //console.log(JSON.stringify(this.state.store))
     }
 
     getCounter(id)
