@@ -154,6 +154,9 @@ function BinarySearchTree() {
             }
         }
     }
+
+
+
     return treeWalk(root) - 1
 
     
@@ -181,6 +184,9 @@ function BinarySearchTree() {
 
     }; // End of function getHeight
 
+    
+
+    
 
 }
 
@@ -202,4 +208,5 @@ function main()
     }
     
     console.log(tree.getHeight(root))
+    //tree.levelOrder(root)
 }
