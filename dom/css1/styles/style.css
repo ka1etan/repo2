@@ -1,0 +1,9 @@
+body {
+    background: #909090;
+   
+}
+
+#changedText {
+    color: #eb4034;
+    font-weight: bold
+}
