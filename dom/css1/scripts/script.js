@@ -6,24 +6,35 @@ function buttons()
 
 function changeStyle()
 {
-    let element = document.querySelector("#changedText")
-    element.style.fontWeight="bold"
-    element.style.color="#eb4034"
+    let element = document.getElementById("changedText")
+    // element.style.fontWeight="bold"
+    // element.style.color="#eb4034"
+    element.className="bold-red"
 }
 
 function hoverElement()
 {
     let element = document.querySelector("#changedText")
-    element.addEventListener("mouseover", ()=>{
-        element.style.color="#eb4034"
-    })
-    element.addEventListener("mouseout", ()=>{
-        element.style.color="#000000"
-    })
+    element.className="onText"
+    // element.addEventListener("mouseover", ()=>{
+    //     element.style.color="#eb4034"
+    // })
+    // element.addEventListener("mouseout", ()=>{
+    //     element.style.color="#000000"
+    // })
+}
+
+function initCss()
+{
+    let element = document.getElementById("root")
+    element.className = "main"
+    // let element2 = document.getElementById("root")
+    // element2.className = "inline"
 }
 
 function main()
 {
+    initCss()
     buttons()
     hoverElement()
 }
