@@ -1,0 +1,32 @@
+body {
+    background: #909090;
+   
+}
+
+.bold-red {
+    color: #eb4034;
+    font-weight: bold
+}
+
+.onText:hover{
+    color: #eb4034
+}
+
+.main{
+    border: 2px solid blue;
+    display: block;
+    padding: 40px;
+    margin: 10px;
+    width: 600px;
+    height: auto;
+}
+
+.main button {
+    /* display: inline-block; */
+    height: 30px
+}
+
+.inline{
+    display: flex
+}
+

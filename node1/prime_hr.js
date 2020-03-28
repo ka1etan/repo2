@@ -34,7 +34,7 @@ function processData(input) {
     //Enter your code here
     let check = "prime"
     if (input !== 1) {
-        for (let i = 2; i < 999; i++) {
+        for (let i = 2; i <= Math.sqrt(input); i++) {
 
             if (i !== input) {
                 let module = input % i
