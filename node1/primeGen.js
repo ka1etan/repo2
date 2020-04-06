@@ -74,26 +74,29 @@ function generator(n) {
 }
 
 function checkPrimes(input) {
-    
+
     let check = "prime"
-    for (let i=0; i<input.length; i++)
-    {
-    if (input[i] !== 1) {
-        for (let j = 2; j <= Math.sqrt(input[i]); j++) {
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] !== 1) {
+            for (let j = 2; j <= Math.sqrt(input[i]); j++) {
 
-            if (j !== input[i]) {
-                let module = input[i] % j
-                if (!module) {
-                    check = "not prime"
-                    break
-                } else {
+                if (j !== input[i]) {
+                    let module = input[i] % j
+                    if (!module) {
+                        check = "not prime"
+                        break
+                    } else {
 
+                    }
                 }
             }
-        }
-    } else { check = "not prime" }
-    console.log(input[i]+": "+check)
-}}
+        } else { check = "not prime" }
+        console.log(input[i] + ": " + check)
+    }
+}
+
+
+
 
 function generator2(n) {
     let edge = Math.sqrt(n)
@@ -108,14 +111,14 @@ function generator2(n) {
                 let w = j * j
                 while (w <= n) {
                     let ind = arr.indexOf(w)
-                    if (ind>=0){
-                    let tmp = arr[arr.length - 1]
-                    arr[arr.length - 1] = arr[ind]
-                    arr[ind] = tmp
-                    arr.pop()
-                    arr.sort(function(a, b){return a-b})
-                    w += j
-                    } else {w += j}
+                    if (ind >= 0) {
+                        let tmp = arr[arr.length - 1]
+                        arr[arr.length - 1] = arr[ind]
+                        arr[ind] = tmp
+                        arr.pop()
+                        arr.sort(function (a, b) { return a - b })
+                        w += j
+                    } else { w += j }
                 }
             }
         }
@@ -124,11 +127,55 @@ function generator2(n) {
     return arr
 }
 
+// zamiast tablicy obiekt, kluczem maja byc liczby od 2 do n, 
+// wartosciami true/false - w senise czy zostala juz sprawdzona
+//pozniej, dodac tablice  gdzie beda pierwsze,
+// petla while od i= 2 do n/edge, jezeli obj[i] = false
+// to znaczy ze liczba jest pierwsza, dodaj to tablicy
+// robie druga petle gdzie  sprawdzam wielokrotnosci i
+// i ustawiam false w obiekcie
+
+function generator3(n) {
+    let edge = Math.sqrt(n)
+    let obj = {}
+    let primes = []
+    let i = 2
+    //let w = i*i
+
+    for (let i = 2; i <= n; i++) {
+        obj[i] = true
+    }
+
+    for (let props in obj) {
+
+        if (obj[props]) {
+            primes.push(props)
+            while (i <= Math.floor(edge)) {
+                let w = i * i
+                while (w <= n) {
+
+                    if (obj[w]) {
+                        obj[w] = false
+                        w += i
+                    } else { w += i }
+                }
+                i++
+            }
+        }
+    }
+
+
+    console.log(JSON.stringify({ obj, primes }))
+    checkPrimes(primes)
+    return primes
+}
+
 function test() {
-    console.log(generator(100).toString())
-    console.log(generator2(100).toString())
-    let x = generator2(100)
-    checkPrimes(x)
+    // console.log(generator(100).toString())
+    // console.log(generator2(100).toString())
+    // let x = generator2(100)
+    // checkPrimes(x)
+    console.log(generator3(100))
 }
 
 test()
