@@ -15,7 +15,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/primeGen.js"
+            "program": "${workspaceFolder}/bitwise_hr.js"
         }
     ]
 }
