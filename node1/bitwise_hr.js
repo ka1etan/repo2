@@ -19,10 +19,10 @@ stream.on('data', inputStdin => {
 
 stream.on('end', _ => {
     inputString = inputString.replace(/\s*$/, '')
-    .split('\n')
-    .map(str => str.replace(/\s*$/, ''));
+        .split('\n')
+        .map(str => str.replace(/\s*$/, ''));
 
-main();
+    main();
 
 });
 
@@ -30,17 +30,7 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function max(a) {
 
-    let max = a[0]
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] > max) {
-            max = a[i]
-        }
-
-    }
-    return max
-}
 
 function bitwise(a, b) {
     let result = a & b
@@ -48,28 +38,9 @@ function bitwise(a, b) {
     return result
 }
 
-function prepareNumbers2(n, k) {
-
-    let mat = []
-    for (let i = 1; i < n; i++) {
-        let b = k
-
-        while (b <= n) {
-            if (i < b) {
-                let result = bitwise(i, b)
-                if (result < k)
-                    mat.push(result)
-            }
-            b++
-        }
-
-    }
-    console.log(max(mat))
-}
 
 function prepareNumbers(n, k) {
 
-    //let mat = []
     let max = 0
     for (let i = 1; i < n; i++) {
         let b = i + 1
