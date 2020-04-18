@@ -30,6 +30,72 @@ function readLine() {
     return inputString[currentLine++];
 }
 
+function processData(input)
+{
+    let actual = {} // TODO { day: ..., month: ..., year: ... }
+    let expected = {} // TODO as above
+
+    let isOnTime = false
+
+    if (expected.year > actual.year)
+    {
+        isOnTime = true
+        return 0
+    }
+    else if (expected.year == actual.year)
+    {
+        if (expected.month > actual.month)
+        {
+            isOnTime = true
+            return 0
+        }
+        else if (expected.month == actual.month)
+        {
+            isOnTime = (expected.day >= actual.day)
+            return (expected.day >= actual.day)*15
+        }
+        else
+        {
+            isOnTime = false
+            return (actual.month - expected.month) * 500
+        }
+    }
+    else // <
+    {
+        isOnTime = false // same
+        return 10*1000;
+    }
+
+
+//    if (isOnTime) //done
+//    {
+//        return 0
+//    }
+//    else // done
+//    {
+//        let isSameYear = (actual.year == expected.year)
+//
+//        if (isSameYear) //done
+//        {
+//            let isSameMonth = (actual.month == expected.month)
+//            if (isSameMonth)
+//            {
+//                return (actual.day - expected.day) * 15
+//            }
+//            else
+//            {
+//                return (actual.month - expected.month) * 500
+//            }
+//        }
+//        else //done
+//        {
+//            return 10*1000;
+//        }
+//    }
+
+
+}
+
 function processData(input) {
     //Enter your code here
     let fine = 0
