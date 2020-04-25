@@ -32,8 +32,8 @@ function readLine() {
 
 function processData(input)
 {
-    let actual = {} // TODO { day: ..., month: ..., year: ... }
-    let expected = {} // TODO as above
+    let actual = {day: input[0].day, month: input[0].month, year: input[0].year} // TODO { day: ..., month: ..., year: ... }
+    let expected = {day: input[1].day, month: input[1].month, year: input[1].year} // TODO as above
 
     let isOnTime = false
 
@@ -52,7 +52,8 @@ function processData(input)
         else if (expected.month == actual.month)
         {
             isOnTime = (expected.day >= actual.day)
-            return (expected.day >= actual.day)*15
+            //return (expected.day >= actual.day)*15
+            return (actual.day - expected.day)*15
         }
         else
         {
@@ -96,7 +97,7 @@ function processData(input)
 
 }
 
-function processData(input) {
+function processData2(input) {
     //Enter your code here
     let fine = 0
 
@@ -133,7 +134,7 @@ function main() {
         arr.push(obj)
     }
     console.log(JSON.stringify(arr))
-    processData(arr)
+    console.log(processData(arr))
 
     // let s = new student(firstName, lastName, id, testScores)
     // s.printPerson()
