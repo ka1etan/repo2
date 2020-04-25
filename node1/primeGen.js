@@ -144,9 +144,10 @@ function generator3(n) {
 
     for (let i = 2; i <= n; i++) {
         obj[i] = true
+
     }
 
-    for (let props in obj) {
+    for (let props = 2; props <= n; props++) {
 
         if (obj[props]) {
             primes.push(props)
@@ -165,8 +166,37 @@ function generator3(n) {
     }
 
 
-    console.log(JSON.stringify({ obj, primes }))
-    checkPrimes(primes)
+    // console.log(JSON.stringify({ obj, primes }))
+    // checkPrimes(primes)
+    return primes
+}
+
+function generator4(n) {
+    let edge = Math.sqrt(n)
+    let obj = {}
+    let primes = []
+    let i = 2
+    //let w = i*i
+
+    for (let i = 2; i <= n; i++) {
+        obj[i] = true
+
+    }
+
+    for (let props = 2; props <= n; props++) {
+
+        if (obj[props]) {
+            primes.push(props)
+            for (let i = 1; i * props <= n; i++) {
+                obj[i * props] = false
+            }
+
+        }
+    }
+
+
+    //console.log(JSON.stringify({ obj, primes }))
+    //checkPrimes(primes)
     return primes
 }
 
@@ -175,7 +205,8 @@ function test() {
     // console.log(generator2(100).toString())
     // let x = generator2(100)
     // checkPrimes(x)
-    console.log(generator3(100))
+    console.table(generator3(100))
+    console.table(generator4(100))
 }
 
 test()
