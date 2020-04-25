@@ -1,0 +1,22 @@
+body {
+    background: #909090;
+   
+}
+
+.root  {
+    display: inline-flex;
+    border: 1px solid;
+    border-color: #000000;
+}
+
+/* #root  {
+    display: inline-flex;
+    border: 1px solid;
+    border-color: #000000;
+} */
+
+.count {
+    margin-left: 25px;
+    color: #FFFFFF;
+    
+}
