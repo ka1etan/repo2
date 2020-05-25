@@ -44,10 +44,12 @@ function convertAndFind(a) {
         mod = div % 2
         div = Math.floor(div / 2)
 
-        if (div == 0) {
-            binary.push(1)
-        }
+        
 
+    }
+
+    if (div == 0) {
+        binary.push(1)
     }
 
     console.log(binary.reverse())
@@ -92,9 +94,57 @@ function max(array) {
     return max
 }
 
+function findConsOnes(n){
+
+    let max = 0
+    let count = 0
+
+    while (n > 0){
+
+        let binaryNumber = n % 2
+        n = Math.floor(n/2)
+
+        if (binaryNumber==1){
+            count+=1
+            if (count > max){
+                max = count
+            }
+        } else {count = 0}
+
+    }
+
+    console.log(max)
+
+}
+
+function findConsOnes2(n){
+
+    let max = 0
+    let count = 0
+
+    while (n > 0){
+
+        let binaryNumber = n % 2
+        n = (n >> 1)
+
+        if (binaryNumber==1){
+            count+=1
+            if (count > max){
+                max = count
+            }
+        } else {count = 0}
+
+    }
+
+    console.log(max)
+
+}
+
 
 function main() {
 
     var value = parseInt(readLine(), 10);
     convertAndFind(value)
+    findConsOnes(value)
+    findConsOnes2(value)
 }
