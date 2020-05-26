@@ -40,10 +40,31 @@ function makeSeries(a, n) {
     return series
 }
 
+
+function makeSeries2(a, n) {
+
+    let series = []
+    let serie = []
+
+    for (let i = 0; i <= (a.length-n); i++) {
+
+            for (let j = i; j < i + n; j++) {
+
+                serie.push(a[j])
+
+            }
+
+            series.push(serie)
+            serie = []
+    }
+    console.table(series)
+}
+
 function main() {
-    let a = [1, 2, 3, 4, 5, 6, 7, 8]
+    let a = [1, 2, 3, 4, 5, 6 , 7]
     let n = 4
     makeSeries(a, n)
+    makeSeries2(a, n)
 }
 
 main()
