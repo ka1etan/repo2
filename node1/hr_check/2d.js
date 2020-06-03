@@ -1,6 +1,6 @@
 //https://www.hackerrank.com/challenges/30-2d-arrays/problem
 
-//git test
+//git test2
 
 'use strict';
 
