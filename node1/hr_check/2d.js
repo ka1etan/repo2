@@ -46,14 +46,11 @@ function glassHour(arr) {
 
                 for (let j = x; j < (3 + x); j++) {
 
-                    if(((i == (1 + y)) && (j == (0 + x))) || ((i == (1 + y)) && (j == (2 + x))))
-                    {} else 
-
-                    {sum += arr[i][j]}
+                    if (((i == (1 + y)) && (j == (0 + x))) || ((i == (1 + y)) && (j == (2 + x)))) { } else { sum += arr[i][j] }
                 }
 
             }
-            if (sum > max || x==0&&y==0) {
+            if (sum > max || x == 0 && y == 0) {
                 max = sum
             }
             //console.log(sum)
@@ -65,6 +62,25 @@ function glassHour(arr) {
     }
 
     console.log(max)
+}
+
+function glassHour2(arr) {
+
+    let max = 0
+
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+
+            let sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2]
+
+            if (sum > max || i == 0 && j == 0) {
+                max = sum
+            }
+        }
+    }
+
+    console.log(max)
+
 }
 
 
@@ -79,5 +95,5 @@ function main() {
     console.table(arr)
     //console.log(arr[5][4])
 
-    glassHour(arr)
+    glassHour2(arr)
 }
