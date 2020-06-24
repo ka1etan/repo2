@@ -1,0 +1,20 @@
+body {
+    background-color: antiquewhite;
+}
+
+.element {
+    position: relative;
+    border: 1px solid black;
+    width: 38px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.alert {
+    position: absolute;
+    border: 4px solid red;
+    background-color: rgb(255, 255, 255);
+    width: 150px;
+    height: 30px;
+    top: 72px;
+}
