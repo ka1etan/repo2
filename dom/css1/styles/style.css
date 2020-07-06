@@ -30,3 +30,9 @@ body {
     display: flex
 }
 
+.divTable{
+    background-color: aqua;
+    width:auto;
+    height: auto;
+}
+
