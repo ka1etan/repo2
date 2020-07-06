@@ -1,5 +1,10 @@
 // https://www.hackerrank.com/challenges/30-binary-search-trees/problem
 
+// przerobic bez rekursji, uzyc 2 tablic: working i result,
+// umiescic w petli "while",
+// np: dodajemy najpierw 3 do working, pozniej iteruje przez working
+// dodaje i zdejmuje dzieci roota
+
 'use strict';
 
 function Node(data) {
@@ -87,6 +92,35 @@ function BinarySearchTree() {
         
 
     }
+
+    this.levelOrder2 = function (root) {
+
+        let i = 0
+        let list = []
+        let working = []
+
+        if (root !== null) {
+            list.push(root.data)
+            // console.table(list)
+            while (root) {
+                if (root.left) {
+                    list.push(root.left.data)
+                    working.push(root.left)
+                }
+                if (root.right) {
+                    list.push(root.right.data)
+                    working.push(root.right)
+                }
+                if (working[i]) {
+                    root = working[i]
+                    i++
+                }
+                else { break }
+            }
+        }
+
+        console.table(list)
+    }
     
   
 }; // End of function BinarySearchTree
@@ -117,6 +151,7 @@ stream.on('end', _ => {
     
     
     //console.log(tree.getHeight(root));
-    tree.levelOrder(root)
+    //tree.levelOrder(root)
+    tree.levelOrder2(root)
 });
 
