@@ -18,7 +18,7 @@ function stringMethods(){
     // console.log(z.match(/re/g))
     // console.log(x.repeat(4))
     // console.log(z.replace("regular", "irregular"))
-    console.log(z.search(/gu/g))
+    console.log(z.search(/l/g))
     // console.log(x.slice(1,3))
     // console.log(z.split("r"))
     // console.log(x.startsWith("r"))
@@ -33,7 +33,7 @@ function stringMethods(){
     console.log(y.match(/\d/g))
     console.log(x.match(/\d/g))
     console.log(b.match(/d/i))
-    console.log(b.match(/d/g))
+    console.log(b.match(/Sw/g))
     console.log(y.match(/\w/g))
 }
 
