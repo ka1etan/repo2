@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/string_check.js"
+            "program": "${workspaceFolder}/tliterals.js"
         }
       
        

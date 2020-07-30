@@ -1,9 +1,10 @@
 function stringMethods(){
     let x = "Sweet"
     let y = "Dr3am5"
-    let z = " reg\gular ex\pre\ssion"
+    let z = " reg\gular lex\pre\ssion"
     let a = 4
     let b = "Sweet Dreams"
+    let reg = /w/g
 
     // console.log(x.charAt(2))
     // console.log(x.charCodeAt(2))
@@ -19,6 +20,7 @@ function stringMethods(){
     // console.log(x.repeat(4))
     // console.log(z.replace("regular", "irregular"))
     console.log(z.search(/l/g))
+    console.log(z.match(/l/g))
     // console.log(x.slice(1,3))
     // console.log(z.split("r"))
     // console.log(x.startsWith("r"))

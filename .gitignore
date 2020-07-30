@@ -6,3 +6,4 @@ loadata.js
 node1/hr_check/.vscode/launch.json
 node1/hr_pattern 1 arg.js
 node1/hr_pattern 2 args.js
+node1/.vscode/launch.json
