@@ -37,19 +37,20 @@ function countingValleys(n, s) {
     //let tmp = null
     let counter = 0
 
-     for (let i=0;i<n;i++){
-         if(s[i]=="U"){
-             level +=1
-         } else {level -=1}
+    for (let i = 0; i < n; i++) {
+        if (s[i] == "U") {
+            level += 1
+        } else { level -= 1 }
 
-         if (level==0){
-             if (s[i]!=="D")
-             counter++
-         }
+        if (level == 0) {
+            if (s[i] !== "D") {
+                counter++
+            }
+        }
         // tmp = s[i]
-     }
+    }
 
-     return counter
+    return counter
 }
 
 
