@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/valleys.js"
+            "program": "${workspaceFolder}/clouds.js"
         }
     ]
 }
