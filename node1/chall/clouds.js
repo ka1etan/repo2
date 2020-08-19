@@ -1,5 +1,7 @@
 // https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem?h_l=interview&playlist_slugs%5B%5D%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D%5B%5D=warmup
 
+// rewrite with while loop, can only jump on +1/+2
+
 'use strict';
 
 var assert = require('assert')
@@ -30,8 +32,28 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-
 function jumpingOnClouds(n, c) {
+
+    let jumps = 0
+
+    let i = 0
+
+    while(i<n-1){
+
+        if(c[i+2]==0){
+            jumps+=1
+            i = i + 2
+        } else {
+            jumps+=1
+            i = i + 1
+        }
+    }
+
+    return jumps
+}
+
+
+function jumpingOnClouds2(n, c) {
 
     let jumps = 0
 
