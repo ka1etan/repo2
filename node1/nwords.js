@@ -36,7 +36,7 @@ function makeNwords2(s, n){
 
 }
 
-function makeNwords(s, n){
+function makeNwords4(s, n){
 
     let nWords = []
     let collect = s.split(" ")
@@ -58,11 +58,82 @@ function makeNwords(s, n){
 
 }
 
+function makeNwords5(s, n){
+
+    let nWords = []
+    let words = s.split(" ")
+    
+    for(let i=0;i<words.length;i++){
+        let nWord = []
+          for (let j = i; j < i+n; j++ ){
+               nWord.push(words[j])
+      }
+      nWords.push(nWord.join(" "))
+      }
+
+    return nWords
+
+}
+
+function makeNwords6(s, n){
+
+    let nWord = []
+    let nWords = []
+    let words = s.split(" ")
+    let counter = 0
+
+    for(let i=0;i<words.length;i++){
+
+        counter++
+        
+        nWord.push(words[i])
+
+        if (counter==n){
+            counter = n-1
+            nWords.push(nWord.join(" "))
+            let tmp = nWord
+            nWord = []
+            for (let j=1;j<n;j++)
+                {
+                    nWord.push(tmp[j])
+                }
+        }
+        
+    }
+
+    return nWords
+
+}
+
+function makeNwords(s, n){
+
+    let nWord = []
+    let nWords = []
+    let words = s.split(" ")
+
+    for(let i=0;i<=words.length;i++){
+
+        if(i < n){
+            nWord.push(words[i])
+        }
+
+        else {
+            nWords.push(nWord.join(" "))
+            nWord.shift()
+            nWord.push(words[i])
+        }
+        
+    }
+
+    return nWords
+
+}
+
 function init(){
 
-    let string = "Checking n words function zzz xxx"
-    let check = makeNwords(string, 3)
-    console.log(check)
+    let string = "Checking n words function zzz xxx Checking n words function zzz xxx111"
+    let check = makeNwords(string, 2)
+    console.table(check)
 }
 
 init()
