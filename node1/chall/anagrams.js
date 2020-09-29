@@ -31,7 +31,7 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function makeAnagram(a, b) {
+function makeAnagram2(a, b) {
 
     let counter = 0
     let numberOfDeletions = 0
@@ -54,7 +54,47 @@ function makeAnagram(a, b) {
 
 }
 
+function makeAnagram(a, b) {
 
+    let objA = {}
+    let objB = {}
+    let numberOfDeletions = 0
+
+    for (let i = 0; i < a.length; i++) {
+
+        if (!objA[a[i]]) {
+            objA[a[i]] = 1
+
+        } else {
+        objA[a[i]] += 1
+        }
+    }
+
+    for (let j = 0; j < b.length; j++) {
+
+        if (objA[b[j]]) {
+            if (objA[b[j]] > 1) {
+                objA[b[j]]--
+            } else { delete objA[b[j]] }
+        } else {
+            if (!objB[b[j]]) {
+                objB[b[j]] = 1
+            } else {
+            objB[b[j]] += 1
+            }
+        }
+    }
+
+    for (let k in objA) {
+        numberOfDeletions += objA[k]
+    }
+
+    for (let k in objB) {
+        numberOfDeletions += objB[k]
+    }
+
+    return numberOfDeletions
+}
 
 function main() {
 
