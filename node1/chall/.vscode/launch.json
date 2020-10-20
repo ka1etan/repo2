@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/flipbits.js"
+            "program": "${workspaceFolder}/ll1.js"
         }
     ]
 }

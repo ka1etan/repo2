@@ -90,6 +90,10 @@ db.serialize(function() {
   db.run("insert into teams values('Developers',	'team1')")
   db.run("insert into teams values('No assignment',	'Not assigned')")
   
+  db.each(`select ROWID from persons where name='Jack'`, 
+           function(err, row) {
+            console.log(row.ROWID);
+  });
  
   db.each(`select avg(age) as avgage from persons left join members on persons.ROWID = members.ROWID group by teamId`, 
            function(err, row) {

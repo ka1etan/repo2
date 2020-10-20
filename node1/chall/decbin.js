@@ -15,7 +15,7 @@ for (let i=0; i<32; i++){
     }
 }
 
-console.table(binary)
+//console.table(binary)
 
 let sum = 0
 
@@ -25,4 +25,10 @@ for (let j = binary.length-1; j >= 0; j--){
     } else {sum += Math.pow(2, j)}
 }
 
-console.log(sum)
+//console.log(sum)
+
+let y = 1
+console.log(~(y>>>0))
+
+let z = 2 << 31
+console.log(z)
