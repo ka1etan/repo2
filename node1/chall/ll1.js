@@ -69,7 +69,7 @@ function printSinglyLinkedList(node, sep) {
 }
 
 
-function insertNodeAtPosition(head, data, position) {
+function insertNodeAtPosition2(head, data, position) {
 
     let node = new SinglyLinkedListNode(data)
     let counter = 0
@@ -106,6 +106,33 @@ function insertNodeAtPosition(head, data, position) {
     return head
 }
 
+function insertNodeAtPosition(head, data, position) {
+
+    let node = new SinglyLinkedListNode(data)
+    let prev = null
+    let next = head
+
+    for (let i = 0; i < position && next !== null; i++) {
+
+        prev = next
+        next = next.next
+
+    }
+
+    if (prev !== null) {
+
+        prev.next = node
+
+    } else {
+
+        head = node
+    }
+
+    node.next = next
+
+    return head
+
+}
 
 function main() {
 
