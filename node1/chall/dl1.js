@@ -13,6 +13,9 @@ stream.setEncoding('utf-8');
 let inputString = '';
 let currentLine = 0;
 
+var falseCount = 0
+var wrongLists = 0
+
 stream.on('data', inputStdin => {
     inputString += inputStdin;
 });
@@ -70,6 +73,46 @@ function printDoublyLinkedList(node, sep) {
     }
 }
 
+function checkAndPrint(node, sep, array) {
+
+    let i = 0
+    let check = false
+
+    while (node != null) {
+
+        if (node.data == array[i]) {
+
+            check = true
+
+        } else {
+            check = false
+            falseCount++
+        }
+
+        console.log(`List data: ${node.data}, Array data: ${array[i]}, isEqual: ${check}`);
+
+        node = node.next;
+        i++
+
+        if (node != null) {
+            console.log(sep);
+
+        } else {
+
+            if (i !== array.length) {
+                console.log("List length not equal to array")
+                wrongLists++
+                console.log(sep)
+            }
+        }
+
+
+    }
+
+
+
+}
+
 
 /*
  * For your reference:
@@ -105,7 +148,7 @@ function sortedInsert(head, data) {
             current = current.next
         }
 
-        if (data < current.data) {
+        if (data <= current.data) {
 
             let prev = current.prev
             prev.next = node
@@ -135,20 +178,31 @@ function main() {
 
         let llist = new DoublyLinkedList();
 
+        let checkArray = []
+
         for (let i = 0; i < llistCount; i++) {
             const llistItem = parseInt(readLine(), 10);
             //console.log(llistItem)
             llist.insertNode(llistItem);
+
+            checkArray.push(llistItem)
         }
 
         const data = parseInt(readLine(), 10);
 
         let llist1 = sortedInsert(llist.head, data);
 
-        printDoublyLinkedList(llist1, " ")
+        checkArray.push(data)
+        let checkArraySorted = checkArray.sort((a, b) => { return a - b })
+
+        //printDoublyLinkedList(llist1, " ")
+        checkAndPrint(llist1, " ", checkArraySorted)
         //printDoublyLinkedList(llist.head, " ")
         console.log("\n");
+        console.table(checkArraySorted)
     }
+
+    console.log(`Failed cases: ${falseCount}, Failed lists: ${wrongLists}`)
 
 }
 
